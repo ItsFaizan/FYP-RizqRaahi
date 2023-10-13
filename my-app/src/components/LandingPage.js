@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import vector from "../assets/img1-removebg-preview.png";
 import vector2 from "../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg";
 import { Link } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
 
 export const LandingPage = () => {
   const Navigate = useNavigate();
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  const handleButtonClick = () => {
-    // Navigate to the desired route when the button is clicked
-    Navigate("/signin");
-  };
+const handleButtonClick = (option) => {
+  // Set the selected option when the button is clicked
+  setSelectedOption(option);
+  // Navigate to the Signup component and pass the selected option as a prop
+  Navigate(`/signin/${option}`);
+};
+
 
   return (
     <div>
@@ -36,17 +39,21 @@ export const LandingPage = () => {
 
         <div className="mt-[15px] px-[20px] ">
           <button
-            className="w-full h-[30px] mt-[150px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none"
+            className={`w-full h-[30px] mt-[150px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none ${
+              selectedOption === "Restaurant" ? "bg-green-600" : ""
+            }`}
             style={{ fontSize: "12px" }}
-            onClick={handleButtonClick}
+            onClick={() => handleButtonClick("Restaurant")}
           >
             Restaurant
           </button>
 
           <button
-            className="w-full h-[30px] mt-[15px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none"
+            className={`w-full h-[30px] mt-[15px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none ${
+              selectedOption === "NGO" ? "bg-green-600" : ""
+            }`}
             style={{ fontSize: "12px" }}
-            onClick={handleButtonClick}
+            onClick={() => handleButtonClick("NGO")}
           >
             NGO
           </button>
@@ -55,5 +62,3 @@ export const LandingPage = () => {
     </div>
   );
 };
-
-// border border-gray-300

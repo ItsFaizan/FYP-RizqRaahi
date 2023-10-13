@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import vector from '../assets/img1-removebg-preview.png';
 import vector2 from '../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg';
+import { Link } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 export const SignIn = () => {
-  const [formData, setFormData] = useState({
-    usernameOrEmail: '',
-    password: '',
-  });
+  const [nameOrEmail, setNameOrEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { option } = useParams();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const handleNameOrEmailChange = (e) => {
+    setNameOrEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission with formData
-    console.log(formData); // Example: Log form data to the console
+    // Handle form submission with individual state variables (nameOrEmail, password)
+    console.log('Name or Email:', nameOrEmail);
+    console.log('Password:', password);
     // Add your form submission logic here, such as making an API call
   };
 
@@ -25,7 +29,10 @@ export const SignIn = () => {
     <div>
       <div className="fixed top-[90px] left-[140px] w-[321px] h-[430px] bg-white rounded-lg border border-white shadow-md">
         <img src={vector2} alt="Image" className="top-[60px] left-[205px] w-[150px] h-[160px] mx-auto" />
-        <h1 className="text-center font-inter italic text-5xl font-bold leading-[10px] tracking-[0em] text-left text-green-500" style={{ fontSize: '35px' }}>
+        <h1
+          className="text-center font-inter italic text-5xl font-bold leading-[10px] tracking-[0em] text-left text-green-500"
+          style={{ fontSize: '35px' }}
+        >
           SIGN IN
         </h1>
         <p className="text-center mt-[13px] text-base" style={{ fontSize: '10px' }}>
@@ -37,24 +44,20 @@ export const SignIn = () => {
             <input
               type="text"
               placeholder="Name or Email"
-              name="usernameOrEmail"
-              value={formData.usernameOrEmail}
-              onChange={handleInputChange}
+              value={nameOrEmail}
+              onChange={handleNameOrEmailChange}
               className="w-full h-[30px] mb-[10px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
               style={{ fontSize: '10px' }}
-              required
             />
           </div>
           <div className="">
             <input
               type="password"
               placeholder="Password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
+              value={password}
+              onChange={handlePasswordChange}
               className="w-full h-[30px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
               style={{ fontSize: '10px' }}
-              required
             />
           </div>
           <button
@@ -70,7 +73,7 @@ export const SignIn = () => {
         </p>
         <p className="text-center mt-[3px] text-base" style={{ fontSize: '10px' }}>
           Already have an account?{' '}
-          <Link className="text-green-500 font-bold" style={{ fontSize: '10px' }} to="/signup">
+          <Link className="text-green-500 font-bold" style={{ fontSize: '10px' }} to={`/signup/${option}`}>
             Sign up
           </Link>
           <br />
@@ -100,9 +103,8 @@ export const SignIn = () => {
       </div>
 
       <div className="fixed bottom-[25px] right-[80px]">
-        <img src={vector} className="w-[550px] h-[295px]" alt="Vector" />
+        <img src={vector} className="w-[550px] h-[295px]" />
       </div>
-      {console.log(formData)}
     </div>
   );
 };

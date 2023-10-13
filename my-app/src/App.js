@@ -5,6 +5,7 @@ import { Signup } from './components/Signup';
 import Home from './components/Home';
 import Sidebar from './components/Sidebar';
 import Announcement from './components/Announcement';
+
 import { LandingPage } from './components/LandingPage';
 
 function App() {
@@ -13,9 +14,11 @@ function App() {
       <div>
         <Routes>
         <Route path="/" element={<LandingPage />} />
-          <Route path="/announcement" element={<Announcement />} />
-         <Route path='/signin' element={<SignIn/>} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/announcement" element={<Home />} />
+         <Route path='/signin/:option' element={<SignIn/>} />
+         <Route path="/signup/:option" element={<Signup />} />
+
+          {/* <Route path="/signup" element={<Signup />} /> */}
         </Routes>
       </div>
     </Router>

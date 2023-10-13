@@ -1,36 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import vector from "../assets/img1-removebg-preview.png";
 import vector2 from "../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg";
 import location from "../assets/location2.png";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useParams } from "react-router-dom";
+
 export const Signup = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [locationValue, setLocationValue] = useState("");
+  const [proximity , serProximity] = useState("")
+  const { option } = useParams();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    location: "",
-  });
-  
-  const addLocation = () =>{
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
 
-    navigator.geolocation.getCurrentPosition(function(position) {
-      console.log("Latitude is :", position.coords.latitude);
-      console.log("Longitude is :", position.coords.longitude);
-      setFormData({ ...formData, location: position.coords.latitude + "," + position.coords.longitude });
-    });
-    
-  }
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLocationChange = (e) => {
+    setLocationValue(e.target.value);
+  };
+
+  const handleProximityChange = (e) => {
+    serProximity(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission with formData
-    console.log(formData); // Example: Log form data to the console
+    // Handle form submission with individual state variables (name, email, password, locationValue)
+    console.log("Name:", name);
+    console.log("Email:", email);
+    console.log("Password:", password);
+    console.log("Location:", locationValue);
+    console.log("proximity:", proximity);
     // Add your form submission logic here, such as making an API call
   };
   
@@ -56,13 +66,14 @@ export const Signup = () => {
         </p>
 
         <div className="mt-[15px] px-[20px] ">
+
         <div className="">
           <input
             type="text"
             placeholder="Name"
             name="name"
-            value={formData.name}
-            onChange={handleInputChange}
+            value={name}
+            onChange={handleNameChange}
             className="w-full h-[30px] mb-[10px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
             style={{ fontSize: "10px" }}
             required
@@ -74,8 +85,8 @@ export const Signup = () => {
             type="email"
             placeholder="Email"
             name="email"
-            value={formData.email}
-            onChange={handleInputChange}
+            value={email}
+            onChange={handleEmailChange}
             className="w-full h-[30px] mb-[10px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
             style={{ fontSize: "10px" }}
             required
@@ -87,28 +98,47 @@ export const Signup = () => {
             type="password"
             placeholder="Password"
             name="password"
-            value={formData.password}
-            onChange={handleInputChange}
+            value={password}
+            onChange={handlePasswordChange}
             className="w-full h-[30px] mb-[10px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
             style={{ fontSize: "10px" }}
             required
           />
         </div>
+
+
         <div className="relative">
           <input
             type="text"
             placeholder="Location"
             name="location"
-            value={formData.location}
-            onChange={handleInputChange}
+            value={location}
+            onChange={handleLocationChange}
             className="w-full h-[30px] mb-[10px] mt-3 rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
             style={{ fontSize: "10px" }}
             required
           />
-          <button className="absolute right-2 top-4 " onClick={addLocation}>
+          <button className="absolute right-2 top-4 ">
             <img src={location} alt="Location Icon" className="w-[19px] h-[20px]" />
           </button>
         </div>
+
+        {option === "NGO" && (
+        <div className="">
+          <input
+            type="text"
+            placeholder="Proximity"
+            name="proximity"
+            value={proximity}
+            onChange={handleProximityChange}
+            className="w-full h-[30px] mb-[10px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
+            style={{ fontSize: "10px" }}
+            required
+          />
+        </div>
+        )}
+
+        
         <button
           onClick={handleSubmit}
           className="w-full h-[30px] mt-[15px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none"
@@ -131,7 +161,7 @@ export const Signup = () => {
           <Link
             className="text-green-500 font-bold "
             style={{ fontSize: "10px" }}
-            to="/signin"
+            to={`/signin/${option}`}
           >
             Sign in
           </Link>
@@ -164,7 +194,7 @@ export const Signup = () => {
       <div className="fixed bottom-[10px] right-[80px]">
         <img src={vector} className="w-[550px] h-[295px]" />
       </div>
-      {console.log(formData)}
+      {/* {console.log(formData)} */}
     </div>
   );
 };
