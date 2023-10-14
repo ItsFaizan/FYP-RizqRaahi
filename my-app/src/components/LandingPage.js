@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import vector from "../assets/img1-removebg-preview.png";
 import vector2 from "../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export const LandingPage = () => {
@@ -12,7 +10,8 @@ const handleButtonClick = (option) => {
   // Set the selected option when the button is clicked
   setSelectedOption(option);
   // Navigate to the Signup component and pass the selected option as a prop
-  Navigate(`/signin/${option}`);
+  console.log("Landing page sending: "+ option);
+  Navigate(`/signin`, { state: {option: option }});
 };
 
 
@@ -21,7 +20,7 @@ const handleButtonClick = (option) => {
       <div className="fixed top-[40px] left-[190px] w-[350px] h-[500px] bg-white rounded-lg border border-white shadow-md">
         <img
           src={vector2}
-          alt="Image"
+          alt="Img"
           className=" mt-[1px] top-[7px] left-[205px] w-[150px] h-[160px] mx-auto"
         />
         <h1

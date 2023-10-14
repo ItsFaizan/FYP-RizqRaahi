@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import vector from "../assets/img1-removebg-preview.png";
 import vector2 from "../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg";
 import location from "../assets/location2.png";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 export const Signup = () => {
+
+  const Navigate = useNavigate();
+  const locationdata = useLocation();
+  const data = locationdata.state;
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [locationValue, setLocationValue] = useState("");
-  const [proximity , serProximity] = useState("")
-  const { option } = useParams();
+  const [cpassword, setCPassword] = useState("");
+  const [locationValue, setLocationValue] = useState(data.coordinates);
+  const [proximity , setProximity] = useState("")
+  const option = data.option;
+
+  // const toastId = useRef(null)
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -25,31 +33,161 @@ export const Signup = () => {
     setPassword(e.target.value);
   };
 
+  const handleCPasswordChange = (e) => {
+    setCPassword(e.target.value);
+  };
+
   const handleLocationChange = (e) => {
     setLocationValue(e.target.value);
   };
 
   const handleProximityChange = (e) => {
-    serProximity(e.target.value);
+    setProximity(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission with individual state variables (name, email, password, locationValue)
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Location:", locationValue);
-    console.log("proximity:", proximity);
-    // Add your form submission logic here, such as making an API call
-  };
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+
+     if (name === '' || email === '' || password === '' || cpassword === '') 
+     {
+
+      toast.error('Please fill all the fields', {
+        autoClose: 3000,
+        theme: 'dark',
+      });
+
+    } else if (locationValue === '') {
+
+      toast.error('Please Select a Location', {
+        autoClose: 3000,
+       theme: 'dark',
+      });
+
+    } else if (!emailRegex.test(email)) {
+
+      toast.error('Please Enter a Valid Email Address', {
+        autoClose: 3000,
+       theme: 'dark',
+      });
+
+    } else if (password.length < 8) {
+
+      toast.error('Password must be at least 8 characters long', {
+        autoClose: 3000,
+       theme: 'dark',
+      });
+
+
+    } else if (password !== cpassword) {
+
+      toast.error('Passwords do not match', {
+        autoClose: 3000,
+       theme: 'dark',
+      });
+    }
+      
+
+    else {
+
+      if (option === 'NGO') 
+      {
+        if (proximity === '') 
+        {
+          toast.error('Proximity must be given', {
+            autoClose: 3000,
+           theme: 'dark',
+          });
+          return;
+        } 
+        else if (isNaN(proximity) || parseInt(proximity) !== parseFloat(proximity)) 
+        {
+          toast.error('Proximity must be an integer', {
+            autoClose: 3000,
+           theme: 'dark',
+          });
+          return;
+        } 
+        else if (parseInt(proximity) <= 0 || parseInt(proximity) > 50)
+        {
+          toast.error('Proximity is Invalid, Should be (1-50)', {
+            autoClose: 3000,
+           theme: 'dark',
+          });
+          return;
+        } 
+      }
+
+      let uniqueemail = email.toLowerCase();
+
+      const requestBody = {
+        name: name,
+        email: uniqueemail,
+        password: password,
+        type: option,
+        latitude: locationValue.latitude,
+        longitude: locationValue.longitude,
+      };
   
+      if (option === 'NGO') {
+        requestBody.proximity = parseInt(proximity);
+      }
+
+      // toastId.current = toast(`Attempting to Register as ${option}`,{
+      //   theme: 'dark',
+      //   type: toast.TYPE.LOADING ,
+      // })
+
+      const id = toast.loading(`Attempting to Register as ${option}`,{
+        theme: 'dark',
+      })
+  
+      fetch(`/registration`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify(requestBody),
+      })
+        .then((res) => res.json())
+        .then(async(data) => {
+          console.log(data);
+          if (data.success === false) {
+
+            toast.update(id, {
+              render: `${data.message}`,
+              type: toast.TYPE.ERROR,
+              isLoading: false,
+              autoClose: true,
+          })
+
+
+          } else {
+
+            toast.update(id, {
+              render: `${data.message}`,
+              type: toast.TYPE.SUCCESS,
+              isLoading: false,
+              autoClose: true,
+          })
+
+            setTimeout(() => {
+              Navigate('/signin', { state: { option: option }});
+            }, 2000);
+          }
+        });
+    }
+  };
+
+  console.log(locationValue);
   return (
     <div>
-      <div className="fixed top-[40px] left-[140px] w-[350px] h-[500px] bg-white rounded-lg border border-white shadow-md">
+      <div className="fixed top-[40px] left-[140px] w-[350px] h-[550px] bg-white rounded-lg border border-white shadow-md">
         <img
           src={vector2}
-          alt="Image"
+          alt="logo"
           className=" mt-[1px] top-[7px] left-[205px] w-[150px] h-[160px] mx-auto"
         />
         <h1
@@ -93,6 +231,26 @@ export const Signup = () => {
           />
         </div>
 
+
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Location"
+            name="location"
+            value={locationValue ? "Location Added" : ""}
+            onChange={handleLocationChange}
+            className="w-full h-[30px] mb-[10px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
+            style={{ fontSize: "10px" }}
+            required
+            readOnly
+          />
+
+          <button className="absolute right-2 top-1 " onClick={() => Navigate(`/location-selection`, {state: {option: option}})}>
+            <img src={location} alt="Location Icon" className="w-[19px] h-[20px]" />
+          </button>
+
+        </div>
+
         <div className="">
           <input
             type="password"
@@ -106,22 +264,21 @@ export const Signup = () => {
           />
         </div>
 
-
-        <div className="relative">
+        <div className="">
           <input
-            type="text"
-            placeholder="Location"
-            name="location"
-            value={location}
-            onChange={handleLocationChange}
-            className="w-full h-[30px] mb-[10px] mt-3 rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
+            type="password"
+            placeholder="Confirm Password"
+            name="cpassword"
+            value={cpassword}
+            onChange={handleCPasswordChange}
+            className="w-full h-[30px] mb-[10px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
             style={{ fontSize: "10px" }}
             required
           />
-          <button className="absolute right-2 top-4 ">
-            <img src={location} alt="Location Icon" className="w-[19px] h-[20px]" />
-          </button>
         </div>
+
+
+
 
         {option === "NGO" && (
         <div className="">
@@ -192,7 +349,7 @@ export const Signup = () => {
       </div>
 
       <div className="fixed bottom-[10px] right-[80px]">
-        <img src={vector} className="w-[550px] h-[295px]" />
+        <img src={vector} alt='' className="w-[550px] h-[295px]" />
       </div>
       {/* {console.log(formData)} */}
     </div>

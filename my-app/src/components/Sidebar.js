@@ -6,11 +6,11 @@ library.add(fas);
 
 const Sidebar = () => {
   const [isExtended, setIsExtended] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(null);
+  // const [activeMenu, setActiveMenu] = useState(null);
 
-  const toggleSidebar = () => {
-    setIsExtended(!isExtended);
-  };
+  // const toggleSidebar = () => {
+  //   setIsExtended(!isExtended);
+  // };
 
   const handleMouseEnter = () => {
     setIsExtended(true);

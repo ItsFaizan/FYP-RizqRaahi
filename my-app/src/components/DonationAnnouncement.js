@@ -1,16 +1,29 @@
-import React, { useState } from 'react'
-import Slidebar from './Sidebar'
-import { Link } from 'react-router-dom'
+import React, { useState, useRef, useEffect } from 'react'
+// import Slidebar from './Sidebar'
+// import { Link } from 'react-router-dom'
 import vector from '../assets/Announcement.png'
 import vector2 from '../assets/logo.png'
-import Sidebar from './Sidebar'
+// import Sidebar from './Sidebar'
+import { io } from 'socket.io-client';
+import { useLocation } from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 
 export default function Announcement() {
 
+  const locationdata = useLocation();
+  const data = locationdata.state;
+
   const [isFresh, setIsFresh] = useState(false);
   const [isCooked, setIsCooked] = useState(false);
   const [isPerishable, setIsPerishable] = useState(false);
+  const [isKgSelected, setIsKgSelected] = useState(true);
+  const [amount, setAmount] = useState("");
+  const [description, setDescription] = useState("");
+
+  const token = data.token;
+  var id;
+  const socket = useRef(null);
   
 
   const handleFreshToggle = () => {
@@ -24,6 +37,106 @@ export default function Announcement() {
   const handlePerishableToggle = () => {
     setIsPerishable(!isPerishable);
   };
+
+  const handleSubmit = async() => {
+
+    try {
+      const parsedAmount = parseInt(amount, 10);
+    
+      if (isNaN(parsedAmount) || description === '') {
+        toast.error('Please fill all the fields', {
+          autoClose: 3000,
+          theme: 'dark',
+        });
+      } 
+      else if (!Number.isInteger(parsedAmount)) {
+        toast.error('Please Enter an Integer', {
+          autoClose: 3000,
+         theme: 'dark',
+        });
+      } 
+      else if (parsedAmount <= 0 || parsedAmount > 100000) {
+        toast.error('Please Enter a valid Amount (0-100,000)', {
+          autoClose: 3000,
+         theme: 'dark',
+        });
+      } 
+      else 
+      {
+        const token = localStorage.getItem('authToken');
+        const amountType = isKgSelected ? 'KG' : 'Units';
+
+         id = toast.loading(`Creating Real-Time Donation...`,{
+          theme: 'dark',
+        })
+  
+          const response = await fetch(`/createdonation`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              amount: parsedAmount,
+              description: description,
+              isFresh: isFresh,
+              isCooked: isCooked,
+              isPerishable: isPerishable,
+              amountType: amountType,
+            }),
+          });
+    
+            const data = await response.json();
+            if (data.success === true) {
+              console.log("Announcement Created");
+              toast.update(id, {
+                render: `${data.message}`,
+                type: toast.TYPE.SUCCESS,
+                isLoading: false,
+                autoClose: true,
+            })
+             await socket.current.emit('newAnnouncement', data.markerData);
+             return;
+    
+            } 
+            else {
+              console.log("Announcement not Created");
+              console.log(data);
+              console.log('data.message: '+data.message);
+              toast.update(id, {
+                render: `${data.message}`,
+                type: toast.TYPE.ERROR,
+                isLoading: false,
+                autoClose: true,
+            })
+            }
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          toast.update(id, {
+            render: `${data.message}`,
+            type: toast.TYPE.ERROR,
+            isLoading: false,
+            autoClose: true,
+        })
+        }
+  };
+
+  useEffect(() => {
+
+    
+
+    // Connect to the Socket.io server when the component mounts
+    socket.current = io("http://localhost:3001", {
+      auth: { token },
+    });
+    
+
+    return () => {
+      socket.current.disconnect();
+    };
+  }, []);
+  
 
 
   window.addEventListener('load', (event) => {
@@ -52,7 +165,6 @@ export default function Announcement() {
 });
 
 
-const [isKgSelected, setIsKgSelected] = useState(true);
 
 const handleKgClick = () => {
   setIsKgSelected(true);
@@ -63,21 +175,18 @@ const handleUnitsClick = () => {
 };
 
 
-
-
-
   
   return (
     <div>
 
       
         <div className="fixed bottom-[10px] left-[130px] background">
-              <img src={vector} className="w-[550px] h-[405px]" />
+              <img src={vector} alt={"Img"} className="w-[550px] h-[405px]" />
         </div>
 
       
       <div className="fixed top-[40px] right-[90px] w-[410px] h-[520px] bg-white rounded-lg border border-white shadow-md">
-              <img src={vector2} alt="Image" className=" mt-[-20px] top-[2px] left-[205px] w-[160px] h-[160px] mx-auto" />
+              <img src={vector2} alt="Img" className=" mt-[-20px] top-[2px] left-[205px] w-[160px] h-[160px] mx-auto" />
               <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Food Donation</h1>
               <h1 className="text-center mt-[-16px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Announcements</h1>
 
@@ -87,6 +196,8 @@ const handleUnitsClick = () => {
                   <input
                     type="text"
                     placeholder="Amount"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
                     className="w-full h-[30px] mb-[10px] rounded-md p-[10px]  bg-gray-100 focus:outline-none focus:border-blue-500" style={{ fontSize: '10px' }}
                   />                  
                 </div>
@@ -123,6 +234,8 @@ const handleUnitsClick = () => {
                 <textarea
                   id="description"
                   placeholder="Description.."
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                   className="w-full h-[80px] mb-[10px] mt-2 rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
                 ></textarea>
               </div>
@@ -200,7 +313,7 @@ const handleUnitsClick = () => {
 
 
                 
-        <button className="fixed w-[180px] h-[30px] mt-[110px] right-[200px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}>
+        <button onClick={handleSubmit} className="fixed w-[180px] h-[30px] mt-[110px] right-[200px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}>
                   Create Announcement
                   </button>
                 
