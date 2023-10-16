@@ -9,6 +9,7 @@ import LocationSelection from './components/LocationSelection';
 import {ToastContainer} from 'react-toastify';
 import { LandingPage } from './components/LandingPage';
 import MainMap from './components/MainMap';
+import NotificationListener from './components/Notifications/NotificationListener';
 import 'font-awesome/css/font-awesome.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,9 +17,8 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div> 
-
+    <NotificationListener />
     <Router>
-      
         <Routes>
           <Route path="/" element={<div><LandingPage /></div>} />
           <Route path="/donationAnnouncement" element={<div><Home /></div>} />

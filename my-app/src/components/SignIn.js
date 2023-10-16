@@ -4,9 +4,10 @@ import vector2 from '../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg';
 import { Link } from 'react-router-dom';
 import { useLocation , useNavigate } from "react-router-dom";
 import {toast} from 'react-toastify';
+import {requestForToken} from '../firebaseConfig';
 
 export const SignIn = () => {
-
+  
   const navigate = useNavigate();
   const locationdata = useLocation();
   const data = locationdata.state;
@@ -24,6 +25,7 @@ export const SignIn = () => {
   };
 
   const handleSubmit = async() => {
+
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
     if (email === '' || password === '') {
@@ -45,6 +47,15 @@ export const SignIn = () => {
 
         let uniqueemail = email.toLowerCase();
 
+        var expoPushToken = await requestForToken();
+
+        if (expoPushToken == null) {
+          toast.error('Please Allow Notfication Access', {
+            autoClose: 3000,
+            theme: 'dark',
+          });
+        }
+
         const id = toast.loading(`Attempting to Login as ${option}`,{
           theme: 'dark',
         })
@@ -59,6 +70,8 @@ export const SignIn = () => {
             email: uniqueemail,
             password: password,
             type: option,
+            expoPushToken: expoPushToken,
+            deviceType: 'Web',
           }),
         })
   
