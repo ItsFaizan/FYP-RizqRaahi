@@ -6,14 +6,17 @@ const Notification = () => {
   const [notification, setNotification] = useState({title: '', body: ''});
   const notify = () =>  toast.info(<ToastDisplay/>); 
   function ToastDisplay() {
+    const bodyLines = notification?.body.split('\n');
+
     return (
       <div>
         <p><b>{notification?.title}</b></p>
-        <p>{notification?.body}</p>
-        
+        {bodyLines.map((line, index) => (
+          <p key={index}>{line}</p>
+        ))}
       </div>
     );
-  };
+  }
 
   useEffect(() => {
     if (notification?.title ){
