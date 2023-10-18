@@ -157,7 +157,8 @@ const MainMap = () => {
         onButtonPress={async(buttonLabel) => {
           // Handle button press here
 
-          
+          const googleMapsUrl = `https://www.google.com/maps?q=${selectedMarker.latitude},${selectedMarker.longitude}`;
+          window.open(googleMapsUrl, '_blank');
           // console.log(`Button ${buttonLabel} pressed`);
         }}
       />
