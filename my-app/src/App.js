@@ -10,6 +10,7 @@ import {ToastContainer} from 'react-toastify';
 import { LandingPage } from './components/LandingPage';
 import MainMap from './components/MainMap';
 import NotificationListener from './components/Notifications/NotificationListener';
+import Navbar from './components/Navbar';
 import 'font-awesome/css/font-awesome.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,11 +22,11 @@ function App() {
     <Router>
         <Routes>
           <Route path="/" element={<div><LandingPage /></div>} />
-          <Route path="/donationAnnouncement" element={<div><Home /></div>} />
+          <Route path="/donationAnnouncement" element={<div><Navbar/><Home /></div>} />
           <Route path='/signin' element={<div><SignIn/></div>} />
           <Route path="/signup" element={<div><Signup /></div>} />
           <Route path="/location-selection" element={<div><LocationSelection /></div>} />
-          <Route path="/MainMap" element={<div><MainMap /></div>} />
+          <Route path="/MainMap" element={<div><Navbar/><MainMap /></div>} />
 
         </Routes>
         <ToastContainer

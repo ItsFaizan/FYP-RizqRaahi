@@ -7,6 +7,7 @@ import '../styles/MapItemStyles.css';
 import { useLocation } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import CustomModal from './CustomModal';
+import ReactLoading from 'react-loading';
 
 
 const MainMap = () => {
@@ -122,9 +123,16 @@ const MainMap = () => {
     ) 
     : 
     (
-      <div className="loadingMap">
-      <h1>Loading Map...</h1>
-      </div>
+      <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+      }}
+    >
+      <ReactLoading type={'spin'} color={'black'} width={64} height={64} />
+    </div>
     )}
 
     <CustomModal

@@ -185,7 +185,7 @@ const handleUnitsClick = () => {
         </div>
 
       
-      <div className="fixed top-[40px] right-[90px] w-[410px] h-[520px] bg-white rounded-lg border border-white shadow-md">
+      <div className="fixed top-[170px] right-[90px] w-[410px] h-[520px] bg-white rounded-lg border border-white shadow-md">
               <img src={vector2} alt="Img" className=" mt-[-20px] top-[2px] left-[205px] w-[160px] h-[160px] mx-auto" />
               <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Food Donation</h1>
               <h1 className="text-center mt-[-16px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Announcements</h1>
@@ -252,11 +252,11 @@ const handleUnitsClick = () => {
 <div className="relative">
         {/* Fresh Toggle Button */}
         <div className="flex items-center space-x-4">
-          <span className="fixed top-[400px] right-[230px] text-sm font-semibold mx-[90px]">
-            {isFresh ? 'Fresh' : 'Unfresh'}
+          <span className="fixed top-[530px] right-[230px] text-sm font-semibold mx-[90px]">
+            Fresh
           </span>
           <button
-            className={`fixed top-[395px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
+            className={`fixed top-[530px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
               isFresh ? 'bg-green-500' : 'bg-gray-300'
             }`}
             onClick={handleFreshToggle}
@@ -271,11 +271,11 @@ const handleUnitsClick = () => {
 
         {/* Cooked Toggle Button */}
         <div className="flex items-center space-x-4">
-          <span className="fixed top-[435px] right-[320px] text-sm font-semibold">
-            {isCooked ? 'Cooked' : 'Uncooked'}
+          <span className="fixed top-[565px] right-[320px] text-sm font-semibold">
+            Cooked
           </span>
           <button
-            className={`fixed top-[430px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
+            className={`fixed top-[565px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
               isCooked ? 'bg-green-500' : 'bg-gray-300'
             }`}
             onClick={handleCookedToggle}
@@ -290,11 +290,11 @@ const handleUnitsClick = () => {
 
         {/* Perishable Toggle Button */}
         <div className="flex items-center space-x-4">
-          <span className="fixed top-[474px] right-[240px] text-sm font-semibold mx-[80px]">
-            {isPerishable ? 'Perishable' : 'Unperishable'}
+          <span className="fixed top-[600px] right-[240px] text-sm font-semibold mx-[80px]">
+            Perishable
           </span>
           <button
-            className={`fixed top-[466px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
+            className={`fixed top-[600px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
               isPerishable ? 'bg-green-500' : 'bg-gray-300'
             }`}
             onClick={handlePerishableToggle}
