@@ -15,6 +15,7 @@ import  LandingPageHome  from './components/LandingPage/LandingPageHome';
 import 'font-awesome/css/font-awesome.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { Overview } from './components/LandingPage/Overview';
+import { Solution } from './components/LandingPage/Solution';
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
     {/* <NotificationListener /> */}
     <Router>
         <Routes>
-          <Route path="/" element={<div><NavbarWeb /><LandingPageHome/><Overview/></div>} />
+          <Route path="/" element={<div><NavbarWeb /><LandingPageHome/><Overview/><Solution/></div>} />
           <Route path="/donationAnnouncement" element={<div><Navbar/><Home /></div>} />
           <Route path="/signin" element={<div><SignIn/></div>} />
           <Route path="/signup" element={<div><Signup /></div>} />
