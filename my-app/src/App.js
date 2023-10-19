@@ -17,6 +17,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Overview } from './components/LandingPage/Overview';
 import { Solution } from './components/LandingPage/Solution';
 import { About } from './components/LandingPage/About';
+import { Work } from './components/LandingPage/Work';
+import { FAQ } from './components/LandingPage/FAQ';
 
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
     {/* <NotificationListener /> */}
     <Router>
         <Routes>
-          <Route path="/" element={<div><NavbarWeb /><LandingPageHome/><Overview/><Solution/><About/></div>} />
+          <Route path="/" element={<div><NavbarWeb /><LandingPageHome/><Overview/><Solution/><About/><Work/><FAQ/></div>} />
           <Route path="/donationAnnouncement" element={<div><Navbar/><Home /></div>} />
           <Route path="/signin" element={<div><SignIn/></div>} />
           <Route path="/signup" element={<div><Signup /></div>} />
