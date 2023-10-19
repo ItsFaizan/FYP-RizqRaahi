@@ -4,7 +4,7 @@ import vector2 from '../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg';
 import { Link } from 'react-router-dom';
 import { useLocation , useNavigate } from "react-router-dom";
 import {toast} from 'react-toastify';
-// import {requestForToken} from '../firebaseConfig';
+import {requestForToken} from '../firebaseConfig';
 
 export const SignIn = () => {
   
@@ -26,86 +26,86 @@ export const SignIn = () => {
 
   const handleSubmit = async() => {
 
-    // const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    // if (email === '' || password === '') {
+    if (email === '' || password === '') {
       
-    //   toast.error('Please fill all the fields', {
-    //     autoClose: 3000,
-    //     theme: 'dark',
-    //   });
-    // }
-    // else if (!emailRegex.test(email)) {
+      toast.error('Please fill all the fields', {
+        autoClose: 3000,
+        theme: 'dark',
+      });
+    }
+    else if (!emailRegex.test(email)) {
       
-    //   toast.error('Please Enter a Valid Email Address', {
-    //     autoClose: 3000,
-    //    theme: 'dark',
-    //   });
-    // }
-    // else
-    // {
+      toast.error('Please Enter a Valid Email Address', {
+        autoClose: 3000,
+       theme: 'dark',
+      });
+    }
+    else
+    {
 
-    //     let uniqueemail = email.toLowerCase();
+        let uniqueemail = email.toLowerCase();
 
-    //     var expoPushToken = await requestForToken();
+        var expoPushToken = await requestForToken();
 
-    //     if (expoPushToken == null) {
-    //       toast.error('Please Allow Notfication Access', {
-    //         autoClose: 3000,
-    //         theme: 'dark',
-    //       });
-    //     }
+        if (expoPushToken == null) {
+          toast.error('Please Allow Notfication Access', {
+            autoClose: 3000,
+            theme: 'dark',
+          });
+        }
 
-    //     const id = toast.loading(`Attempting to Login as ${option}`,{
-    //       theme: 'dark',
-    //     })
+        const id = toast.loading(`Attempting to Login as ${option}`,{
+          theme: 'dark',
+        })
 
-    //     await fetch(`/login`, {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
+        await fetch(`/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
   
-    //       body: JSON.stringify({
-    //         email: uniqueemail,
-    //         password: password,
-    //         type: option,
-    //         expoPushToken: expoPushToken,
-    //         deviceType: 'Web',
-    //       }),
-    //     })
+          body: JSON.stringify({
+            email: uniqueemail,
+            password: password,
+            type: option,
+            expoPushToken: expoPushToken,
+            deviceType: 'Web',
+          }),
+        })
   
-    //       .then((response) => response.json())
-    //       .then(async(data) => {
-    //         if (data.success === true) {
+          .then((response) => response.json())
+          .then(async(data) => {
+            if (data.success === true) {
   
-    //           localStorage.setItem('authToken', data.token);
+              localStorage.setItem('authToken', data.token);
   
-    //           toast.update(id, {
-    //             render: `${data.message}`,
-    //             type: toast.TYPE.SUCCESS,
-    //             isLoading: false,
-    //             autoClose: true,
-    //         })
+              toast.update(id, {
+                render: `${data.message}`,
+                type: toast.TYPE.SUCCESS,
+                isLoading: false,
+                autoClose: true,
+            })
   
-    //           setTimeout(() => {
-    //             if (option === 'Restaurant') {
-    //               navigate('/donationAnnouncement', { state: { option: option , token: data.token}});
-    //             }
-    //             else if (option === 'NGO') {
-    //               navigate('/MainMap', { state: { option: option , token: data.token}});
-    //             }
-    //           }, 2000);
-    //         } else {
-    //           toast.update(id, {
-    //             render: `${data.message}`,
-    //             type: toast.TYPE.ERROR,
-    //             isLoading: false,
-    //             autoClose: true,
-    //         })
-    //         }
-    //       })
-    //     } 
+              setTimeout(() => {
+                if (option === 'Restaurant') {
+                  navigate('/donationAnnouncement', { state: { option: option , token: data.token}});
+                }
+                else if (option === 'NGO') {
+                  navigate('/MainMap', { state: { option: option , token: data.token}});
+                }
+              }, 2000);
+            } else {
+              toast.update(id, {
+                render: `${data.message}`,
+                type: toast.TYPE.ERROR,
+                isLoading: false,
+                autoClose: true,
+            })
+            }
+          })
+        } 
         
 
   };

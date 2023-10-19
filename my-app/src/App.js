@@ -24,7 +24,8 @@ import { FAQ } from './components/LandingPage/FAQ';
 function App() {
   return (
     <div> 
-    {/* <NotificationListener /> */}
+   
+    <NotificationListener />
     <Router>
         <Routes>
           <Route path="/" element={<div><NavbarWeb /><LandingPageHome/><Overview/><Solution/><About/><Work/><FAQ/></div>} />
