@@ -23,7 +23,7 @@ export default function LandingPageHome() {
         setIndex(index + 1);
         setDisplayedText(textToDisplay.slice(0, index + 1));
       }
-    }, 50); // Adjust the typing speed as needed
+    }, 150); // Adjust the typing speed as needed
 
     return () => clearTimeout(timeout);
   }, [index, textToDisplay]);

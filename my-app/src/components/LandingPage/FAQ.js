@@ -4,7 +4,7 @@ export const FAQ = () => {
   return (
 <div className="text-center text-[Inter] mt-40">
   <h2 className="text-4xl font-bold  text-[#1ECF5A] -ml-1">Frequently asked questions</h2>
-  <p className="text-gray-600 mb-8 text-left ml-96 text-sm">Do you have questions about how our platform works?  Whether you're<br/> a restaurant, an NGO we've compiled some commonly asked questions <br/>  <span className='ml-20'>to help you navigate our platform effectively.</span></p>
+  <p className="text-gray-600 mb-8 text-center text-sm ">Do you have questions about how our platform works?  Whether you're<br/> a restaurant, an NGO we've compiled some commonly asked questions <br/>  to help you navigate our platform effectively.</p>
   <div className="flex flex-col items-center space-y-4">
     <div className="bg-[#1ECF5A] p-4 flex items-center space-x-2 rounded-xl w-7/12 justify-between">
     <p className='text-white'>How are crisis situations managed on the platform?</p>
