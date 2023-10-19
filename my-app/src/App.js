@@ -19,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div> 
-    <NotificationListener />
+    {/* <NotificationListener /> */}
     <Router>
         <Routes>
           <Route path="/" element={<div><NavbarWeb /><LandingPageHome/></div>} />

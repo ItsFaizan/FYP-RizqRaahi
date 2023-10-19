@@ -52,7 +52,7 @@ export default function LandingPageHome() {
         From <span className="text-[#1ECF5A]">People</span> To{' '}
         <span className="text-[#1ECF5A]">People</span>
       </h1>
-      <button className="flex items-center justify-center rounded-[10px] px-5 py-2 text-1xl bg-[#1ECF5A] text-white ml-[528px] my-6 hover:text-[#1ECF5A] hover-bg-white hover-border-[#1ECF5A] hover-border-2 transition duration-500">
+      <button className="flex items-center justify-center rounded-[10px] px-5 py-2 text-1xl bg-[#1ECF5A] text-white mx-auto my-6 hover:text-[#1ECF5A] hover-bg-white hover-border-[#1ECF5A] hover-border-2 transition duration-500">
         Explore Now →
       </button>
     </div>
