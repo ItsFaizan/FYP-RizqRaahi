@@ -184,7 +184,7 @@ export const Signup = () => {
   console.log(locationValue);
   return (
     <div>
-      <div className="fixed top-[40px] left-[140px] w-[350px] h-[550px] bg-white rounded-lg border border-white shadow-md">
+      <div className="absolute mx-auto my-[16%] sm:my-[6%]  sm:left-[15%] sm:h-[80%] sm:w-[408px]  md:my-[4%]  md:left-[25%] md:h-[90%] md:w-[408px]  lg:my-[6%]  lg:left-[15%] lg:h-[80%] lg:w-[408px] transform translate(-50%, -50%) w-[100%] h-[100%] bg-white rounded-lg border border-white shadow-md">
         <img
           src={vector2}
           alt="logo"
@@ -325,7 +325,7 @@ export const Signup = () => {
         </p>
       </div>
 
-      <div className="fixed top-0 w-[100%] h-[100px] mt-[100px] ml-[-180px] flex justify-end items-center">
+      <div className="hidden lg:block fixed top-0 w-[100%] h-[100px] mt-[100px] ml-[-180px]   md:top-[]  lg:left-[79%] flex justify-end items-center">
         <div className="text-green-500 mr-8">
           <p
             className="font-inter text-8xl font-extrabold leading-[17px]  ml-[-50px] text-left text-green"
@@ -348,9 +348,10 @@ export const Signup = () => {
         </div>
       </div>
 
-      <div className="fixed bottom-[10px] right-[80px]">
+      <div className="hidden lg:block sm:right-[] md:top-[] md:right-[2%] lg:right-[9%] fixed bottom-[25px] right-[80px]">
         <img src={vector} alt='' className="w-[550px] h-[295px]" />
       </div>
+      
       {/* {console.log(formData)} */}
     </div>
   );
