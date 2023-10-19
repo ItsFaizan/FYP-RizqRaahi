@@ -4,7 +4,7 @@ import vector2 from '../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg';
 import { Link } from 'react-router-dom';
 import { useLocation , useNavigate } from "react-router-dom";
 import {toast} from 'react-toastify';
-import {requestForToken} from '../firebaseConfig';
+// import {requestForToken} from '../firebaseConfig';
 
 export const SignIn = () => {
   
@@ -26,86 +26,86 @@ export const SignIn = () => {
 
   const handleSubmit = async() => {
 
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    // const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    if (email === '' || password === '') {
+    // if (email === '' || password === '') {
       
-      toast.error('Please fill all the fields', {
-        autoClose: 3000,
-        theme: 'dark',
-      });
-    }
-    else if (!emailRegex.test(email)) {
+    //   toast.error('Please fill all the fields', {
+    //     autoClose: 3000,
+    //     theme: 'dark',
+    //   });
+    // }
+    // else if (!emailRegex.test(email)) {
       
-      toast.error('Please Enter a Valid Email Address', {
-        autoClose: 3000,
-       theme: 'dark',
-      });
-    }
-    else
-    {
+    //   toast.error('Please Enter a Valid Email Address', {
+    //     autoClose: 3000,
+    //    theme: 'dark',
+    //   });
+    // }
+    // else
+    // {
 
-        let uniqueemail = email.toLowerCase();
+    //     let uniqueemail = email.toLowerCase();
 
-        var expoPushToken = await requestForToken();
+    //     var expoPushToken = await requestForToken();
 
-        if (expoPushToken == null) {
-          toast.error('Please Allow Notfication Access', {
-            autoClose: 3000,
-            theme: 'dark',
-          });
-        }
+    //     if (expoPushToken == null) {
+    //       toast.error('Please Allow Notfication Access', {
+    //         autoClose: 3000,
+    //         theme: 'dark',
+    //       });
+    //     }
 
-        const id = toast.loading(`Attempting to Login as ${option}`,{
-          theme: 'dark',
-        })
+    //     const id = toast.loading(`Attempting to Login as ${option}`,{
+    //       theme: 'dark',
+    //     })
 
-        await fetch(`/login`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+    //     await fetch(`/login`, {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
   
-          body: JSON.stringify({
-            email: uniqueemail,
-            password: password,
-            type: option,
-            expoPushToken: expoPushToken,
-            deviceType: 'Web',
-          }),
-        })
+    //       body: JSON.stringify({
+    //         email: uniqueemail,
+    //         password: password,
+    //         type: option,
+    //         expoPushToken: expoPushToken,
+    //         deviceType: 'Web',
+    //       }),
+    //     })
   
-          .then((response) => response.json())
-          .then(async(data) => {
-            if (data.success === true) {
+    //       .then((response) => response.json())
+    //       .then(async(data) => {
+    //         if (data.success === true) {
   
-              localStorage.setItem('authToken', data.token);
+    //           localStorage.setItem('authToken', data.token);
   
-              toast.update(id, {
-                render: `${data.message}`,
-                type: toast.TYPE.SUCCESS,
-                isLoading: false,
-                autoClose: true,
-            })
+    //           toast.update(id, {
+    //             render: `${data.message}`,
+    //             type: toast.TYPE.SUCCESS,
+    //             isLoading: false,
+    //             autoClose: true,
+    //         })
   
-              setTimeout(() => {
-                if (option === 'Restaurant') {
-                  navigate('/donationAnnouncement', { state: { option: option , token: data.token}});
-                }
-                else if (option === 'NGO') {
-                  navigate('/MainMap', { state: { option: option , token: data.token}});
-                }
-              }, 2000);
-            } else {
-              toast.update(id, {
-                render: `${data.message}`,
-                type: toast.TYPE.ERROR,
-                isLoading: false,
-                autoClose: true,
-            })
-            }
-          })
-        } 
+    //           setTimeout(() => {
+    //             if (option === 'Restaurant') {
+    //               navigate('/donationAnnouncement', { state: { option: option , token: data.token}});
+    //             }
+    //             else if (option === 'NGO') {
+    //               navigate('/MainMap', { state: { option: option , token: data.token}});
+    //             }
+    //           }, 2000);
+    //         } else {
+    //           toast.update(id, {
+    //             render: `${data.message}`,
+    //             type: toast.TYPE.ERROR,
+    //             isLoading: false,
+    //             autoClose: true,
+    //         })
+    //         }
+    //       })
+    //     } 
         
 
   };
@@ -113,7 +113,7 @@ export const SignIn = () => {
   return (
     console.log("Sign in got option: "+option),
     <div>
-      <div className="fixed top-[90px] left-[140px] w-[321px] h-[430px] bg-white rounded-lg border border-white shadow-md">
+      <div className="absolute mx-auto my-[16%] sm:my-[8%]  sm:left-[15%] sm:h-[75%] sm:w-[408px]  md:my-[12%]  md:left-[25%] md:h-[75%] md:w-[408px]  lg:my-[8%]  lg:left-[15%] lg:h-[75%] lg:w-[408px] transform translate(-50%, -50%) w-[100%] h-[100%] bg-white rounded-lg border border-white shadow-md">
         <img src={vector2} alt="Img" className="top-[60px] left-[205px] w-[150px] h-[160px] mx-auto" />
         <h1
           className="text-center font-inter italic text-5xl font-bold leading-[10px] tracking-[0em] text-left text-green-500"
@@ -121,11 +121,11 @@ export const SignIn = () => {
         >
           SIGN IN
         </h1>
-        <p className="text-center mt-[13px] text-base" style={{ fontSize: '10px' }}>
+        <p className="text-center mt-[20px] text-base" style={{ fontSize: '10px' }}>
           To the world of help
         </p>
 
-        <div className="mt-[20px] px-[20px]">
+        <div className="mt-[70px] px-[20px]">
           <div className="">
             <input
               type="text"
@@ -166,7 +166,7 @@ export const SignIn = () => {
         </p>
       </div>
 
-      <div className="fixed top-0 w-[100%] h-[100px] mt-[100px] ml-[-180px] flex justify-end items-center">
+      <div className="hidden lg:block fixed top-0 w-[100%] h-[100px] mt-[100px] ml-[-180px]   md:top-[]  lg:left-[79%] flex justify-end items-center">
         <div className="text-green-500 mr-8">
           <p
             className="font-inter text-8xl font-extrabold leading-[17px] ml-[-50px] text-left text-green"
@@ -185,7 +185,7 @@ export const SignIn = () => {
         </div>
       </div>
 
-      <div className="fixed bottom-[25px] right-[80px]">
+      <div className="hidden lg:block sm:right-[] md:top-[] md:right-[2%] lg:right-[8%] fixed bottom-[25px] right-[80px]">
         <img src={vector} alt="vector" className="w-[550px] h-[295px]" />
       </div>
     </div>
