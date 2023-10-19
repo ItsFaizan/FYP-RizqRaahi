@@ -153,12 +153,14 @@ const MainMap = () => {
           `${selectedMarker?.donationAnnouncement.isCooked ? '#33FF57' : '#FF5733'}`]
 
         }
-        buttonLabels={['Claim Donation']}
+        buttonLabels={['Track Donation']}
         onButtonPress={async(buttonLabel) => {
           // Handle button press here
-
-          const googleMapsUrl = `https://www.google.com/maps?q=${selectedMarker.latitude},${selectedMarker.longitude}`;
+          if (buttonLabel === 'Track Donation') {
+          const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${selectedMarker.latitude},${selectedMarker.longitude}`;
+          
           window.open(googleMapsUrl, '_blank');
+          }
           // console.log(`Button ${buttonLabel} pressed`);
         }}
       />

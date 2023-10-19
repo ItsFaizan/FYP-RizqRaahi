@@ -314,11 +314,11 @@ export const Signup = () => {
           className="text-center mt-[3px] text-base"
           style={{ fontSize: "10px" }}
         >
-          Don't have an account?
+          Already have an account? &nbsp;
           <Link
             className="text-green-500 font-bold "
             style={{ fontSize: "10px" }}
-            to={`/signin/${option}`}
+            to={`/signin`} state={{option: option}}
           >
             Sign in
           </Link>

@@ -158,7 +158,7 @@ export const SignIn = () => {
           Forgot Password?
         </p>
         <p className="text-center mt-[3px] text-base" style={{ fontSize: '10px' }}>
-          Already have an account?{' '}
+          Don't have an account?{' '}
           <Link className="text-green-500 font-bold" style={{ fontSize: '10px' }} to={`/signup`} state={{option}}>
             Sign up
           </Link>
