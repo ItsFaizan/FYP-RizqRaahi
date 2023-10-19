@@ -8,7 +8,7 @@ import Home from './components/Home';
 import LocationSelection from './components/LocationSelection';
 import {ToastContainer} from 'react-toastify';
 import MainMap from './components/MainMap';
-// import NotificationListener from './components/Notifications/NotificationListener';
+import NotificationListener from './components/Notifications/NotificationListener';
 import Navbar from './components/Navbar';
 import  NavbarWeb  from './components/LandingPage/NavbarWeb';
 import  LandingPageHome  from './components/LandingPage/LandingPageHome';
@@ -19,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div> 
-    {/* <NotificationListener /> */}
+    <NotificationListener />
     <Router>
         <Routes>
           <Route path="/" element={<div><NavbarWeb /><LandingPageHome/></div>} />
