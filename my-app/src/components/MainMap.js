@@ -4,7 +4,7 @@ import donoBox from '../assets/donoBox.png';
 import MapStyle from '../styles/MapStyle';
 // import { toast } from 'react-toastify';
 import '../styles/MapItemStyles.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import CustomModal from './CustomModal';
 import ReactLoading from 'react-loading';
@@ -12,7 +12,7 @@ import ReactLoading from 'react-loading';
 
 const MainMap = () => {
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const locationdata = useLocation();
     const data = locationdata.state;
 
@@ -153,16 +153,15 @@ const MainMap = () => {
           `${selectedMarker?.donationAnnouncement.isCooked ? '#33FF57' : '#FF5733'}`]
 
         }
-        buttonLabels={['Track Donation']}
+        buttonLabels={['Claim Donation']}
         onButtonPress={async(buttonLabel) => {
-          // Handle button press here
-          if (buttonLabel === 'Track Donation') {
-          const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${selectedMarker.latitude},${selectedMarker.longitude}`;
-          
-          window.open(googleMapsUrl, '_blank');
-          }
-          // console.log(`Button ${buttonLabel} pressed`);
+          socket.current.emit('ClaimDonation', selectedMarker);
+          setTimeout(() => {
+            navigate('/claimdonation');
+            console.log("Navigating to Claim Donation")
+            }, 1500);
         }}
+        
       />
 
     </div>

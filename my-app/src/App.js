@@ -19,6 +19,8 @@ import { Solution } from './components/LandingPage/Solution';
 import { About } from './components/LandingPage/About';
 import { Work } from './components/LandingPage/Work';
 import { FAQ } from './components/LandingPage/FAQ';
+import DeliveryTracker from './components/DeliveryTracker';
+import { ClaimDonation } from './components/ClaimDonation';
 
 
 function App() {
@@ -34,6 +36,9 @@ function App() {
           <Route path="/signup" element={<div><Signup /></div>} />
           <Route path="/location-selection" element={<div><LocationSelection /></div>} />
           <Route path="/MainMap" element={<div><Navbar/><MainMap /></div>} />
+          <Route path="/deliverytracker" element={<div><DeliveryTracker/></div>} />
+          <Route path="/claimdonation" element={<div><ClaimDonation/></div>} />
+
 
         </Routes>
         <ToastContainer

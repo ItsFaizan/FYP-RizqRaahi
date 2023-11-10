@@ -5,13 +5,14 @@ import vector from '../assets/Announcement.png'
 import vector2 from '../assets/logo.png'
 // import Sidebar from './Sidebar'
 import { io } from 'socket.io-client';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
 
 
 export default function Announcement() {
 
   const locationdata = useLocation();
+  const navigate = useNavigate();
   const data = locationdata.state;
 
   const [isFresh, setIsFresh] = useState(false);
@@ -96,7 +97,10 @@ export default function Announcement() {
                 autoClose: true,
             })
              await socket.current.emit('newAnnouncement', data.markerData);
-             return;
+             setTimeout(() => {
+              navigate('/deliverytracker');
+              console.log("Navigating to Delivery Tracker")
+              }, 1500);
     
             } 
             else {
