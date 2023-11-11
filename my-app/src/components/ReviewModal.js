@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
-const ReviewModal = ({ isOpen, onClose }) => {
+const ReviewModal = ({ isOpen, onClose, onSubmit  }) => {
   const [donationQuality, setDonationQuality] = useState(0);
   const [behaviorQuality, setBehaviorQuality] = useState(0);
   const [description, setDescription] = useState('');
 
   const handleSubmit = () => {
-    // You can handle form submission or API calls here
-    // Reset form fields or close the modal when the submission is successful
+    onSubmit(donationQuality, behaviorQuality, description);
+   
+    onClose();
   };
 
   if (!isOpen) {

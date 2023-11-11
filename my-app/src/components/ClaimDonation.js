@@ -1,22 +1,197 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
 import map from "../assets/map.png";
 import ReviewModal from './ReviewModal';
+import { useNavigate } from 'react-router-dom';
+import { io } from 'socket.io-client';
+
 
 export const ClaimDonation = () => {
   const [pickupCompleted, setPickupCompleted] = useState(false);
   const [isReviewModalOpen, setReviewModalOpen] = useState(false);
-
-  const handleCompletePickup = () => {
-    setPickupCompleted(true);
-    setReviewModalOpen(true);
-  };
+  const [donation, setDonation] = useState(null);
+  const [isDonation, setIsDonation] = useState(false);
+  const [token, setToken] = useState(null);
+  const navigate = useNavigate(); 
+  const socket = useRef(null); 
 
   const closeReviewModal = () => {
     setReviewModalOpen(false);
   };
 
+  const [fixedLocation, setFixedLocation] = useState({
+    latitude: 33.6844, // Islamabad latitude
+    longitude: 73.0479, // Islamabad longitude
+    latitudeDelta: 0.0922, // Zoom level (adjust as needed)
+    longitudeDelta: 0.0421, // Zoom level (adjust as needed)
+  });
+
+  const handleReviewSubmission = async(donationRating, behaviorRating, feedbackText) => {
+
+    if (token)
+    {
+      console.log('Donation Rating: ' + donationRating + ' Behavior Rating: ' + behaviorRating + ' Feedback: ' + feedbackText);
+  
+      await fetch(`/createreview`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+  
+        body: JSON.stringify({
+          donationId: donation.id,
+          donationRating: donationRating,
+          interactionRating: behaviorRating,
+          feedback: feedbackText,
+          restaurantEmail: donation.announcedByRelation.email,
+        }),
+  
+      })
+  
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.success) {
+          // toast.show(`${data.message}`, { type: 'success' });
+          // console.log(JSON.stringify(data));
+          socket.current.emit('ReviewSubmitted', donation );
+          navigate('/MainMap');
+  
+        } else {
+          // toast.show(`${data.message}`, { type: 'danger' });
+          console.log(JSON.stringify(data));
+          setReviewModalOpen(true);
+        }
+      })
+    }
+  };
+
+  const getClaimedDonation = async (value) => {
+
+    try
+    {
+      if (!isDonation)
+      {
+        await fetch(`/getclaimeddonation`, 
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${value}`,
+          },
+        })
+        .then((response) => response.json())
+        .then(async(data) => {
+          if(data.success) {
+            // toast.show(`${data.message}`, { type: 'success' });
+            console.log(JSON.stringify(data));
+            setDonation(data.claimedDonation);
+            setFixedLocation({
+              latitude: data.claimedDonation.announcedByRelation.location.latitude,
+              longitude: data.claimedDonation.announcedByRelation.location.longitude,
+              latitudeDelta: 0.0922, // Zoom level (adjust as needed)
+              longitudeDelta: 0.0421, // Zoom level (adjust as needed)
+            });
+            setIsDonation(true);
+          }
+          else {
+            console.log(data);
+            // toast.show(`${data.message}`, { type: 'danger' });
+            navigate('/MainMap');
+          }
+        })
+      }
+    }
+    catch (error)
+    {
+      console.log(error);
+    }
+
+  };
+
+
+  useEffect(
+    React.useCallback(() => {
+      // This code will run every time the screen gains focus
+
+      const retrieveToken = async () => {
+        try {
+          const value = await localStorage.getItem('authToken');
+          if (value !== null) {
+            await getClaimedDonation(value);
+            setToken(value);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      retrieveToken();
+    }, [token])
+  );
+
+
+
+  useEffect(() => {
+
+    if (token)
+    {
+      socket.current = io('http://localhost:3001', {
+        auth: { token: token },
+      });
+
+      return () => {
+        socket.current.disconnect();
+      };
+    }
+
+
+
+  }, [token]);
+
+
+
+
+
+  const handleCompletePickup = async () => {
+    if (token)
+    {
+      await fetch(`/completedonationpickup`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+  
+        body: JSON.stringify({
+          donationId: donation.id,
+        }),
+  
+      })
+      .then((response) => response.json())
+      .then(async(data) => {
+        if(data.success) {
+          // toast.show(`${data.message}`, { type: 'success' });
+          setPickupCompleted(true);
+          setReviewModalOpen(true);
+  
+          socket.current.emit('donationPickedUp', donation );
+        }
+        else {
+          console.log(data);
+          // toast.show(`${data.message}`, { type: 'danger' });
+        }
+      })
+    }
+  };
+
+
+
   return (
+    <>
+    {isDonation && (
+      <>
     <div className="flex flex-col items-center justify-center mt-10 font-[Inter]">
       <h1 className="text-5xl font-semibold text-[#1ECF5A] mb-4">Donation Tracking</h1>
 
@@ -53,23 +228,23 @@ export const ClaimDonation = () => {
       </div>
 
       <div className="flex flex-col text-black" style={{ marginLeft: "44rem", marginTop: "-27rem" }}>
-        <div className="text-black font-semibold text-2xl mx-auto">Ranchers</div>
+        <div className="text-black font-semibold text-2xl mx-auto">{donation?.announcedByRelation.name}</div>
         <div className="w-96 h-8 bg-[#D9D9D9] mt-2 rounded-lg flex items-center justify-center">
           <span className="text-black text-sm font-semibold">Donation Details</span>
         </div>
-        <div className=" font-semibold text-sm mt-4 ml-14">Amount <span className='ml-48'>50</span></div>
-        <div className=" font-semibold text-sm mt-4 ml-14">Type <span className='ml-52'>Units</span> </div>
-        <div className=" font-semibold text-sm mt-4 ml-14">Description <span className='ml-32'>Beans and rice</span></div>
+        <div className=" font-semibold text-sm mt-4 ml-14">Amount <span className='ml-48'>{donation?.amount}</span></div>
+        <div className=" font-semibold text-sm mt-4 ml-14">Type <span className='ml-52'>{donation?.amountType}</span> </div>
+        <div className=" font-semibold text-sm mt-4 ml-14">Description <span className='ml-44'>{donation?.description}</span></div>
         <div className="w-96 h-0.5 bg-[#D9D9D9] mt-6"></div>
 
         <div className="flex justify-between mt-4">
-          <div className="w-20 h-8 bg-[#e82929] text-white rounded-lg flex items-center justify-center">
+        <div className={`w-20 h-8 ${donation?.isFresh ? 'bg-[#1ECF5A]' : 'bg-[#e82929]'} text-white rounded-lg flex items-center justify-center`}>
             <span>Fresh</span>
           </div>
-          <div className="w-24 h-8 bg-[#1ECF5A] text-white rounded-lg flex items-center justify-center">
+          <div className={`w-24 h-8 ${donation?.isPerishable ? 'bg-[#1ECF5A]' : 'bg-[#e82929]'} text-white rounded-lg flex items-center justify-center`}>
             <span>Perishable</span>
           </div>
-          <div className="w-20 h-8 bg-[#1ECF5A] text-white rounded-lg flex items-center justify-center">
+          <div className={`w-20 h-8 ${donation?.isCooked ? 'bg-[#1ECF5A]' : 'bg-[#e82929]'} text-white rounded-lg flex items-center justify-center`}>
             <span>Cooked</span>
           </div>
         </div>
@@ -82,10 +257,15 @@ export const ClaimDonation = () => {
           Complete Pickup
         </button>
 
-        <ReviewModal isOpen={isReviewModalOpen} onClose={closeReviewModal} />
+        <ReviewModal isOpen={isReviewModalOpen} onClose={closeReviewModal} onSubmit={handleReviewSubmission} />
 
         <button className="border-2 border-[#1ECF5A] text-[#1ECF5A] font-semibold px-4 py-2 rounded-lg mt-2">Chat with Restaurant</button>
       </div>
     </div>
+
+    </>
+      )}  
+    </>
   );
+    
 };
