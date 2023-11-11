@@ -55,7 +55,8 @@ export const ClaimDonation = () => {
           // toast.show(`${data.message}`, { type: 'success' });
           // console.log(JSON.stringify(data));
           socket.current.emit('ReviewSubmitted', donation );
-          navigate('/MainMap');
+          var jwttoken = localStorage.getItem('authToken');
+          navigate('/MainMap',  { state: { token: jwttoken}});
   
         } else {
           // toast.show(`${data.message}`, { type: 'danger' });
@@ -97,7 +98,7 @@ export const ClaimDonation = () => {
           else {
             console.log(data);
             // toast.show(`${data.message}`, { type: 'danger' });
-            navigate('/MainMap');
+            //navigate('/MainMap');
           }
         })
       }
@@ -185,7 +186,11 @@ export const ClaimDonation = () => {
       })
     }
   };
+ function route (){
+  const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${fixedLocation.latitude},${fixedLocation.longitude}`;
 
+  window.open(googleMapsUrl, '_blank');
+ }
 
 
   return (
@@ -222,7 +227,7 @@ export const ClaimDonation = () => {
 
       <div className="flex flex-col items-center mt-12 -ml-96">
         <div className="border-4 border-[#1ECF5A] p-4 rounded-lg w-3/4">
-          <img src={map} alt="Map" className="w-full h-auto" />
+          <button className="w-full h-auto" onClick={route}>Track Donation </button>
         </div>
         <div className="text-lg mt-2 text-[#1ECF5A] font-semibold">View Map</div>
       </div>
