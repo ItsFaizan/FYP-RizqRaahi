@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import map from "../assets/map.png";
+import pic from "../assets/5151557_51546-removebg-preview.png";
 import ReviewModal from './ReviewModal';
 import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
@@ -227,12 +227,12 @@ export const ClaimDonation = () => {
 
       <div className="flex flex-col items-center mt-12 -ml-96">
         <div className="border-4 border-[#1ECF5A] p-4 rounded-lg w-3/4">
-          <button className="w-full h-auto" onClick={route}>Track Donation </button>
+          <img src={pic} className="w-full h-auto"/ > 
         </div>
-        <div className="text-lg mt-2 text-[#1ECF5A] font-semibold">View Map</div>
+        <div className="text-lg mt-2 text-[#1ECF5A] font-semibold" onClick={route}>Track Donation</div>
       </div>
 
-      <div className="flex flex-col text-black" style={{ marginLeft: "44rem", marginTop: "-27rem" }}>
+      <div className="flex flex-col text-black " style={{ marginLeft: "28rem", marginTop: "-27rem" }}>
         <div className="text-black font-semibold text-2xl mx-auto">{donation?.announcedByRelation.name}</div>
         <div className="w-96 h-8 bg-[#D9D9D9] mt-2 rounded-lg flex items-center justify-center">
           <span className="text-black text-sm font-semibold">Donation Details</span>
@@ -269,8 +269,7 @@ export const ClaimDonation = () => {
     </div>
 
     </>
-      )}  
+      )}
     </>
   );
-    
-};
+}

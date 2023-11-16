@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/stepper.css";
 import { TiTick } from "react-icons/ti";
-import Food from "../assets/young-volunteer-with-food-donation-boxes-concept-illustrations-food-donation-concept-with-character-can-use-web-banner-infographics-hero-images_106796-258-removebg-preview.png";
+import Food from "../assets/youngboi.png";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
@@ -168,7 +168,7 @@ const DeliveryTracker = () => {
       </div>
       
      <div className="flex items-center flex-wrap justify-center -mt-12"> 
-  <div className="flex flex-col items-center">
+  <div className="flex flex-col items-center mt-6">
     <div className="border-4 border-[#1ECF5A] p-4 rounded-lg w-3/4">
       <h2 className="text-xl font-semibold mb-2 text-[#1ECF5A]">Information</h2>
       <p>{getStepText()[0]}</p>
