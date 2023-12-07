@@ -13,6 +13,13 @@ const handleButtonClick = (option) => {
   navigate('/signin', { state: {option: option }});
 };
 
+const handleButtonClickAdmin = (option) => {
+ 
+  console.log("Landing page sending: "+ option);
+  navigate('/adminlogin', { state: {option: option }});
+};
+
+
 
 
   const [nav, setNav] = useState(false)
@@ -35,6 +42,9 @@ const handleButtonClick = (option) => {
             <Link to="#" smooth="true"  duration={500}>About</Link>
             </li >
             <li className='text-[#1ECF5A] border-2 px-4 py-0 border-[#1ECF5A] rounded-[5px] hover:text-white hover:bg-[#1ECF5A] transition duration-500'>
+            <button smooth="true"  duration={500} onClick={() => handleButtonClickAdmin("Admin")}>Admin</button>
+            </li>
+            <li className='text-[#1ECF5A] border-2 px-4 py-0 border-[#1ECF5A] rounded-[5px] hover:text-white hover:bg-[#1ECF5A] transition duration-500'>
             <button smooth="true"  duration={500} onClick={() => handleButtonClick("NGO")}>NGO</button>
             </li>
             <li className='text-[#1ECF5A] border-2 px-4  border-[#1ECF5A] rounded-[5px] hover:text-white hover:bg-[#1ECF5A] transition duration-500'>
@@ -50,6 +60,7 @@ const handleButtonClick = (option) => {
             <li className='py-6 text-4xl hover:text-[#1ECF5A]'> <Link onClick={handleClick} to="#" smooth="true" duration={500}>Home</Link> </li>
             <li className='py-6 text-4xl hover:text-[#1ECF5A]'> <Link onClick={handleClick} to="#" smooth="true"  duration={500}>Overview</Link> </li>
             <li className='py-6 text-4xl hover:text-[#1ECF5A]'> <button onClick={handleClick} to="#" smooth="true"  duration={500}>About</button></li>
+            <li className='py-6 text-4xl hover:text-[#1ECF5A]'> <button smooth="true"  duration={500} onClick={() => handleButtonClick("Admin")}>Admin</button></li>
             <li className='py-6 text-4xl hover:text-[#1ECF5A]'> <button onClick={() => handleButtonClick("NGO")} to="#" smooth="true"  duration={500}>NGO</button></li>
             <li className='py-6 text-4xl hover:text-[#1ECF5A]'> <button onClick={() => handleButtonClick("Restaurant")} to="#" smooth="true"  duration={500}>Restaurant</button></li>
         </ul>
