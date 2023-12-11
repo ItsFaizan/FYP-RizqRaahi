@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import pic from "../assets/5151557_51546-removebg-preview.png";
 import ReviewModal from './ReviewModal';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 
 
@@ -13,6 +13,14 @@ export const ClaimDonation = () => {
   const [token, setToken] = useState(null);
   const navigate = useNavigate(); 
   const socket = useRef(null); 
+ 
+
+  const handlenavigate = () => {
+
+    navigate('/chats', { state: { option: 'NGO', token: token } });
+  }
+
+
 
   const closeReviewModal = () => {
     setReviewModalOpen(false);
@@ -24,6 +32,8 @@ export const ClaimDonation = () => {
     latitudeDelta: 0.0922, // Zoom level (adjust as needed)
     longitudeDelta: 0.0421, // Zoom level (adjust as needed)
   });
+
+  
 
   const handleReviewSubmission = async(donationRating, behaviorRating, feedbackText) => {
 
@@ -264,7 +274,7 @@ export const ClaimDonation = () => {
 
         <ReviewModal isOpen={isReviewModalOpen} onClose={closeReviewModal} onSubmit={handleReviewSubmission} />
 
-        <button className="border-2 border-[#1ECF5A] text-[#1ECF5A] font-semibold px-4 py-2 rounded-lg mt-2">Chat with Restaurant</button>
+        <button className="border-2 border-[#1ECF5A] text-[#1ECF5A] font-semibold px-4 py-2 rounded-lg mt-2" onClick={handlenavigate} >Chat with Restaurant</button>
       </div>
     </div>
 

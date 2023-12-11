@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import CustomModal from './CustomModal';
 import ReactLoading from 'react-loading';
+import Sidebar from './Sidebar';
 
 
 const MainMap = () => {
@@ -78,10 +79,12 @@ const MainMap = () => {
 
   const loadMap = () => {
     return (
+
+      
       <GoogleMap
       center={initialLocation}
       zoom={13}
-      mapContainerStyle={{ height: '100%', width: '100%' }}
+      mapContainerStyle={{ height: '100%', width: '100%'  }}   
       options={{
         styles: MapStyle,
         streetViewControlOptions: false,
@@ -108,14 +111,17 @@ const MainMap = () => {
         onClick={() => handleMarkerTap(marker)}
         />
     ))}
-    </GoogleMap>
+    <Sidebar/></GoogleMap>
+   
     );
   };
 
 
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div  style={{ height: '100vh', width: '100%' , zIndex: 999 }}>
+
+
 
     {isLoaded ? 
     (

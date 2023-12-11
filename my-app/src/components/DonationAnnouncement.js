@@ -1,9 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
-// import Slidebar from './Sidebar'
-// import { Link } from 'react-router-dom'
 import vector from '../assets/Announcement.png'
 import vector2 from '../assets/logo.png'
-// import Sidebar from './Sidebar'
 import { io } from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';

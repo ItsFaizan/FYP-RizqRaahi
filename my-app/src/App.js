@@ -24,6 +24,10 @@ import { ClaimDonation } from './components/ClaimDonation';
 import { AdminLogin } from './components/AdminLogin';
 import { AdminSignup } from './components/AdminSignup';
 
+import Sidebar from './components/Sidebar';
+import Conversations from './components/Chats/Conversations';
+import AdminCreation from './components/AdminCreation';
+
 
 function App() {
   return (
@@ -32,16 +36,18 @@ function App() {
     <NotificationListener />
     <Router>
         <Routes>
+          {/* <Route path='/' element={<AdminCreation/>} ></Route> */}
           <Route path="/" element={<div><NavbarWeb /><LandingPageHome/><Overview/><Solution/><About/><Work/><FAQ/></div>} />
-          <Route path="/donationAnnouncement" element={<div><Navbar/><Home /></div>} />
+          <Route path="/donationAnnouncement" element={<div><Sidebar/><Home /></div>} />
           <Route path="/signin" element={<div><SignIn/></div>} />
           <Route path="/signup" element={<div><Signup /></div>} />
           <Route path="/adminlogin" element={<div><AdminLogin /></div>} />
           <Route path="/adminsignup" element={<div><AdminSignup /></div>} />
           <Route path="/location-selection" element={<div><LocationSelection /></div>} />
-          <Route path="/MainMap" element={<div><Navbar/><MainMap /></div>} />
+          <Route path="/MainMap" element={<div><MainMap /></div>} />
           <Route path="/deliverytracker" element={<div><DeliveryTracker/></div>} />
           <Route path="/claimdonation" element={<div><ClaimDonation/></div>} />
+          <Route path="/chats" element={<div><Conversations/></div>} />
 
 
         </Routes>
