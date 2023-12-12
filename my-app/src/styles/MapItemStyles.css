@@ -1,0 +1,19 @@
+/* styles.css */
+.currentLocationButton {
+    position: absolute;
+    bottom: 22%;
+    right: 0.9%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    padding: 6px;
+  }
+  
+  .confirmationPopup {
+    background-color: #1ECF5A;
+    display: flex;
+    align-items: center;
+    height: 6%;
+    justify-content: center;
+  }
+  
+  

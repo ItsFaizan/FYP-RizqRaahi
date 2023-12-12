@@ -1,0 +1,45 @@
+/* styles.css */
+
+.map-container {
+    position: absolute;
+    top: 0;
+    left:10; /* Adjust this value based on your sidebar width */
+    width: calc(100% ); /* Adjust this value based on your sidebar width */
+    height: 100vh;
+    z-index: -1;
+  }
+  
+  /* .sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 290px;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: auto;
+    padding: 16px;
+  } */
+  
+  /* .sidebar-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 290px; 
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: auto;
+    padding: 16px;
+    z-index: 1000;
+  } */
+
+  .sidebar-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100vh;
+    background-color: #f0f0f0;
+    /* overflow: auto; */
+    /* padding: 16px; */
+    z-index: 100;
+  }
