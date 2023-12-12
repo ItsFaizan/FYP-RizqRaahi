@@ -16,7 +16,9 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
   const [locationValue, setLocationValue] = useState(data.coordinates);
-  const [proximity , setProximity] = useState("")
+  const [proximity , setProximity] = useState("");
+  const [capacity, setCapacity] = useState('');
+
   const option = data.option;
 
   // const toastId = useRef(null)
@@ -43,6 +45,10 @@ export const Signup = () => {
 
   const handleProximityChange = (e) => {
     setProximity(e.target.value);
+  };
+
+  const handleCapacityChange = (e) => {
+    setCapacity(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -117,6 +123,31 @@ export const Signup = () => {
           });
           return;
         } 
+
+        else if (capacity === '') 
+        {
+          toast.error('Capacity must be given', {
+            autoClose: 3000,
+           theme: 'dark',
+          });
+          return;
+        } 
+        else if (isNaN(capacity) || parseInt(capacity) !== parseFloat(capacity)) 
+        {
+          toast.error('Proximity must be an integer', {
+            autoClose: 3000,
+           theme: 'dark',
+          });
+          return;
+        } 
+        else if (parseInt(capacity) <= 0 || parseInt(capacity) > 10000)
+        {
+          toast.error('Capacity is Invalid, Should be (0-10,000)', {
+            autoClose: 3000,
+           theme: 'dark',
+          });
+          return;
+        } 
       }
 
       let uniqueemail = email.toLowerCase();
@@ -132,6 +163,7 @@ export const Signup = () => {
   
       if (option === 'NGO') {
         requestBody.proximity = parseInt(proximity);
+        requestBody.capacity = parseInt(capacity);
       }
 
       // toastId.current = toast(`Attempting to Register as ${option}`,{
@@ -188,7 +220,7 @@ export const Signup = () => {
         <img
           src={vector2}
           alt="logo"
-          className=" mt-[1px] top-[7px] left-[205px] w-[150px] h-[160px] mx-auto"
+          className="-mt-6 top-[7px] left-[205px] w-[150px] h-[160px] mx-auto"
         />
         <h1
           className="text-center font-inter italic text-5xl font-bold leading-[10px] tracking-[0em] text-left  text-green-500"
@@ -292,7 +324,22 @@ export const Signup = () => {
             style={{ fontSize: "10px" }}
             required
           />
+
+          <input
+            type="text"
+            placeholder="Crisis Capacity (KG)"
+            name="capacity"
+            value={capacity}
+            onChange={handleCapacityChange}
+            className="w-full h-[30px] mb-[10px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
+            style={{ fontSize: "10px" }}
+            required
+          />
         </div>
+
+        
+
+        
         )}
 
         

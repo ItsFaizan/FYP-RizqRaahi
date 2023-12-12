@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import vector from '../assets/Announcement.png'
 import vector2 from '../assets/logo.png'
 import { io } from 'socket.io-client';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import Sidebar2 from './Sidebar/Sidebar2';
 
@@ -19,8 +19,10 @@ export default function Announcement() {
   const [isKgSelected, setIsKgSelected] = useState(true);
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
+  const [crisisData, setCrisisData] = useState();
+  const [token, setToken] = useState(null);
 
-  const token = data.token;
+  //const token = data.token;
   var id;
   const socket = useRef(null);
   
@@ -36,6 +38,89 @@ export default function Announcement() {
   const handlePerishableToggle = () => {
     setIsPerishable(!isPerishable);
   };
+
+  const handleSubmitCrisis = async() => {
+     
+    try {
+      const parsedAmount = parseInt(amount, 10);
+    
+      if (isNaN(parsedAmount) || description === '') {
+        toast.error('Please fill all the fields', {
+          autoClose: 3000,
+          theme: 'dark',
+        });
+      } 
+      else if (!Number.isInteger(parsedAmount)) {
+        toast.error('Please Enter an Integer', {
+          autoClose: 3000,
+         theme: 'dark',
+        });
+      } 
+      else if (parsedAmount <= 0 || parsedAmount > 100000) {
+        toast.error('Please Enter a valid Amount (0-100,000)', {
+          autoClose: 3000,
+         theme: 'dark',
+        });
+      } 
+      else 
+      {
+        const token = localStorage.getItem('authToken');
+        const amountType = isKgSelected ? 'KG' : 'Units';
+
+         id = toast.loading(`Creating Real-Time Donation...`,{
+          theme: 'dark',
+        })
+  
+          const response = await fetch(`/crisisdonation`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              amount: parsedAmount,
+              description: description,
+              isFresh: isFresh,
+              isCooked: isCooked,
+              isPerishable: isPerishable,
+              amountType: amountType,
+              crisisId: crisisData.id,
+            }),
+          });
+    
+            const data = await response.json();
+            if (data.success === true) {
+              console.log("Announcement Created");
+              toast.update(id, {
+                render: `${data.message}`,
+                type: toast.TYPE.SUCCESS,
+                isLoading: false,
+                autoClose: true,
+            })
+            } 
+            else {
+              console.log("Announcement not Created");
+              console.log(data);
+              console.log('data.message: '+data.message);
+              toast.update(id, {
+                render: `${data.message}`,
+                type: toast.TYPE.ERROR,
+                isLoading: false,
+                autoClose: true,
+            })
+            }
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          toast.update(id, {
+            render: `${data.message}`,
+            type: toast.TYPE.ERROR,
+            isLoading: false,
+            autoClose: true,
+        })
+        }
+  };
+
 
   const handleSubmit = async() => {
 
@@ -124,21 +209,50 @@ export default function Announcement() {
         }
   };
 
-  useEffect(() => {
 
-    
 
-    // Connect to the Socket.io server when the component mounts
-    socket.current = io("http://localhost:3001", {
-      auth: { token },
-    });
-    
+  const getCrisisInfo = async (value) => {
+    try {
 
-    return () => {
-      socket.current.disconnect();
-    };
-  }, []);
+      const response = await fetch(`/checkcrisis`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${value}`,
+        },
+
+      });
+
+      const data = await response.json();
+      if (data.success === true) {
+        setCrisisData(data.crisisAlert);
+        console.log("Crisis Data: "+ JSON.stringify(data.crisisAlert));
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   
+  const retrieveToken = async () => {
+    try {
+      const value = await localStorage.getItem("authToken");
+      if (value !== null) {
+        setToken(value);
+        await getCrisisInfo(value);
+      }
+    } catch (e) {
+      console.log("Error in Donation Status:" + e);
+      console.log(JSON.stringify(e));
+    }
+  };
+  
+  useEffect(() => {
+    retrieveToken();
+    setAmount("");
+    setDescription("");
+    setIsKgSelected(true);
+  }, []);
 
 
   window.addEventListener('load', (event) => {
@@ -177,20 +291,38 @@ const handleUnitsClick = () => {
 };
 
 
+useEffect(() => {
+  if (token != null) {
+  // Connect to the Socket.io server when the component mounts
+  socket.current = io("http://localhost:3001", {
+    auth: { token: token },
+  });
+  
+
+  return () => {
+    socket.current.disconnect();
+  };
+};
+}, [token]);
+
+
   
   return (
     <div className='flex'>
-
-<Sidebar2/>
+     <Sidebar2/>
       
-        <div className="absolute bottom-[10px] left-64 background">
+        <div className="fixed bottom-[10px] left-64 background">
               <img src={vector} alt={"Img"} className="w-[550px] h-[405px]" />
         </div>
 
       
       <div className="fixed top-[170px] right-[90px] w-[410px] h-[520px] bg-white rounded-lg border border-white shadow-md">
               <img src={vector2} alt="Img" className=" mt-[-20px] top-[2px] left-[205px] w-[160px] h-[160px] mx-auto" />
+              {crisisData ? (
+              <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Crisis Donation</h1>
+              ) : (
               <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Food Donation</h1>
+              )}
               <h1 className="text-center mt-[-16px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Announcements</h1>
 
               <div className="mt-[10px] px-[20px] ">
@@ -226,11 +358,6 @@ const handleUnitsClick = () => {
           Units
         </div>
       </div>
-
-
-
-
-
 
                 <div className="paragraph-input">
 
@@ -316,9 +443,36 @@ const handleUnitsClick = () => {
 
 
                 
-        <button onClick={handleSubmit} className="fixed w-[180px] h-[30px] mt-[110px] right-[200px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}>
+        <button onClick={crisisData ? handleSubmitCrisis : handleSubmit}   className="fixed w-[180px] h-[30px] mt-[110px] right-[200px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}>
                   Create Announcement
                   </button>
+                  <button
+          className="text-center mt-[3px] text-base"
+          style={{ fontSize: "10px" }}
+        >
+          <Link
+            className="text-green-500 font-bold "
+            style={{ fontSize: "10px" }}
+            to={`/crisisdonationstatus`} 
+            
+          >
+            Crisis
+          </Link>
+        </button>
+
+        <button
+          className="text-center mt-[3px] text-base"
+          style={{ fontSize: "10px" }}
+        >
+          <Link
+            className="text-green-500 font-bold "
+            style={{ fontSize: "10px" }}
+            to={`/crisisdonationtracking`} 
+            
+          >
+            Crisis NGO
+          </Link>
+        </button>
                 
                   
     </div>           

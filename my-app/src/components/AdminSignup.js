@@ -134,29 +134,28 @@ export const AdminSignup = () => {
       formData.append('email', email);
       formData.append('password', password);
       formData.append('images', actualImages);
-  
-      croppedImages.forEach((image, index) => {
-        if (image) {
-          const uriParts = image.split('.');
-          console.log(uriParts);
-          const fileType = uriParts[uriParts.length - 1];
-          console.log(fileType);
-          
-          formData.append(`image${index + 1}`, {
-            uri: image,
-            name: `image${index + 1}.${fileType}`,
-            type: `image/${fileType}`,
+      
+        console.log("img", actualImages.length);
+
+        croppedImages.forEach(async (image, index) => {
+      
+            console.log(image.type);
             
-          });
-        }
-      });
+            const imageTypeArray = image.type.split('/');
+            console.log(imageTypeArray);
+            const fileType = imageTypeArray[1]; // "png"
+            const base64Data = imageTypeArray[1]; // Base64-encoded data
+            console.log(fileType);  
+            if (fileType) { // Check if fileType is defined
+              formData.append(`image${index + 1}`, image, `image${index + 1}.${fileType}`);
+            }
+          
+        });
     
       for (var key of formData.entries()) {
-        console.log("data:",key[0] + ', ' + key[1]);
+        console.log("data:",key[0] + ', ' + JSON.stringify(key[1]));
 
     }
-
-   
      
       //  toast.loading(`Attempting to Register as Admin`,{
       //   theme: 'dark',
@@ -165,9 +164,6 @@ export const AdminSignup = () => {
   
       fetch(`/applyforsubadmin`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
         body: formData,
       })
         .then((res) => res.json())

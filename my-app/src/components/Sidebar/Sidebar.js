@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +14,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const locationdata = useLocation();
   const data = locationdata.state;
+  const [token, setToken] = useState(null);
   // const option = data.option;
 
   const handleToggleSidebar = () => {
@@ -21,9 +22,30 @@ const Sidebar = () => {
 
   };
 
+  useEffect(
+    React.useCallback(() => {
+    const retrieveToken = async () => {
+      try {
+        const value = await localStorage.getItem("authToken");
+        // console.log("Token retrieved in Donation Status:"+value);
+        if (value !== null) {
+          // console.log("Token retrieved in Donation Status:" + value);
+          // console.log("Socket URL:" + SOCKET_BASE_URL);
+       
+          setToken(value);
+        }
+      } catch (e) {
+        console.log(JSON.stringify(e));
+      }
+    };
+
+    retrieveToken();
+  }, [token])
+);
+
   const handleNavigateTo = (path) => {
     // navigate('/chats', { state: { option: option, token: data.token } });
-    navigate(path, { state: { option: "NGO", token: data.token } });
+    navigate(path, { state: { option: "NGO", token } });
   };
 
   return (
@@ -140,9 +162,10 @@ const Sidebar = () => {
 
           <li
             className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
-            onClick={() => handleNavigateTo('/claimdonation')}
+            // onClick={() => handleNavigateTo('/crisisdonationtracking')}
           >
-            <span  className="group-hover:bg-indigo-50 flex items-center w-full ">
+            <Link
+            to={`/crisisdonationtracking`}  className="group-hover:bg-indigo-50 flex items-center w-full ">
               <FontAwesomeIcon
                 icon="fa-solid fa-handshake"
                 size="lg"
@@ -155,7 +178,7 @@ const Sidebar = () => {
               >
                 Crisis donation
               </span>
-            </span>
+            </Link>
           </li>
 
           <li
