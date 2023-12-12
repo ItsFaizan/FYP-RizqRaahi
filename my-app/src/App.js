@@ -46,7 +46,7 @@ function App() {
           <Route path="/adminsignup" element={<div><AdminSignup /></div>} />
           <Route path="/location-selection" element={<div><LocationSelection /></div>} />
           <Route path="/MainMap" element={<div><MainMap /></div>} />
-          <Route path="/deliverytracker" element={<div><Sidebar2/><DeliveryTracker/></div>} />
+          <Route path="/deliverytracker" element={<div><DeliveryTracker/></div>} />
           <Route path="/claimdonation" element={<div><Navbar/><ClaimDonation/></div>} />
           <Route path="/chats" element={<div><Conversations/></div>} />
 

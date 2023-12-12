@@ -4,6 +4,7 @@ import { TiTick } from "react-icons/ti";
 import Food from "../assets/youngboi.png";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
+import Sidebar2 from "./Sidebar/Sidebar2";
 
 
 const DeliveryTracker = () => {
@@ -148,8 +149,10 @@ const DeliveryTracker = () => {
 
   return (
     <>
+    
     {donation && (
-      <>
+      <div className="flex">
+      <Sidebar2/>
     <div className="bg-white w-full h-full flex flex-col gap-10 items-center justify-center mt-10 ">
       <h1 className="text-5xl font-semibold text-[#1ECF5A] mb-4">Donation Tracking</h1>
       <div className="flex justify-between">
@@ -191,7 +194,7 @@ const DeliveryTracker = () => {
   </div>
 </div>
 </div>
-</>
+</div>
       )}
     </>
   );

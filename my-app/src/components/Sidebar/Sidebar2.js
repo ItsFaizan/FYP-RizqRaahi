@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -14,16 +14,37 @@ const Sidebar2 = () => {
   const navigate = useNavigate();
   const locationdata = useLocation();
   const data = locationdata.state;
-  const option = data.option;
-
+  // const option = data.option;
+  const [token, setToken] = useState(null);
   const handleToggleSidebar = () => {
     setIsExpanded((prevIsExpanded) => !prevIsExpanded);
 
   };
 
+  useEffect(
+    React.useCallback(() => {
+    const retrieveToken = async () => {
+      try {
+        const value = await localStorage.getItem("authToken");
+        // console.log("Token retrieved in Donation Status:"+value);
+        if (value !== null) {
+          // console.log("Token retrieved in Donation Status:" + value);
+          // console.log("Socket URL:" + SOCKET_BASE_URL);
+       
+          setToken(value);
+        }
+      } catch (e) {
+        console.log(JSON.stringify(e));
+      }
+    };
+
+    retrieveToken();
+  }, [token])
+);
+
   const handleNavigateTo = (path) => {
     // navigate('/chats', { state: { option: option, token: data.token } });
-    navigate(path, { state: { option: "Restaurant", token: data.token } });
+    navigate(path, { state: { option: "Restaurant", token } });
   };
 
   return (
@@ -119,7 +140,7 @@ const Sidebar2 = () => {
 
           <li
             className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
-            onClick={() => handleNavigateTo('/settings')}
+            onClick={() => handleNavigateTo('/deliverytracker')}
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full">
               <FontAwesomeIcon
@@ -170,7 +191,7 @@ const Sidebar2 = () => {
            
             <div className="flex justify-between items-center overflow-hidden transition-all w-52 ml-3">
               <div className="leading-4">
-                <h4 className="font-semibold">{option}</h4>
+                <h4 className="font-semibold">Restaurant</h4>
                 <span className="text-xs text-black-600">From Door to Door</span>
               </div>
               <svg
