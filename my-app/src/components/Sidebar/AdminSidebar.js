@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -9,12 +9,31 @@ import vector from '../../assets/admin3.png'
 
 library.add(fas);
 
-const Sidebar3 = () => {
+const AdminSidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
   const locationdata = useLocation();
-  const data = locationdata.state;
-  const option = data.option;
+  const [token, setToken] = useState(null);
+  useEffect(
+    React.useCallback(() => {
+    const retrieveToken = async () => {
+      try {
+        const value = await localStorage.getItem("authToken");
+        // console.log("Token retrieved in Donation Status:"+value);
+        if (value !== null) {
+          // console.log("Token retrieved in Donation Status:" + value);
+          // console.log("Socket URL:" + SOCKET_BASE_URL);
+       
+          setToken(value);
+        }
+      } catch (e) {
+        console.log(JSON.stringify(e));
+      }
+    };
+
+    retrieveToken();
+  }, [token])
+);
 
   const handleToggleSidebar = () => {
     setIsExpanded((prevIsExpanded) => !prevIsExpanded);
@@ -22,13 +41,12 @@ const Sidebar3 = () => {
   };
 
   const handleNavigateTo = (path) => {
-    // navigate('/chats', { state: { option: option, token: data.token } });
-    navigate(path, { state: { option: option, token: data.token } });
+    navigate(path, { state: { token } });
   };
 
   return (
     <div>
-    <aside className="h-screen">
+    <aside className="fixed h-full ">
       <nav
         className={`${
           isExpanded
@@ -77,11 +95,11 @@ const Sidebar3 = () => {
         <ul className="flex-1 px-3">
           <li
             className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
-            onClick={() => handleNavigateTo('/donationAnnouncement')}
+            onClick={() => handleNavigateTo('/crisis')}
           >
             <span className="group-hover:bg-indigo-50 flex items-center w-full">
               <FontAwesomeIcon
-                icon="home"
+                icon="fa-solid fa-triangle-exclamation"
                 size="lg"
                 className="group-hover:text-indigo-800 mr-2 text-green-500"
               />
@@ -90,20 +108,20 @@ const Sidebar3 = () => {
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
               >
-                Home
+                Crisis Creation
               </span>
             </span>
           </li>
 
           <li
           
-          onClick={() => handleNavigateTo('/chats')}
+          onClick={() => handleNavigateTo('/crisismanagment')}
             className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full">
               <FontAwesomeIcon
-                icon="comment"
+                icon="fa-solid fa-note-sticky"
                 size="lg"
                 className="group-hover:text-indigo-800 mr-2 text-green-500"
               />
@@ -112,18 +130,18 @@ const Sidebar3 = () => {
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
               >
-                Chat
+                Crisis Resolve
               </span>
             </span>
           </li>
 
           <li
             className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
-            onClick={() => handleNavigateTo('/settings')}
+            onClick={() => handleNavigateTo('/applicationmanagment')}
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full">
               <FontAwesomeIcon
-                icon="cogs"
+                icon="fa-solid fa-person-circle-check"
                 size="lg"
                 className="group-hover:text-indigo-800 mr-2 text-green-500"
               />
@@ -132,7 +150,28 @@ const Sidebar3 = () => {
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
               >
-                Settings
+                Verify Admin
+              </span>
+            </span>
+          </li>
+
+
+          <li
+            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            onClick={() => handleNavigateTo('/admincreation')}
+          >
+            <span  className="group-hover:bg-indigo-50 flex items-center w-full">
+              <FontAwesomeIcon
+                icon="fa-solid fa-user-plus"
+                size="lg"
+                className="group-hover:text-indigo-800 mr-2 text-green-500"
+              />
+              <span
+                className={`transition-all group-hover:bg-indigo-50 mr-2 ${
+                  isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                }`}
+              >
+                Profile
               </span>
             </span>
           </li>
@@ -169,8 +208,8 @@ const Sidebar3 = () => {
             />
             <div className="flex justify-between items-center overflow-hidden transition-all w-52 ml-3">
               <div className="leading-4">
-                <h4 className="font-semibold">John Doe</h4>
-                <span className="text-xs text-black-600">johndoe@gmail.comss</span>
+                <h4 className="font-semibold">Super Admin</h4>
+                <span className="text-xs text-black-600">From People to People</span>
               </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -195,4 +234,4 @@ const Sidebar3 = () => {
   );
 };
 
-export default Sidebar3;
+export default AdminSidebar;

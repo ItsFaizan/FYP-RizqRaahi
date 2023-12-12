@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import pic1 from "../assets/ngogenericlogo.jpg";
 import pic2 from "../assets/addimgpic.png";
+import AdminSidebar from "./Sidebar/AdminSidebar";
 
 export default function ApplicationManagement() {
 
@@ -126,7 +127,8 @@ export default function ApplicationManagement() {
 
   };
     return(
-        <>
+        <div className="flex">
+          <AdminSidebar/>
   {applicants && applicants.length > 0 ? (
     <div className="bg-gray-100 p-4">
       <ul className="space-y-4">
@@ -179,11 +181,11 @@ export default function ApplicationManagement() {
   ) : null}
 
   {isInfo ? (
-    <div className="bg-gray-100 p-4">
+    <div className="bg-gray-100 p-4 mx-auto">
       <p className="text-lg font-semibold">No Applications Found</p>
     </div>
   ) : null}
-</>
+</div>
 
       
 

@@ -50,7 +50,7 @@ const Sidebar = () => {
 
   return (
     <div>
-    <aside className="h-screen">
+    <aside className="fixed h-full">
       <nav
        className={`${
   isExpanded

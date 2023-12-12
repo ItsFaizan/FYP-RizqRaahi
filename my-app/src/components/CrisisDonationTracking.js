@@ -65,10 +65,6 @@ import Sidebar from './Sidebar/Sidebar';
       theme: 'dark',
     });
 
-    setTimeout(() => {
-      var jwttoken = localStorage.getItem('authToken');
-      navigate('/MainMap',  { state: { token: jwttoken}});
-    }, 1500);
 
       setCrisisDonation((donationId) => {
         return crisisDonation.filter((donation) => donation.id !== donationId);
@@ -93,19 +89,26 @@ import Sidebar from './Sidebar/Sidebar';
 
   // console.log(crisisDonation);
   // console.log(crisisDonation.length);
+
+  function route (restaurant){
+    const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${restaurant.location.latitude},${restaurant.location.longitude}`;
+  
+    window.open(googleMapsUrl, '_blank');
+   }
+
     
   return (
     <div className="flex">
       <Sidebar/>
       {crisisDonation && crisisDonation.length > 0 ? (
-        <div >
+        <div  >
          
-          <div className="flex flex-col items-center justify-center mt-10 font-[Inter]">
-            <h1 className="text-5xl font-semibold text-[#1ECF5A] mb-4">Crisis Tracking</h1>
+          <div className="items-center justify-center mt-10 font-[Inter]  ml-96">
+            <h1 className="text-center text-5xl font-semibold text-[#1ECF5A] mb-4">Crisis Tracking</h1>
           </div>
   
           {crisisDonation.map((donation) => (
-            <div className="flex flex-col items-center mt-10 font-[Inter]" key={donation.id}>
+            <div className="ml-96 flex flex-col items-center mt-10 font-[Inter] font-semibold" key={donation.id}>
               <div>
                 <p>
                   Donation allocation from {donation.announcedByRelation.name} for {donation.crisisRelation.name} Crisis
@@ -115,7 +118,7 @@ import Sidebar from './Sidebar/Sidebar';
   
               <div className="flex flex-col items-center mt-12 -ml-96">
                 <div className="border-4 border-[#1ECF5A] p-4 rounded-lg w-3/4">
-                  <img src={pic} className="w-full h-auto" alt="Donation Image" />
+                  <img src={pic} className="w-full h-auto" alt="Donation Image" onClick={route(donation.announcedByRelation)} />
                 </div>
               </div>
   

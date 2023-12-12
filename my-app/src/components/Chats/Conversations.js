@@ -202,7 +202,7 @@ console.log(`Formatted date: ${formattedTime}`);
     
      
 
-      <div className="container mx-auto " style={{ marginTop: "-1px" }}>
+      <div className="container ml-16 " style={{ marginTop: "-1px" }}>
         <div className="py-6 h-screen">
           <div className="flex border border-grey rounded dark:shadow-lg h-full">
             <div className="w-1/3 border flex flex-col">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import vector2 from '../assets/map-pin-location-icon-in-flat-style-vector.jpg';
 import { Route, useNavigate } from 'react-router-dom';
+import AdminSidebar from './Sidebar/AdminSidebar';
 
 export const CrisisManagment = () => { 
 
@@ -91,7 +92,8 @@ export const CrisisManagment = () => {
 
 
   return (
-    <>
+    <div> 
+      <div className='flex-1'>
     {crisis ? (
       crisis.map((crisis) => (
         <div key={crisis.id} className="bg-white p-4 w-1/3 mb-4 mt-12 mx-auto l items-center rounded-md shadow-md">
@@ -132,7 +134,8 @@ export const CrisisManagment = () => {
         <p className="text-green-700">No Unresolved Crisis Situation</p>
       </div>
     ) : null}
-  </>
+    </div>
+  </div>
   
   
   );

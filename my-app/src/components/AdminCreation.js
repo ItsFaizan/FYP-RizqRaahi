@@ -2,11 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { io } from 'socket.io-client';
-import vector from '../assets/admin3.png'
+import vector from '../assets/Announcement.png'
 import vector2 from '../assets/logo.png'
 
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AdminSidebar from './Sidebar/AdminSidebar';
 
 
 export default function AdminCreation() {
@@ -74,21 +75,13 @@ export default function AdminCreation() {
     }
   };
 
-  useEffect(() => {
-    // Connect to the Socket.io server when the component mounts
-    socket.current = io('http://localhost:3001', {
-      auth: { token },
-    });
 
-    return () => {
-      socket.current.disconnect();
-    };
-  }, []);
 
  
   return (
-    <div>
-      <div className="fixed bottom-[15px] left-[150px] background">
+    <div className='flex'>
+      <AdminSidebar/>
+      <div className="fixed bottom-[15px] left-64 background">
         <img src={vector} alt={"Img"} className="w-[580px] h-[420px]" />
       </div>
   

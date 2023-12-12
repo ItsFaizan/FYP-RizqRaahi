@@ -113,9 +113,9 @@ export default function Crisis() {
   
   return (
     <div>
-
       
-        <div className="fixed bottom-[10px] left-[130px] background">
+      
+        <div className="fixed bottom-[10px] left-72 background">
               <img src={vector} alt={"Img"} className="w-[550px] h-[405px]" />
         </div>
 

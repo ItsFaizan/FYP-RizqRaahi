@@ -85,7 +85,7 @@ export default function Announcement() {
               isCooked: isCooked,
               isPerishable: isPerishable,
               amountType: amountType,
-              crisisId: selectedCrisisId,
+              crisisId: parseInt(selectedCrisisId),
             }),
           });
     
@@ -317,7 +317,7 @@ useEffect(() => {
         </div>
 
       
-      <div className="fixed top-[160px] right-[90px] w-[410px] h-[520px] bg-white rounded-lg border border-white shadow-md">
+      <div className="fixed top-[160px] right-[90px] w-[410px] h-[550px] bg-white rounded-lg border border-white shadow-md">
               <img src={vector2} alt="Img" className=" mt-[-28px] top-[2px] left-[205px] w-[160px] h-[160px] mx-auto" />
               {crisisData ? (
               <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Crisis Donation</h1>
@@ -379,8 +379,8 @@ useEffect(() => {
           onChange={(e) => setSelectedCrisisId(e.target.value)}
         
         >
-          <option value="" disabled hidden>
-            Select a crisis
+          <option value={" "} hidden>
+            Select Crisis
           </option>
           {crisisData.map((crisis) => (
             <option key={crisis.id} value={crisis.id}>
@@ -465,7 +465,7 @@ useEffect(() => {
 
 
                 
-        <button onClick={crisisData ? handleSubmitCrisis : handleSubmit}   className="fixed w-[180px] h-[30px] mt-32 right-[200px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}>
+        <button onClick={crisisData ? handleSubmitCrisis : handleSubmit}   className="fixed w-[180px] h-[30px] mt-40 right-[200px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}>
                   Create Announcement
                   </button>
               

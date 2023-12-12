@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import vector2 from '../../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg';
 import './mainmap.css';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-
+import vector from '../../assets/admin3.png'
 
 library.add(fas);
 
-const Sidebar2 = () => {
+const SubAdminSidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
   const locationdata = useLocation();
-  const data = locationdata.state;
-  // const option = data.option;
   const [token, setToken] = useState(null);
-  const handleToggleSidebar = () => {
-    setIsExpanded((prevIsExpanded) => !prevIsExpanded);
-
-  };
-
   useEffect(
     React.useCallback(() => {
     const retrieveToken = async () => {
@@ -42,14 +35,18 @@ const Sidebar2 = () => {
   }, [token])
 );
 
+  const handleToggleSidebar = () => {
+    setIsExpanded((prevIsExpanded) => !prevIsExpanded);
+
+  };
+
   const handleNavigateTo = (path) => {
-    // navigate('/chats', { state: { option: option, token: data.token } });
-    navigate(path, { state: { option: "Restaurant", token } });
+    navigate(path, { state: { token } });
   };
 
   return (
     <div>
-    <aside className="fixed h-full">
+    <aside className="fixed h-full ">
       <nav
         className={`${
           isExpanded
@@ -60,7 +57,7 @@ const Sidebar2 = () => {
         <div className="p-4 pb-2 flex justify-between items-center">
           {isExpanded && (
             <img
-              src={vector2}
+              src={vector}
               className={`overflow-hidden transition-all ${
                 isExpanded ? 'w-32' : 'w-0'
               }`}
@@ -98,11 +95,11 @@ const Sidebar2 = () => {
         <ul className="flex-1 px-3">
           <li
             className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
-            onClick={() => handleNavigateTo('/donationAnnouncement')}
+            onClick={() => handleNavigateTo('/subadmincrisis')}
           >
             <span className="group-hover:bg-indigo-50 flex items-center w-full">
               <FontAwesomeIcon
-                icon="home"
+                icon="fa-solid fa-triangle-exclamation"
                 size="lg"
                 className="group-hover:text-indigo-800 mr-2 text-green-500"
               />
@@ -111,20 +108,20 @@ const Sidebar2 = () => {
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
               >
-                Home
+                Crisis Creation
               </span>
             </span>
           </li>
 
           <li
           
-          onClick={() => handleNavigateTo('/chats')}
+          onClick={() => handleNavigateTo('/subadmincrisismanagment')}
             className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full">
               <FontAwesomeIcon
-                icon="comment"
+                icon="fa-solid fa-note-sticky"
                 size="lg"
                 className="group-hover:text-indigo-800 mr-2 text-green-500"
               />
@@ -133,47 +130,7 @@ const Sidebar2 = () => {
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
               >
-                Chat
-              </span>
-            </span>
-          </li>
-
-          <li
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
-            onClick={() => handleNavigateTo('/deliverytracker')}
-          >
-            <span  className="group-hover:bg-indigo-50 flex items-center w-full">
-              <FontAwesomeIcon
-                icon="hand-holding-heart"
-                size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
-              />
-              <span
-                className={`transition-all group-hover:bg-indigo-50 mr-2 ${
-                  isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                }`}
-              >
-                Donations
-              </span>
-            </span>
-          </li>
-          
-          <li
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
-            onClick={() => handleNavigateTo('/crisisdonationstatus')}
-          >
-            <span  className="group-hover:bg-indigo-50 flex items-center w-full ">
-              <FontAwesomeIcon
-                icon="fa-solid fa-handshake"
-                size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
-              />
-              <span
-                className={`transition-all group-hover:bg-indigo-50 mr-2 ${
-                  isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                }`}
-              >
-                Crisis donation
+                Crisis Resolve
               </span>
             </span>
           </li>
@@ -208,11 +165,10 @@ const Sidebar2 = () => {
               alt=""
               className="w-10 h-10 rounded-md"
             />
-           
             <div className="flex justify-between items-center overflow-hidden transition-all w-52 ml-3">
               <div className="leading-4">
-                <h4 className="font-semibold">Restaurant</h4>
-                <span className="text-xs text-black-600">From Door to Door</span>
+                <h4 className="font-semibold">Sub Admin</h4>
+                <span className="text-xs text-black-600">From People to People</span>
               </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -229,8 +185,6 @@ const Sidebar2 = () => {
                 />
               </svg>
             </div>
-
-
           </div>
         )}
       </nav>
@@ -239,4 +193,4 @@ const Sidebar2 = () => {
   );
 };
 
-export default Sidebar2;
+export default SubAdminSidebar;

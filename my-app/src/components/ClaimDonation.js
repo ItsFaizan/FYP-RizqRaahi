@@ -214,7 +214,7 @@ export const ClaimDonation = () => {
     {isDonation && (
       <div className='flex'>
       <Sidebar/>
-    <div className="flex flex-col items-center justify-center mt-1 mx-20 font-[Inter]">
+    <div className="flex flex-col items-center justify-center mt-4 mx-auto font-[Inter]">
     
       <h1 className="text-5xl font-semibold text-[#1ECF5A] mb-4">Donation Tracking</h1>
 

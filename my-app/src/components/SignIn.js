@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useLocation , useNavigate } from "react-router-dom";
 import {toast} from 'react-toastify';
 import {requestForToken} from '../firebaseConfig';
-
+import CrisisInfo from '../components/CrisisInfo';
 export const SignIn = () => {
   
   const navigate = useNavigate();
@@ -78,16 +78,15 @@ export const SignIn = () => {
           .then((response) => response.json())
           .then(async(data) => {
             if (data.success === true) {
-  
+       
               localStorage.setItem('authToken', data.token);
-  
               toast.update(id, {
                 render: `${data.message}`,
                 type: toast.TYPE.SUCCESS,
                 isLoading: false,
                 autoClose: true,
             })
-  
+            
               setTimeout(() => {
                 if (option === 'Restaurant') {
                   navigate('/donationAnnouncement', { state: { option: option , token: data.token}});
