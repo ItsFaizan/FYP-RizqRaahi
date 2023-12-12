@@ -39,7 +39,7 @@ function App() {
         <Routes>
           {/* <Route path='/' element={<AdminCreation/>} ></Route> */}
           <Route path="/" element={<div><NavbarWeb /><LandingPageHome/><Overview/><Solution/><About/><Work/><FAQ/></div>} />
-          <Route path="/donationAnnouncement" element={<div><Navbar/><Sidebar2/><Home /></div>} />
+          <Route path="/donationAnnouncement" element={<div><Navbar/><Home /></div>} />
           <Route path="/signin" element={<div><SignIn/></div>} />
           <Route path="/signup" element={<div><Signup /></div>} />
           <Route path="/adminlogin" element={<div><AdminLogin /></div>} />
