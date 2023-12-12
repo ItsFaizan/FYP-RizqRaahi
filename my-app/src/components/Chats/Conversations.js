@@ -7,6 +7,8 @@ import vector2 from "../../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg";
 import UserChat from "./UserChat";
 import { useLocation, useNavigate, useRoutes } from "react-router-dom";
 import { io } from "socket.io-client";
+import Sidebar from "../Sidebar/Sidebar";
+import Sidebar2 from "../Sidebar/Sidebar2";
 
 const Conversations = ({ route }) => {
   const [type, setType] = useState("");
@@ -71,7 +73,7 @@ const Conversations = ({ route }) => {
 
       const data = await response.json();
 
-      console.log("Server response:", data);
+      console.log("Server response convooooooooooooooooooooooo:", data);
 
       if (data.success === true && data.message === "No conversations found") {
         setIsInfo(true);
@@ -137,8 +139,7 @@ console.log(`Formatted date: ${formattedTime}`);
       : participantNGORelation.name;
       
 
-    console.log("here eeeeeeeeeeee}}}}}}}}}}}}}}", lastTimestamp);
-    console.log("Last Message:", lastMessage); // Add this line for debugging
+  
 
     return (
       <div
@@ -191,10 +192,17 @@ console.log(`Formatted date: ${formattedTime}`);
   };
 
   return (
-    <div className="bg-white-500" >
-      <div className="w-full h-32 "></div>
+    <div className="bg-white-500 flex" >
+    {option === "Restaurant"
+                ? <Sidebar2/>
+                : option === "NGO"
+                ? <Sidebar/>
+                : null
+              }
+    
+     
 
-      <div className="container mx-auto " style={{ marginTop: "-128px" }}>
+      <div className="container mx-auto " style={{ marginTop: "-1px" }}>
         <div className="py-6 h-screen">
           <div className="flex border border-grey rounded dark:shadow-lg h-full">
             <div className="w-1/3 border flex flex-col">

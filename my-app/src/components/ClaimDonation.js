@@ -3,6 +3,11 @@ import pic from "../assets/5151557_51546-removebg-preview.png";
 import ReviewModal from './ReviewModal';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
+import Sidebar from './Sidebar/Sidebar';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 
 export const ClaimDonation = () => {
@@ -205,9 +210,12 @@ export const ClaimDonation = () => {
 
   return (
     <>
+    
     {isDonation && (
-      <>
-    <div className="flex flex-col items-center justify-center mt-10 font-[Inter]">
+      <div className='flex'>
+      <Sidebar/>
+    <div className="flex flex-col items-center justify-center mt-1 mx-20 font-[Inter]">
+    
       <h1 className="text-5xl font-semibold text-[#1ECF5A] mb-4">Donation Tracking</h1>
 
       <div className="flex items-center mt-8">
@@ -239,7 +247,17 @@ export const ClaimDonation = () => {
         <div className="border-4 border-[#1ECF5A] p-4 rounded-lg w-3/4">
           <img src={pic} className="w-full h-auto"/ > 
         </div>
-        <div className="text-lg mt-2 text-[#1ECF5A] font-semibold" onClick={route}>Track Donation</div>
+        
+             
+              
+        <div className="text-lg mt-2 text-[#1ECF5A] font-semibold group-hover:bg-indigo-50 cursor-pointer" onClick={route}>
+        <FontAwesomeIcon
+                icon="fa-solid fa-truck"
+                size="lg"
+                className="group-hover:text-indigo-800 mr-2 text-green-500"
+              />
+        Track Donation
+        </div>
       </div>
 
       <div className="flex flex-col text-black " style={{ marginLeft: "28rem", marginTop: "-27rem" }}>
@@ -278,7 +296,7 @@ export const ClaimDonation = () => {
       </div>
     </div>
 
-    </>
+    </div>
       )}
     </>
   );

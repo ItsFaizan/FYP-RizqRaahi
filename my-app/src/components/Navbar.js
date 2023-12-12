@@ -14,10 +14,11 @@ const TopNavBar = () => {
     };
 
     return (
-        <div className={`container ${backgroundClass}`}>
-            <div className="leftIcon">
+        // <div className={`container ${backgroundClass}`}>
+        <div className={`whiteBackground`} style={{ width: '100%' }}>
+            {/* <div className="leftIcon">
                 <FontAwesomeIcon icon={faBars} size="2x" color='#1ECF5A' />
-            </div>
+            </div> */}
             <div className="centerText">رزق راہی</div>
             <div className="rightIcon">
                 <FontAwesomeIcon icon={faPowerOff} size="2x" color='#1ECF5A' onClick={navigateToSelection} />

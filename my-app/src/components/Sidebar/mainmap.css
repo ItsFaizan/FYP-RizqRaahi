@@ -33,13 +33,13 @@
   } */
 
   .sidebar-container {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 290px;
+    width: 2px;
     height: 100vh;
     background-color: #f0f0f0;
-    overflow: auto;
-    padding: 16px;
-    z-index: 1000;
+    /* overflow: auto; */
+    /* padding: 16px; */
+    z-index: 100;
   }

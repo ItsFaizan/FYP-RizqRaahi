@@ -24,7 +24,8 @@ import { ClaimDonation } from './components/ClaimDonation';
 import { AdminLogin } from './components/AdminLogin';
 import { AdminSignup } from './components/AdminSignup';
 
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar/Sidebar';
+import Sidebar2 from './components/Sidebar/Sidebar2';
 import Conversations from './components/Chats/Conversations';
 import AdminCreation from './components/AdminCreation';
 
@@ -38,15 +39,15 @@ function App() {
         <Routes>
           {/* <Route path='/' element={<AdminCreation/>} ></Route> */}
           <Route path="/" element={<div><NavbarWeb /><LandingPageHome/><Overview/><Solution/><About/><Work/><FAQ/></div>} />
-          <Route path="/donationAnnouncement" element={<div><Sidebar/><Home /></div>} />
+          <Route path="/donationAnnouncement" element={<div><Sidebar2/><Home /></div>} />
           <Route path="/signin" element={<div><SignIn/></div>} />
           <Route path="/signup" element={<div><Signup /></div>} />
           <Route path="/adminlogin" element={<div><AdminLogin /></div>} />
           <Route path="/adminsignup" element={<div><AdminSignup /></div>} />
           <Route path="/location-selection" element={<div><LocationSelection /></div>} />
           <Route path="/MainMap" element={<div><MainMap /></div>} />
-          <Route path="/deliverytracker" element={<div><DeliveryTracker/></div>} />
-          <Route path="/claimdonation" element={<div><ClaimDonation/></div>} />
+          <Route path="/deliverytracker" element={<div><Sidebar2/><DeliveryTracker/></div>} />
+          <Route path="/claimdonation" element={<div><Navbar/><ClaimDonation/></div>} />
           <Route path="/chats" element={<div><Conversations/></div>} />
 
 

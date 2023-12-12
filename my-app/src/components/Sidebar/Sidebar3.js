@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import vector2 from '../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg';
+import vector2 from '../../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg';
 import './mainmap.css';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import vector from '../../assets/admin3.png'
 
 library.add(fas);
 
-const Sidebar = () => {
+const Sidebar3 = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
   const locationdata = useLocation();
@@ -38,7 +39,7 @@ const Sidebar = () => {
         <div className="p-4 pb-2 flex justify-between items-center">
           {isExpanded && (
             <img
-              src={vector2}
+              src={vector}
               className={`overflow-hidden transition-all ${
                 isExpanded ? 'w-32' : 'w-0'
               }`}
@@ -194,4 +195,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Sidebar3;

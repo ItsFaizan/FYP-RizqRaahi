@@ -8,7 +8,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import CustomModal from './CustomModal';
 import ReactLoading from 'react-loading';
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar/Sidebar';
+import { toast } from 'react-toastify';
 
 
 const MainMap = () => {
@@ -46,7 +47,7 @@ const MainMap = () => {
         });
     
         
-        socket.current.emit('getMarkers');
+        
     
         socket.current.on('getMarkers', (data) => {
           setMarkers(data);
@@ -58,7 +59,31 @@ const MainMap = () => {
           console.log('updateMap: ', markers);
         });
     
-    
+        socket.current.on('RemoveMarker', (data) => {
+          console.log("Map Removal Called");
+          setMarkers((prevMarkers) => prevMarkers.filter((marker) => marker.id !== data));
+        });
+  
+        socket.current.on('ClaimCompleted', () => {
+          toast.success('Donation Claimed Successfully', {
+            autoClose: 3000,
+            theme: 'dark',
+          });
+  
+          setTimeout(() => {
+            navigate('/claimdonation');
+          }, 1500);
+        });
+  
+        socket.current.on('ClaimFailed', (data) => {
+          toast.error(data, {
+            autoClose: 3000,
+            theme: 'dark',
+          });
+          closeMarkerDetails();
+        });
+  
+        socket.current.emit('getMarkers');
         return () => {
           socket.current.disconnect();
         };
@@ -162,10 +187,10 @@ const MainMap = () => {
         buttonLabels={['Claim Donation']}
         onButtonPress={async(buttonLabel) => {
           socket.current.emit('ClaimDonation', selectedMarker);
-          setTimeout(() => {
-            navigate('/claimdonation');
-            console.log("Navigating to Claim Donation")
-            }, 1500);
+          // setTimeout(() => {
+          //   navigate('/claimdonation');
+          //   console.log("Navigating to Claim Donation")
+          //   }, 1500);
         }}
         
       />

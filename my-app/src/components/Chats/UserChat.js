@@ -33,6 +33,21 @@ function UserChat({ convoid }) {
   const token = data1.token;
 
 
+const formatTimestamp = (timestamp) => {
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true,
+  };
+
+  // Create a Date object from the timestamp string
+  const date = new Date(timestamp);
+
+  // Use Intl.DateTimeFormat to format the date
+  return new Intl.DateTimeFormat('en-US', options).format(date);
+};
+
   useEffect(() => {
     // Scroll to the bottom of the chat area when messages change
     chatAreaRef.current.scrollTop = chatAreaRef.current.scrollHeight;
@@ -320,12 +335,12 @@ function UserChat({ convoid }) {
               </p>
               <p className="text-sm mt-1">{msg.content}</p>
               <p
-                className={`text-${
-                  msg.sender === "currentUserId" ? "right" : "left"
-                } text-xs text-grey-dark mt-1`}
-              >
-                {msg.timestamp}
-              </p>
+            className={`text-${
+              msg.sender === "currentUserId" ? "left" : "right"
+            } text-xs text-grey-dark mt-1`}
+          >
+            {formatTimestamp(msg.timestamp)}
+          </p>
             </div>
           </div>
         ))}
