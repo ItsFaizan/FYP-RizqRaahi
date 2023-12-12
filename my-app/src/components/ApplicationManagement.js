@@ -127,62 +127,65 @@ export default function ApplicationManagement() {
   };
     return(
         <>
-      {applicants && applicants.length > 0 ? (
-        <div >
-          <ul>
-            {applicants?.map((applicant) => (
-              <li key={applicant.id}>
-                 <div>
-        <div>
-          <img
-            src={pic1}
-            alt="Profile"
-           
-          />
-          
-          <div>
-            <p >{applicant.email}</p>
-            <p >
-              The proof images for pending admin are as follows
-            </p>
-          </div>
-        </div>
-        <div >
-          {applicant.proofImage.map((image, index) => (
-            <button key={index}>
-              <div >
-                {image ? (
-                  <img src={image}  />
-                ) : (
-                  <img
-                    src={pic2}
-                  />
-                )}
+  {applicants && applicants.length > 0 ? (
+    <div className="bg-gray-100 p-4">
+      <ul className="space-y-4">
+        {applicants?.map((applicant) => (
+          <li key={applicant.id} className="bg-white p-4 rounded shadow-md">
+            <div className="flex items-center space-x-4">
+              <img
+                src={pic1}
+                alt="Profile"
+                className="w-20 h-20 rounded-full" // Adjust the width and height here
+              />
+              <div>
+                <p className="text-lg font-semibold">{applicant.email}</p>
+                <p className="text-gray-600">
+                  The proof images for pending admin are as follows
+                </p>
               </div>
-            </button>
-          ))}
-        </div>
-        <div>
-          <button onClick={() => giveVerdict(applicant.userid, 'approved')}>
-            Approve
-          </button>
-          <button onClick={() => giveVerdict(applicant.userid, 'rejected')}>
-            Reject
-          </button>
-        </div>
-      </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
+            </div>
+            <div className="flex items-center justify-center space-x-4 mt-4">
+              {applicant.proofImage.map((image, index) => (
+                <button key={index}>
+                  <div>
+                    {image ? (
+                      <img src={image} className="w-40 h-40 object-cover" />
+                    ) : (
+                      <img src={pic2} className="w-16 h-16 object-cover" />
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
+            <div className="mt-4 flex items-center justify-center">
+              <button
+                onClick={() => giveVerdict(applicant.userid, 'approved')}
+                className="bg-green-500 text-white px-4 py-2 rounded mr-2"
+              >
+                Approve
+              </button>
+              <button
+                onClick={() => giveVerdict(applicant.userid, 'rejected')}
+                className="bg-red-500 text-white px-4 py-2 rounded"
+              >
+                Reject
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ) : null}
 
-      {isInfo ? (
-        <div >
-          <p >No Applications Found</p>
-        </div>
-      ) : null}
-    </>
+  {isInfo ? (
+    <div className="bg-gray-100 p-4">
+      <p className="text-lg font-semibold">No Applications Found</p>
+    </div>
+  ) : null}
+</>
+
+      
 
     )
 

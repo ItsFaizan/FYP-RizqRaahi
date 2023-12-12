@@ -21,6 +21,7 @@ export default function Announcement() {
   const [description, setDescription] = useState("");
   const [crisisData, setCrisisData] = useState();
   const [token, setToken] = useState(null);
+  const [selectedCrisisId, setSelectedCrisisId] = useState();
 
   //const token = data.token;
   var id;
@@ -84,7 +85,7 @@ export default function Announcement() {
               isCooked: isCooked,
               isPerishable: isPerishable,
               amountType: amountType,
-              crisisId: crisisData.id,
+              crisisId: selectedCrisisId,
             }),
           });
     
@@ -316,8 +317,8 @@ useEffect(() => {
         </div>
 
       
-      <div className="fixed top-[170px] right-[90px] w-[410px] h-[520px] bg-white rounded-lg border border-white shadow-md">
-              <img src={vector2} alt="Img" className=" mt-[-20px] top-[2px] left-[205px] w-[160px] h-[160px] mx-auto" />
+      <div className="fixed top-[160px] right-[90px] w-[410px] h-[520px] bg-white rounded-lg border border-white shadow-md">
+              <img src={vector2} alt="Img" className=" mt-[-28px] top-[2px] left-[205px] w-[160px] h-[160px] mx-auto" />
               {crisisData ? (
               <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Crisis Donation</h1>
               ) : (
@@ -366,10 +367,31 @@ useEffect(() => {
                   placeholder="Description.."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="w-full h-[80px] mb-[10px] mt-2 rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
+                  className="w-full h-[60px] mt-2 rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
                 ></textarea>
               </div>
                 
+
+              <div className="flex mx-28">
+      {crisisData ? (
+        <select
+          value={selectedCrisisId}
+          onChange={(e) => setSelectedCrisisId(e.target.value)}
+        
+        >
+          <option value="" disabled hidden>
+            Select a crisis
+          </option>
+          {crisisData.map((crisis) => (
+            <option key={crisis.id} value={crisis.id}>
+              Crisis: {crisis.name}
+            </option>
+          ))}
+        </select>
+      ) : (
+        null
+      )}
+    </div>
 
               <div className="relative">
 
@@ -382,11 +404,11 @@ useEffect(() => {
 <div className="relative">
         {/* Fresh Toggle Button */}
         <div className="flex items-center space-x-4">
-          <span className="fixed top-[530px] right-[230px] text-sm font-semibold mx-[90px]">
+          <span className="fixed top-[528px] right-[230px] text-sm font-semibold mx-[90px]">
             Fresh
           </span>
           <button
-            className={`fixed top-[530px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
+            className={`fixed top-[524px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
               isFresh ? 'bg-green-500' : 'bg-gray-300'
             }`}
             onClick={handleFreshToggle}
@@ -401,11 +423,11 @@ useEffect(() => {
 
         {/* Cooked Toggle Button */}
         <div className="flex items-center space-x-4">
-          <span className="fixed top-[565px] right-[320px] text-sm font-semibold">
+          <span className="fixed top-[568px] right-[320px] text-sm font-semibold">
             Cooked
           </span>
           <button
-            className={`fixed top-[565px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
+            className={`fixed top-[562px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
               isCooked ? 'bg-green-500' : 'bg-gray-300'
             }`}
             onClick={handleCookedToggle}
@@ -420,7 +442,7 @@ useEffect(() => {
 
         {/* Perishable Toggle Button */}
         <div className="flex items-center space-x-4">
-          <span className="fixed top-[600px] right-[240px] text-sm font-semibold mx-[80px]">
+          <span className="fixed top-[604px] right-[240px] text-sm font-semibold mx-[80px]">
             Perishable
           </span>
           <button
@@ -443,36 +465,10 @@ useEffect(() => {
 
 
                 
-        <button onClick={crisisData ? handleSubmitCrisis : handleSubmit}   className="fixed w-[180px] h-[30px] mt-[110px] right-[200px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}>
+        <button onClick={crisisData ? handleSubmitCrisis : handleSubmit}   className="fixed w-[180px] h-[30px] mt-32 right-[200px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}>
                   Create Announcement
                   </button>
-                  <button
-          className="text-center mt-[3px] text-base"
-          style={{ fontSize: "10px" }}
-        >
-          <Link
-            className="text-green-500 font-bold "
-            style={{ fontSize: "10px" }}
-            to={`/crisisdonationstatus`} 
-            
-          >
-            Crisis
-          </Link>
-        </button>
-
-        <button
-          className="text-center mt-[3px] text-base"
-          style={{ fontSize: "10px" }}
-        >
-          <Link
-            className="text-green-500 font-bold "
-            style={{ fontSize: "10px" }}
-            to={`/crisisdonationtracking`} 
-            
-          >
-            Crisis NGO
-          </Link>
-        </button>
+              
                 
                   
     </div>           
