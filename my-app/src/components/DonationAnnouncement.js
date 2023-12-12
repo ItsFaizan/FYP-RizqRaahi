@@ -4,6 +4,7 @@ import vector2 from '../assets/logo.png'
 import { io } from 'socket.io-client';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
+import Sidebar2 from './Sidebar/Sidebar2';
 
 
 export default function Announcement() {
@@ -178,10 +179,11 @@ const handleUnitsClick = () => {
 
   
   return (
-    <div>
+    <div className='flex'>
 
+<Sidebar2/>
       
-        <div className="fixed bottom-[10px] left-[130px] background">
+        <div className="absolute bottom-[10px] left-64 background">
               <img src={vector} alt={"Img"} className="w-[550px] h-[405px]" />
         </div>
 

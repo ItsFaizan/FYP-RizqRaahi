@@ -20,9 +20,9 @@ const TopNavBar = () => {
                 <FontAwesomeIcon icon={faBars} size="2x" color='#1ECF5A' />
             </div> */}
             <div className="centerText">رزق راہی</div>
-            <div className="rightIcon">
+            {/* <div className="rightIcon">
                 <FontAwesomeIcon icon={faPowerOff} size="2x" color='#1ECF5A' onClick={navigateToSelection} />
-            </div>
+            </div> */}
         </div>
     );
 };
