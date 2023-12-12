@@ -277,7 +277,7 @@ export const Signup = () => {
             readOnly
           />
 
-          <button className="absolute right-2 top-1 " onClick={() => Navigate(`/location-selection`, {state: {option: option}})}>
+          <button className="absolute right-2 top-1 " onClick={() => Navigate(`/location-selection`, {state: {option: option, screenName: "signup"}})}>
             <img src={location} alt="Location Icon" className="w-[19px] h-[20px]" />
           </button>
 

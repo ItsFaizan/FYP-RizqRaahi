@@ -31,6 +31,7 @@ import AdminCreation from './components/AdminCreation';
 import Crisis from './components/Crisis';
 import { CrisisDonationTracking } from './components/CrisisDonationTracking';
 import { CrisisDonationStatus } from './components/CrisisDonationStatus';
+import ApplicationManagement from './components/ApplicationManagement';
 
 
 function App() {
@@ -53,8 +54,10 @@ function App() {
           <Route path="/claimdonation" element={<div><ClaimDonation/></div>} />
           <Route path="/chats" element={<div><Conversations/></div>} />
           <Route path="/crisis" element={<div><Crisis/></div>} />
+          <Route path="/subadmincrisis" element={<div><Crisis/></div>} />
           <Route path="/crisisdonationtracking" element={<div><CrisisDonationTracking/></div>} />
           <Route path="/crisisdonationstatus" element={<div><CrisisDonationStatus/></div>} />
+          <Route path="/applicationmanagment" element={<div><ApplicationManagement/></div>} />
 
 
         </Routes>

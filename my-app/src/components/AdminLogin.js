@@ -6,15 +6,15 @@ import { useLocation , useNavigate } from "react-router-dom";
 import {toast} from 'react-toastify';
 import {requestForToken} from '../firebaseConfig';
 
+
 export const AdminLogin = () => {
   
   const navigate = useNavigate();
   const locationdata = useLocation();
   const data = locationdata.state;
-
+  
   const [ID, setID] = useState('');
   const [password, setPassword] = useState('');
-  const option  = data.option;
 
   const handleIDChange = (e) => {
     setID(e.target.value);
@@ -27,78 +27,49 @@ export const AdminLogin = () => {
   const handleSubmit = async() => {
 
     if (ID === '' || password === '') {
-      
-      toast.error('Please fill all the fields', {
-        autoClose: 3000,
-        theme: 'dark',
-      });
+      toast.error('Please fill all the fields');
     }
-
-    else
-    {
-
-        var expoPushToken = await requestForToken();
-
-        if (expoPushToken == null) {
-          toast.error('Please Allow Notfication Access', {
-            autoClose: 3000,
-            theme: 'dark',
-          });
-        }
-
-        const id = toast.loading(`Attempting to Login as ${option}`,{
-          theme: 'dark',
-        })
-
-        await fetch(`/login`, {
+    
+    else {
+     
+        const response = await fetch(`/adminlogin`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-  
           body: JSON.stringify({
-            //email: uniqueemail,
+            userid: ID,
             password: password,
-            type: option,
-            expoPushToken: expoPushToken,
-            deviceType: 'Web',
           }),
-        })
-  
-          .then((response) => response.json())
-          .then(async(data) => {
-            if (data.success === true) {
-  
-              localStorage.setItem('authToken', data.token);
-  
-              toast.update(id, {
-                render: `${data.message}`,
-                type: toast.TYPE.SUCCESS,
-                isLoading: false,
-                autoClose: true,
-            })
-  
-              setTimeout(() => {
-                if (option === 'Admin') {
-                  navigate('/donationAnnouncement', { state: { option: option , token: data.token}});
-                }
-              }, 2000);
-            } else {
-              toast.update(id, {
-                render: `${data.message}`,
-                type: toast.TYPE.ERROR,
-                isLoading: false,
-                autoClose: true,
-            })
-            }
-          })
-        } 
-        
+        });
 
-  };
+        const data = await response.json();
+
+        if (data.success == true) {
+          localStorage.setItem('authToken', data.token);
+
+          toast.success(data.message);
+
+          setTimeout(() => {
+            if (data.isSuper) {
+                navigate('/crisis');
+        
+            } else {
+              navigate('/subadmincrisis');
+            }
+          }, 2000);
+        } else {
+          toast.error(data.message);
+        }
+
+
+      }
+    }
+
+  
 
   return (
-    console.log("Sign in got option: "+option),
+    
     <div>
       <div className="absolute mx-auto my-[16%] sm:my-[8%]  sm:left-[15%] sm:h-[75%] sm:w-[408px]  md:my-[12%]  md:left-[25%] md:h-[75%] md:w-[408px]  lg:my-[8%]  lg:left-[15%] lg:h-[75%] lg:w-[408px] transform translate(-50%, -50%) w-[100%] h-[100%] bg-white rounded-lg border border-white shadow-md">
         <img src={vector2} alt="Img" className="top-[60px] left-[205px] w-[150px] h-[160px] mx-auto" />
@@ -146,7 +117,7 @@ export const AdminLogin = () => {
         </p>
         <p className="text-center mt-[3px] text-base" style={{ fontSize: '10px' }}>
           Want to be a Sub Admin?{' '}
-          <Link className="text-green-500 font-bold" style={{ fontSize: '10px' }} to={`/adminsignup`} state={{option}}>
+          <Link className="text-green-500 font-bold" style={{ fontSize: '10px' }} to={`/adminsignup`} >
             Apply here!
           </Link>
           <br />

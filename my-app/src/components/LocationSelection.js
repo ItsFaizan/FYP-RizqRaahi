@@ -15,6 +15,7 @@ const LocationSelection = () => {
   const data = locationdata.state;
 
   const option = data.option;
+  const screenName = data.screenName;
 
   const { isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -96,12 +97,22 @@ const LocationSelection = () => {
     });
   
     setTimeout(() => {
-      navigate(`/signup`, {
-        state: {
-          option: option,
-          coordinates: { latitude: selectedLocation.lat, longitude: selectedLocation.lng },
-        },
-      });
+      if(screenName === 'signup'){
+        navigate(`/signup`, {
+          state: {
+            option: option,
+            coordinates: { latitude: selectedLocation.lat, longitude: selectedLocation.lng },
+          },
+        });
+        
+      }
+      else{
+        navigate(`/crisis`, {
+          state: {
+            coordinates: { latitude: selectedLocation.lat, longitude: selectedLocation.lng },
+          },
+        });
+      }
     }, 2000);
     
   };

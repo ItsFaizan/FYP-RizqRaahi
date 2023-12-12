@@ -11,7 +11,105 @@ import {toast} from 'react-toastify';
 
 
 export default function Crisis() {
+  const Navigate = useNavigate();
+  const locationdata = useLocation();
+  const data = locationdata.state;
+  const option = "Admin";
 
+
+
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [impactedPeople, setImpactedPeople] = useState("");
+  const [durationamount, setDurationamount] = useState("");
+  const [locationValue, setLocationValue] = useState(data?.coordinates);
+  
+
+  const handleLocationChange = (e) => {
+    setLocationValue(e.target.value);
+  };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleImpactChange = (e) => {
+    setImpactedPeople(e.target.value);
+  };
+
+  const handleDurationChange = (e) => {
+    setDurationamount(e.target.value);
+  };
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
+  };
+
+
+  const handleCrisisCreation = async () => {
+
+    if (name == "" || description == "" || impactedPeople == "" || durationamount == "") {
+      toast.error('Please fill all the fields', {
+        autoClose: 3000,
+       theme: 'dark',
+      });
+     
+    } else if (locationValue === '') {
+      toast.error('Please select a location', {
+        autoClose: 3000,
+       theme: 'dark',
+      });
+      
+    } else if (isNaN(impactedPeople) || parseInt(impactedPeople) != parseFloat(impactedPeople)) {
+      toast.error('Estimate People Impacted must be an integer', {
+        autoClose: 3000,
+       theme: 'dark',
+      });
+     
+    } else if (isNaN(durationamount) || parseInt(durationamount) != parseFloat(durationamount)) {
+      toast.error('Duration Amount must be an integer', {
+        autoClose: 3000,
+       theme: 'dark',
+      });
+      
+    } 
+    else 
+    {
+
+      var token = await localStorage.getItem("authToken");
+
+      const requestBody = {
+        name: name,
+        impactedPeople: parseInt(impactedPeople),
+        requiredDonations: parseInt(parseFloat(impactedPeople) * parseFloat(durationamount) * 0.5),
+        description: description,
+        latitude: locationValue.latitude,
+        longitude: locationValue.longitude,
+      };
+
+
+      fetch(`/createcrisisalert`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+
+        body: JSON.stringify(requestBody),
+      })
+        .then((res) => res.json())
+        .then(async (data) => {
+          console.log(data);
+          if (data.success == true) {
+            toast.success(data.message);
+
+           
+          } else {
+            toast.error(data.message);
+          }
+        });
+    }
+  };
   
   return (
     <div>
@@ -33,25 +131,26 @@ export default function Crisis() {
                   <input
                     type="text"
                     placeholder="Crisis Name"
-                    // value={amount}
-                    // onChange={(e) => setAmount(e.target.value)}
+                    name="Crisis Name"
+                   value={name}
+                   onChange={handleNameChange}
                     className="w-full h-[30px] mb-2 rounded-md p-[10px]  bg-gray-100 focus:outline-none" style={{ fontSize: '10px' }}
                   />                  
                 </div>
 
         <div className="relative">                  
           <input
-            type="text"
-            placeholder="Location"
-            name="location"
-            // value={locationValue ? "Location Added" : ""}
-            // onChange={handleLocationChange}
+             type="text"
+             placeholder="Location"
+             name="location"
+             value={locationValue ? "Location Added" : ""}
+             onChange={handleLocationChange}
             className="w-full h-[30px] mb-2 rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
             style={{ fontSize: "10px" }}
             required
             readOnly
           />
-          <button className="absolute right-2 top-1 " >
+          <button className="absolute right-2 top-1 " onClick={() => Navigate(`/location-selection`, {state: {option: option, screenName: "crisis"}})}>
             <img src={location} alt="Location Icon" className="w-[19px] h-[20px]" />
           </button>
          </div>
@@ -60,8 +159,9 @@ export default function Crisis() {
                   <input
                     type="text"
                     placeholder="Estimate People Impacted"
-                    // value={amount}
-                    // onChange={(e) => setAmount(e.target.value)}
+                    name="Estimate People Impacted"
+                    value={impactedPeople}
+                    onChange={handleImpactChange}
                     className="w-full h-[30px] mb-2 rounded-md p-[10px]  bg-gray-100 focus:outline-none" style={{ fontSize: '10px' }}
                   />                  
                 </div>
@@ -70,36 +170,51 @@ export default function Crisis() {
                   <input
                     type="text"
                     placeholder="Food Lasting Duration (in Days)"
-                    // value={amount}
-                    // onChange={(e) => setAmount(e.target.value)}
+                    name="Food Lasting Duration (in Days)"
+                    value={durationamount}
+                    onChange={handleDurationChange}
                     className="w-full h-[30px] mb-2 rounded-md p-[10px]  bg-gray-100 focus:outline-none" style={{ fontSize: '10px' }}
                   />                  
                 </div>
 
 
                 <div>
-                <textarea
-                  id="description"
-                  placeholder="Estimated Total Food Requirement"
-                //   value={description}
-                //   onChange={(e) => setDescription(e.target.value)}
+                <p
                   className="w-full h-[60px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500" style={{ fontSize: '10px' }}
-                ></textarea>
+                >
+                  {isNaN(parseFloat(impactedPeople)) || isNaN(parseFloat(durationamount))
+            ? 
+            'Note: Enter number of impacted people and expected duration to generate a KG estimate of food for the crisis.'
+            : 
+            `Estimated Total Food Requirement = ${parseFloat(
+                impactedPeople
+              ) * parseFloat(durationamount) * 0.5} Kg`}
+                </p>
+                {"\n\n"}
+                {isNaN(parseFloat(impactedPeople)) || isNaN(parseFloat(durationamount))
+          ?
+          ""
+          : (
+            <div>
+              Note: This is just an estimation. You may adjust duration and impacted people to get a better estimate.
+            </div>
+          )}
               </div>     
                
                 <div>
                 <textarea
                   id="description"
                   placeholder="Description.."
-                //   value={description}
-                //   onChange={(e) => setDescription(e.target.value)}
+                  name="Description.."
+                  value={description}
+                  onChange={handleDescriptionChange}
                   className="w-full h-[80px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500" style={{ fontSize: '10px' }}
                 ></textarea>
               </div>
-                
-
    
-        <button className="fixed w-[180px] h-[30px] mt-1 right-[200px] bg-[#1ECF5A] text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}>
+        <button className="fixed w-[180px] h-[30px] mt-1 right-[200px] bg-[#1ECF5A] text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}
+        onClick={handleCrisisCreation}
+        >
                   Issue Crisis Alert
                   </button>
                 
