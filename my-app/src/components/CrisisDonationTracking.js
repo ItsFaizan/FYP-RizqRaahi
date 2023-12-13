@@ -118,7 +118,7 @@ import Sidebar from './Sidebar/Sidebar';
   
               <div className="flex flex-col items-center mt-12 -ml-96">
                 <div className="border-4 border-[#1ECF5A] p-4 rounded-lg w-3/4">
-                  <img src={pic} className="w-full h-auto" alt="Donation Image" onClick={route(donation.announcedByRelation)} />
+                  <img src={pic} className="w-full h-auto" alt="Donation" onClick={() => route(donation.announcedByRelation)} />
                 </div>
               </div>
   

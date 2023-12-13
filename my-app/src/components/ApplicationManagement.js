@@ -130,7 +130,7 @@ export default function ApplicationManagement() {
         <div className="flex">
           <AdminSidebar/>
   {applicants && applicants.length > 0 ? (
-    <div className="bg-gray-100 p-4">
+    <div className="bg-gray-100 p-4 mx-auto">
       <ul className="space-y-4">
         {applicants?.map((applicant) => (
           <li key={applicant.id} className="bg-white p-4 rounded shadow-md">

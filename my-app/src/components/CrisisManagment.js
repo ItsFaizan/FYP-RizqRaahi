@@ -28,8 +28,8 @@ export const CrisisManagment = () => {
         setCrisis(data.crisisAlert);
       } else {
         setIsInfo(true);
-        toast.show(`${data.message}`, {
-          type: "danger",
+        toast.error(`${data.message}`, {
+          
         });
       }
     };
