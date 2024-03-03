@@ -1,0 +1,118 @@
+{
+  "selectiontextfirsthalf" : " استعمال کرنے کے لیے",
+  "selectiontextlasthalf" : "ایک آپشن منتخب کریں",
+  "appname" : "رزق راہی",
+  "restaurantword" : "ریسٹورانٹ",
+  "NGOword" : "فلاحی تنظیم",
+  "adminword" : "ایڈمن",
+  "signintext" : "سائن ان",
+  "signinsubtext" : "امداد کے جہان میں",
+  "emailtext" : "ای میل",
+  "passwordtext" : "پاس ورڈ",
+  "logintext" : "لاگ ان",
+  "forgottext" : "پاسورڈ بھول گئے ہیں؟",
+  "signinlasttext": "اکاؤنٹ نہیں ہے؟",
+  "signinlinktext": "سائن اپ کریں",
+
+  "signuptext": "سائن اپ",
+  "signupsubtext": "امداد کے جہان میں",
+  "snametext": "نام",
+  "semailtext": "ای میل",
+  "slocationtext": "مقام",
+  "locationaddedtext": "مقام شامل کر دیا گیا",
+  "sproximity": "ترجیحی قربت (کلومیٹر)",
+  "scrisis": "سانحہ کی کپیسٹی (کلوگرام)",
+  "sconfirmpasstext": "پاسورڈ کی تصدیق کریں",
+  "signuptextbutton": "سائن اپ",
+  "signuplasttext": "کیا آپ کا اکاؤنٹ ہے؟",
+  "signuplinktext": "لاگ ان",
+
+  "idtext": "آئی ڈی",
+  "adminloginlasttext": " آپ ذیلی ایڈمن بننا چاہتے ہیں؟",
+  "adminloginlink": "یہاں درخواست دیں! ",
+  "adminloginsubtext" : "رزق راہی ایڈمن پینل کی جانب",
+
+  
+  "adminapptext": "درخواست برائے ایڈمن",
+  "adminappsubtext": "رزق راہی کے شریک کار بنیں",
+  "useridtext" : "صارف آئی ڈی",
+  "adminapppictext": "ثبوت اپلوڈ کریں، مثلاً ملازمت کارڈ وغیرہ",
+  "adminappsubmittext": "درخواست دیں",
+  "adminapplasttext": "پہلے ہی درخواست دے رکھی ہے؟",
+  "adminapplink": "لاگ ان",
+
+  "drawerHome" : "ہوم",
+  "drawerPendingCrisisDonation" : "زیر التوا ہنگامی عطیات",
+  "drawerOngoingCrisisDonation" : "جاری ہنگامی عطیات",
+  "drawerSignout": "سائن آؤٹ",
+
+  "informationword" : "معلومات",
+  "disclaimerword" : "انتباہ ",
+
+  "donationstatussecondtext": "براہ کرم نوٹ کریں کہ اس مدت کے دوران، \nآپ کو مزید اعلانات کرنے کی اجازت نہیں\n ہوگی۔\n\n ہم آپ کی سخاوت کی قدر کرتے ہیں اور \nکسی بھی تکلیف کے لئے معذرت خواہ ہیں۔",
+  "donationstatusfirsttext1": "آپ کے عطیات مختلف دلچسپی رکھنے والی \nفلاحی تنظیموں کو دکھایا جا رہا ہے۔ \n\nہم آپ کے عطیات قبول کرنے والی کسی \nفلاحی تنظیم کا انتظار کر رہے ہیں۔",
+  "donationstatusfirsttext2": "فلاحی تنظیم کا نمائندہ عطیات لینے\n کے لیے راہ پر ہے۔ \n\nآمد کے بعد، انہیں صحیح \nاشیاء فراہم کریں۔",
+  "donationstatusfirsttext3": "فلاحی تنظیم کے نمائندہ نے عطیات\n لینے کی تصدیق کردی ہے۔ \n\nہم فلاحی تنظیم کی طرف سے عطیات\n کی جانچ کا انتظار کر رہے ہیں۔",
+  "donationstatusfirsttext4": " مبارک  ہو! عطیات کامیابی سے\n اپنی منزل تک پہنچ گئے ہیں! \n\nآپ  مزید عطیات کے اعلانات\n کے لئے آگے بڑھ سکتے ہیں۔",
+
+  "ngosubtext1": "موجودہ صورت حال",
+  "ngosubtext2": "کی طرف سے قبول کیا جا چکا",
+  "ngosubtext3": "کو موصول ہو چکا",
+  "ngosubtext4": "کو عطیہ کیا گیا",
+
+  "donationtrackingheading" : "عطیات کی تفصیلات",
+  "trackingclaimed" : "قبول شدہ",
+  "trackingheading" : "ریسٹورانٹ روانگی",
+  "trackingrating" : "عطیات کی جانچ",
+  "trackingconfirmpickup" : "عطیات وصول کرلی گئیں",
+  "trackingchat" : "ریسٹورانٹ سے گفتگو کریں",
+
+  "freshword" : "تازہ ",
+  "cookedword" : "پکا ہوا",
+  "perishableword" : "خراب ہونے والا",
+
+  "reviewheading" : "رائے سے آگاہ کریں",
+  "reviewdonation": "عطیات کا معیار",
+  "reviewbehaviour" : "برتاو کا معیار",
+  "reviewfeedback" : "...اپنی رائے یہاں لکھیں",
+  "reviewsubmit" : "رائے جمع کروائیں",
+
+  "crisisstatustext" : "فلاحی تنظیم {ngoname} موجودہ {crisisname} بحران کی عطیات جمع کرنے کے لیے راستے پر ہے",
+  "crisisstatustext2" : ":ذیل میں منسوب کردہ عطیات کی تفصیلات ہیں",
+
+  "donationannouncementheading1": " عطیہ برائے خوراک کا",
+  "donationannouncementheading2": "اعلان جاری کریں",
+  "amountword" : "مقدار",
+  "KGword" : "کلوگرام",
+  "KMword" : "کلومیٹر",
+  "Unitword" : "اکائیاں",
+  "descriptionword" : "تفصیل",
+  "createannouncementtext" : "اعلان جاری کریں",
+  "crisisdonationtext" : "ہنگامی عطیات کا",
+  "selectcrisisword" : "سانحہ منتخب کریں",
+
+  "alternateperishableword" : "   فنا پذیر",
+
+  "locationword" : "مقام",
+  "donationsword" : "عطیات",
+  "ratingword": "ریٹنگ",
+  "amountoffooddonatedword" : "دی گئی خوراک کی مقدار",
+  "updateprofileword" :"پروفائل کو اپ ڈیٹ کریں",
+  "accepteddonationsword" : "قبول شدہ عطیات",
+  "crisesdonationsword" : "ہنگامی عطیات",
+  "proximityword" : "ترجیحی قربت",
+  "crisiscapacityword" : "سانحہ کی کپیسٹی",
+  "amountoffoodrecievedword" : "موصول کی گئی خوراک کی مقدار",
+  "confirmword" : "تصدیق کریں"
+
+
+
+
+
+
+
+
+  
+  
+}
+
