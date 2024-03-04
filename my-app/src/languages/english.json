@@ -1,4 +1,6 @@
 {
+    "overviewword" : "Overview",
+    "aboutword" : "About",
     "selectiontextfirsthalf" : "Choose an option",
     "selectiontextlasthalf": "to continue to ",
     "appname" : "RizqRaahi",
@@ -14,8 +16,8 @@
     "signinlasttext": "Don't have an account?",
     "signinlinktext": "Sign up",
 
-    "signuntext" : "SIGN UP",
-    "signunsubtext" : "to the world of help",
+    "signuptext" : "SIGN UP",
+    "signupsubtext" : "to the world of help",
     "snametext" : "Name",
     "semailtext" : "Email",
     "slocationtext": "Location",
@@ -23,7 +25,6 @@
     "sproximity": "Proximity Preference (KM)",
     "scrisis" : "Crisis Capacity (KG)",
     "sconfirmpasstext" : "Confirm Password",
-    "signuptext" : "Sign Up",
     "signuplasttext" : "Have an account?",
     "signuplinktext" : "Log in",
 
@@ -102,7 +103,15 @@
     "proximityword" : "Proximity",
     "crisiscapacityword" : "Crisis Capacity",
     "amountoffoodrecievedword" : "Amount of Food Recieved",
-    "confirmword" : "Confirm"
+    "confirmword" : "Confirm",
+
+    "chatword" : "Chat",
+    "crisisdonotext" : "Crisis Donations",
+    "switchlanguagetext" : "Switch Language",
+    "claimdonationstext" : "Claim Donations",
+    "trackdonationword" : "Track Donation",
+    "donationdetailsword" : "Donation Details",
+    "typeword" : "Type"
 
 
 

@@ -5,9 +5,13 @@ import Food from "../assets/youngboi.png";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import Sidebar2 from "./Sidebar/Sidebar2";
+import { useTranslation } from 'react-i18next';
 
 
 const DeliveryTracker = () => {
+
+  const { t } = useTranslation();
+
   const socket = useRef(null);
   const navigate = useNavigate();
   const steps = [
@@ -28,27 +32,21 @@ const DeliveryTracker = () => {
   const getStepText = () => {
     var text = [];
     var firsttext;
-    var secondtext =
-      "Please note that throughout this\nwaiting period, you won't be able\nto make additional donation\n announcements." +
-      "\n\nWe appreciate your generosity\nand regret any inconvenience\nthis may cause.";
+    var secondtext = t("donationstatussecondtext");
     var ngoname = `${restaurantName}`;
 
     if (currentPosition === 1) {
-      firsttext =
-        "Your Donation is being shown\nto different interested NGOs.\n\nWe are waiting for an NGO\nto claim your donation.";
-      ngoname = "Status";
+      firsttext = t("donationstatusfirsttext1");
+      ngoname = t("ngosubtext1");
     } else if (currentPosition === 2) {
-      firsttext =
-        "An NGO representative is on\nthe way to Pickup Donation.\n\nUpon arrival, provide them\nwith correct donation items.";
-      ngoname = `Claimed By ${restaurantName}`;
+      firsttext = t("donationstatusfirsttext2");
+      ngoname = t("ngosubtext2")+ restaurantName;
     } else if (currentPosition === 4) {
-      firsttext =
-        "The NGO representative has\nConfirmed donation Pickup.\n\nWe are waiting for the NGO\nto assess the donation. ";
-      ngoname = `Picked Up By ${restaurantName}`;
+      firsttext = t("donationstatusfirsttext3");
+      ngoname = t("ngosubtext3")+ restaurantName;
     } else if (currentPosition === 5) {
-      firsttext =
-        "Hooray! The donation has\nbeen successfully completed!\n\nYou can proceed to create\ndonation announcements.";
-      ngoname = `Donated to ${restaurantName}`;
+      firsttext = t("donationstatusfirsttext4");
+      ngoname = t("ngosubtext4")+ restaurantName;
     }
 
     text = [firsttext, secondtext, ngoname];
@@ -154,7 +152,7 @@ const DeliveryTracker = () => {
       <div className="flex">
       <Sidebar2/>
     <div className="bg-white w-full h-full flex flex-col gap-10 items-center justify-center mt-10 ">
-      <h1 className="text-5xl font-semibold text-[#1ECF5A] mb-4">Donation Tracking</h1>
+      <h1 className="text-5xl font-semibold text-[#1ECF5A] mb-4">{t("donationtrackingheading")}</h1>
       <div className="flex justify-between">
         {steps?.map((step, i) => (
           <div
@@ -174,7 +172,7 @@ const DeliveryTracker = () => {
      <div className="flex items-center flex-wrap justify-center -mt-12"> 
   <div className="flex flex-col items-center mt-6">
     <div className="border-4 border-[#1ECF5A] p-4 rounded-lg w-3/4">
-      <h2 className="text-xl font-semibold mb-2 text-[#1ECF5A]">Information</h2>
+      <h2 className="text-xl font-semibold mb-2 text-[#1ECF5A]">{t("informationword")}</h2>
       <p>{getStepText()[0]}</p>
     </div>
     <div className="text-lg mt-2 text-[#1ECF5A] font-semibold">{getStepText()[2]}</div>
@@ -188,7 +186,7 @@ const DeliveryTracker = () => {
 
   <div className="flex flex-col items-center mt-4 w-3/4"> {/* Added disclaimer container */}
     <div className="bg-[#1ECF5A] p-4 rounded-lg w-full">
-      <h2 className="text-xl font-semibold mb-2 text-white">Disclaimer</h2>
+      <h2 className="text-xl font-semibold mb-2 text-white">{t("disclaimerword")}</h2>
       <p className="text-white">{getStepText()[1]}</p>
     </div>
   </div>

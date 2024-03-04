@@ -1,4 +1,6 @@
 {
+  "overviewword" : "جائزہ",
+  "aboutword": "ہمارے بارے میں",
   "selectiontextfirsthalf" : " استعمال کرنے کے لیے",
   "selectiontextlasthalf" : "ایک آپشن منتخب کریں",
   "appname" : "رزق راہی",
@@ -103,7 +105,16 @@
   "proximityword" : "ترجیحی قربت",
   "crisiscapacityword" : "سانحہ کی کپیسٹی",
   "amountoffoodrecievedword" : "موصول کی گئی خوراک کی مقدار",
-  "confirmword" : "تصدیق کریں"
+  "confirmword" : "تصدیق کریں",
+
+  "chatword" : "گفتگو کریں",
+  "crisisdonotext" : "ہنگامی عطیات ",
+  "switchlanguagetext" : "زبان تبدیل کریں",
+  "claimdonationstext" : "عطیات قبول کریں",
+  "trackdonationword" : "عطیہ ٹریکنگ",
+  "donationdetailsword" : "تفصیلات",
+  "typeword" : "قسم"
+
 
 
 

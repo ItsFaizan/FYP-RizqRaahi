@@ -57,13 +57,13 @@ const handleButtonClickAdmin = (option) => {
 
         <ul className='hidden md:flex font-medium space-x-8'>
             <li className='hover:text-[#1ECF5A]'>
-              <Link to="#" smooth="true"  duration={500}>Home</Link>
+              <Link to="#" smooth="true"  duration={500}>{t("drawerHome")}</Link>
             </li>
             <li className='hover:text-[#1ECF5A]'>
-            <Link to="#" smooth="true"  duration={500}>Overview</Link>
+            <Link to="#" smooth="true"  duration={500}>{t("overviewword")}</Link>
             </li>
             <li className='hover:text-[#1ECF5A]'>
-            <Link to="#" smooth="true"  duration={500}>About</Link>
+            <Link to="#" smooth="true"  duration={500}>{t("aboutword")}</Link>
             </li>
             <li className='text-[#1ECF5A] border-2 px-4 py-0 border-[#1ECF5A] rounded-[5px] hover:text-white hover:bg-[#1ECF5A] transition duration-500'>
             <button smooth="true"  duration={500} onClick={() => handleButtonClickAdmin("Admin")}>{t("adminword")}</button>
