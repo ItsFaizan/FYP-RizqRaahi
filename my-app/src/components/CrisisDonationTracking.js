@@ -158,7 +158,7 @@ import Sidebar from './Sidebar/Sidebar';
           ))}
         </div>
       ) : (
-        <div>{isInfo ? <p>No Pending Crisis Allocations</p> : null}</div>
+        <div>{isInfo ? <p className="text-center">No Pending Crisis Allocations</p> : null}</div>
       )}
     </div>
   );

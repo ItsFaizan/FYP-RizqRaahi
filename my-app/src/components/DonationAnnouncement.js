@@ -5,10 +5,12 @@ import { io } from 'socket.io-client';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import Sidebar2 from './Sidebar/Sidebar2';
+import { useTranslation } from 'react-i18next';
 
 
 export default function Announcement() {
 
+  const { t } = useTranslation();
   const locationdata = useLocation();
   const navigate = useNavigate();
   const data = locationdata.state;
@@ -320,18 +322,18 @@ useEffect(() => {
       <div className="fixed top-[160px] right-[90px] w-[410px] h-[550px] bg-white rounded-lg border border-white shadow-md">
               <img src={vector2} alt="Img" className=" mt-[-28px] top-[2px] left-[205px] w-[160px] h-[160px] mx-auto" />
               {crisisData ? (
-              <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Crisis Donation</h1>
+              <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>{t("crisisdonationtext")}</h1>
               ) : (
-              <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Food Donation</h1>
+              <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>{t("donationannouncementheading1")}</h1>
               )}
-              <h1 className="text-center mt-[-16px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>Announcements</h1>
+              <h1 className="text-center mt-[-16px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>{t("donationannouncementheading2")}</h1>
 
               <div className="mt-[10px] px-[20px] ">
 
                 <div className="">                  
                   <input
                     type="text"
-                    placeholder="Amount"
+                    placeholder={t("amountword")}
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     className="w-full h-[30px] mb-[10px] rounded-md p-[10px]  bg-gray-100 focus:outline-none focus:border-blue-500" style={{ fontSize: '10px' }}
@@ -348,7 +350,7 @@ useEffect(() => {
           }`}
           onClick={handleKgClick}
         >
-          KG
+          {t("KGword")}
         </div>
         <div
           className={`w-80 h-8 flex items-center justify-center rounded-r-md cursor-pointer text-xs ${
@@ -356,7 +358,7 @@ useEffect(() => {
           }`}
           onClick={handleUnitsClick}
         >
-          Units
+          {t("Unitword")}
         </div>
       </div>
 
@@ -364,7 +366,7 @@ useEffect(() => {
 
                 <textarea
                   id="description"
-                  placeholder="Description.."
+                  placeholder={t("descriptionword")}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   className="w-full h-[60px] mt-2 rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
@@ -380,7 +382,7 @@ useEffect(() => {
         
         >
           <option value={" "} hidden>
-            Select Crisis
+            {t("selectcrisisword")}
           </option>
           {crisisData.map((crisis) => (
             <option key={crisis.id} value={crisis.id}>
@@ -405,7 +407,7 @@ useEffect(() => {
         {/* Fresh Toggle Button */}
         <div className="flex items-center space-x-4">
           <span className="fixed top-[528px] right-[230px] text-sm font-semibold mx-[90px]">
-            Fresh
+            {t("freshword")}
           </span>
           <button
             className={`fixed top-[524px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
@@ -424,7 +426,7 @@ useEffect(() => {
         {/* Cooked Toggle Button */}
         <div className="flex items-center space-x-4">
           <span className="fixed top-[568px] right-[320px] text-sm font-semibold">
-            Cooked
+            {t("cookedword")}
           </span>
           <button
             className={`fixed top-[562px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
@@ -443,7 +445,7 @@ useEffect(() => {
         {/* Perishable Toggle Button */}
         <div className="flex items-center space-x-4">
           <span className="fixed top-[604px] right-[240px] text-sm font-semibold mx-[80px]">
-            Perishable
+            {t("perishableword")}
           </span>
           <button
             className={`fixed top-[600px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
@@ -466,7 +468,7 @@ useEffect(() => {
 
                 
         <button onClick={crisisData ? handleSubmitCrisis : handleSubmit}   className="fixed w-[180px] h-[30px] mt-40 right-[200px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}>
-                  Create Announcement
+          {t("createannouncementtext")}
                   </button>
               
                 

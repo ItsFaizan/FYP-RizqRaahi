@@ -4,9 +4,11 @@ import vector2 from "../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg";
 import location from "../assets/location2.png";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 export const Signup = () => {
 
+  const { t } = useTranslation();
   const Navigate = useNavigate();
   const locationdata = useLocation();
   const data = locationdata.state;
@@ -226,13 +228,13 @@ export const Signup = () => {
           className="text-center font-inter italic text-5xl font-bold leading-[10px] tracking-[0em] text-left  text-green-500"
           style={{ fontSize: "35px" }}
         >
-          SIGN UP
+          {t('signuptext')}
         </h1>
         <p
           className="text-center mt-[10px] text-base"
           style={{ fontSize: "10px" }}
         >
-          To the world of help
+          {t('signupsubtext')}
         </p>
 
         <div className="mt-[15px] px-[20px] ">
@@ -240,7 +242,7 @@ export const Signup = () => {
         <div className="">
           <input
             type="text"
-            placeholder="Name"
+            placeholder={t('snametext')}
             name="name"
             value={name}
             onChange={handleNameChange}
@@ -253,7 +255,7 @@ export const Signup = () => {
         <div className="">
           <input
             type="email"
-            placeholder="Email"
+            placeholder={t('semailtext')}
             name="email"
             value={email}
             onChange={handleEmailChange}
@@ -267,9 +269,9 @@ export const Signup = () => {
         <div className="relative">
           <input
             type="text"
-            placeholder="Location"
+            placeholder={t('slocationtext')}
             name="location"
-            value={locationValue ? "Location Added" : ""}
+            value={locationValue ? t('locationaddedtext') : ""}
             onChange={handleLocationChange}
             className="w-full h-[30px] mb-[10px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
             style={{ fontSize: "10px" }}
@@ -286,7 +288,7 @@ export const Signup = () => {
         <div className="">
           <input
             type="password"
-            placeholder="Password"
+            placeholder={t('passwordtext')}
             name="password"
             value={password}
             onChange={handlePasswordChange}
@@ -299,7 +301,7 @@ export const Signup = () => {
         <div className="">
           <input
             type="password"
-            placeholder="Confirm Password"
+            placeholder={t('sconfirmpasstext')}
             name="cpassword"
             value={cpassword}
             onChange={handleCPasswordChange}
@@ -316,7 +318,7 @@ export const Signup = () => {
         <div className="">
           <input
             type="text"
-            placeholder="Proximity"
+            placeholder={t('sproximity')}
             name="proximity"
             value={proximity}
             onChange={handleProximityChange}
@@ -327,7 +329,7 @@ export const Signup = () => {
 
           <input
             type="text"
-            placeholder="Crisis Capacity (KG)"
+            placeholder={t('scrisis')}
             name="capacity"
             value={capacity}
             onChange={handleCapacityChange}
@@ -348,26 +350,26 @@ export const Signup = () => {
           className="w-full h-[30px] mt-[15px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none"
           style={{ fontSize: "12px" }}
         >
-          SIGN UP
+          {t('signuptext')}
         </button>
         </div>
         <p
           className="text-center mt-[13px] text-base"
           style={{ fontSize: "10px" }}
         >
-          Forgot Password?
+          {t('forgottext')}
         </p>
         <p
           className="text-center mt-[3px] text-base"
           style={{ fontSize: "10px" }}
         >
-          Already have an account? &nbsp;
+          {t('signuplasttext')} &nbsp;
           <Link
             className="text-green-500 font-bold "
             style={{ fontSize: "10px" }}
             to={`/signin`} state={{option: option}}
           >
-            Sign in
+            {t('signuplinktext')}
           </Link>
         </p>
       </div>

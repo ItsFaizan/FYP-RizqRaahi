@@ -6,9 +6,11 @@ import { useLocation , useNavigate } from "react-router-dom";
 import {toast} from 'react-toastify';
 import {requestForToken} from '../firebaseConfig';
 import CrisisInfo from '../components/CrisisInfo';
+import { useTranslation } from 'react-i18next';
 export const SignIn = () => {
   
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const locationdata = useLocation();
   const data = locationdata.state;
 
@@ -118,17 +120,17 @@ export const SignIn = () => {
           className="text-center font-inter italic text-5xl font-bold leading-[10px] tracking-[0em] text-left text-green-500"
           style={{ fontSize: '35px' }}
         >
-          SIGN IN
+          {t('signintext')}
         </h1>
         <p className="text-center mt-[20px] text-base" style={{ fontSize: '10px' }}>
-          To the world of help
+        {t('signinsubtext')}
         </p>
 
         <div className="mt-[70px] px-[20px]">
           <div className="">
             <input
               type="text"
-              placeholder="Email"
+              placeholder={t('emailtext')}
               value={email}
               onChange={handleEmailChange}
               className="w-full h-[30px] mb-[10px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
@@ -138,7 +140,7 @@ export const SignIn = () => {
           <div className="">
             <input
               type="password"
-              placeholder="Password"
+              placeholder={t('passwordtext')}
               value={password}
               onChange={handlePasswordChange}
               className="w-full h-[30px] rounded-md p-[10px] bg-gray-100 focus:outline-none focus:border-blue-500"
@@ -150,16 +152,16 @@ export const SignIn = () => {
             className="w-full h-[30px] mt-[15px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none"
             style={{ fontSize: '12px' }}
           >
-            SIGN IN
+            {t('logintext')}
           </button>
         </div>
         <p className="text-center mt-[13px] text-base" style={{ fontSize: '10px' }}>
-          Forgot Password?
+        {t('forgottext')}
         </p>
         <p className="text-center mt-[3px] text-base" style={{ fontSize: '10px' }}>
-          Don't have an account?{' '}
+        {t('signinlasttext')}{' '}
           <Link className="text-green-500 font-bold" style={{ fontSize: '10px' }} to={`/signup`} state={{option}}>
-            Sign up
+          {t('signinlinktext')}
           </Link>
           <br />
         </p>

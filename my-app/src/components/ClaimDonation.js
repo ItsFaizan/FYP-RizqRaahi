@@ -8,9 +8,12 @@ import Sidebar from './Sidebar/Sidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 
 export const ClaimDonation = () => {
+
+  const { t } = useTranslation();
   const [pickupCompleted, setPickupCompleted] = useState(false);
   const [isReviewModalOpen, setReviewModalOpen] = useState(false);
   const [donation, setDonation] = useState(null);
@@ -216,14 +219,14 @@ export const ClaimDonation = () => {
       <Sidebar/>
     <div className="flex flex-col items-center justify-center mt-4 mx-auto font-[Inter]">
     
-      <h1 className="text-5xl font-semibold text-[#1ECF5A] mb-4">Donation Tracking</h1>
+      <h1 className="text-5xl font-semibold text-[#1ECF5A] mb-4">{t("donationtrackingheading")}</h1>
 
       <div className="flex items-center mt-8">
         <div className="flex flex-col items-center">
           <div className="w-10 h-10 bg-[#1ECF5A] rounded-full flex items-center justify-center text-xl relative">
             <span className="text-white">&#10003;</span>
           </div>
-          <div className="text-xl mt-4 font-semibold text-[#1ECF5A]">Donation Claimed</div>
+          <div className="text-xl mt-4 font-semibold text-[#1ECF5A]">{t("trackingclaimed")}</div>
         </div>
         <div className={`w-96 h-1 ${pickupCompleted ? 'bg-[#1ECF5A]' : 'bg-[#1ECF5A]'} -mt-10 -ml-16`}></div>
 
@@ -231,7 +234,7 @@ export const ClaimDonation = () => {
           <div className={`w-10 h-10 rounded-full ${pickupCompleted ? 'bg-[#1ECF5A]' : 'border-4 border-[#1ECF5A]'} flex items-center justify-center text-2xl relative`}>
             <span>{pickupCompleted ? <span className="text-white">&#10003;</span> : '2'}</span>
           </div>
-          <div className={`text-xl mt-4 font-semibold ${pickupCompleted ? 'text-[#1ECF5A]' : 'text-[#1ECF5A]'}`}>Heading to Restaurant</div>
+          <div className={`text-xl mt-4 font-semibold ${pickupCompleted ? 'text-[#1ECF5A]' : 'text-[#1ECF5A]'}`}>{t("trackingheading")}</div>
         </div>
         <div className={`w-96 h-1 ${pickupCompleted ? 'bg-[#1ECF5A]' : 'bg-[#D9D9D9]'} -mt-10 `} style={{ marginLeft: "-5.5rem"}}></div>
 
@@ -239,7 +242,7 @@ export const ClaimDonation = () => {
           <div className={`w-10 h-10 rounded-full ${pickupCompleted ? 'bg-[#1ECF5A]' : 'border-4 border-[#D9D9D9]'} flex items-center justify-center text-2xl relative`}>
             <span>{pickupCompleted ? <span className="text-white">&#10003;</span> : '3'}</span>
           </div>
-          <div className={`text-xl mt-4 font-semibold ${pickupCompleted ? 'text-[#1ECF5A]' : 'text-[#D9D9D9]'}`}>Pickup Complete</div>
+          <div className={`text-xl mt-4 font-semibold ${pickupCompleted ? 'text-[#1ECF5A]' : 'text-[#D9D9D9]'}`}>{t("trackingrating")}</div>
         </div>
       </div>
 
@@ -256,29 +259,29 @@ export const ClaimDonation = () => {
                 size="lg"
                 className="group-hover:text-indigo-800 mr-2 text-green-500"
               />
-        Track Donation
+        {t("trackdonationword")}
         </div>
       </div>
 
       <div className="flex flex-col text-black " style={{ marginLeft: "28rem", marginTop: "-27rem" }}>
         <div className="text-black font-semibold text-2xl mx-auto">{donation?.announcedByRelation.name}</div>
         <div className="w-96 h-8 bg-[#D9D9D9] mt-2 rounded-lg flex items-center justify-center">
-          <span className="text-black text-sm font-semibold">Donation Details</span>
+          <span className="text-black text-sm font-semibold">{t("donationdetailsword")}</span>
         </div>
-        <div className=" font-semibold text-sm mt-4 ml-14">Amount <span className='ml-48'>{donation?.amount}</span></div>
-        <div className=" font-semibold text-sm mt-4 ml-14">Type <span className='ml-52'>{donation?.amountType}</span> </div>
-        <div className=" font-semibold text-sm mt-4 ml-14">Description <span className='ml-44'>{donation?.description}</span></div>
+        <div className=" font-semibold text-sm mt-4 ml-14">{t("amountword")} <span className='ml-48'>{donation?.amount}</span></div>
+        <div className=" font-semibold text-sm mt-4 ml-14">{t("typeword")} <span className='ml-52'>{donation?.amountType}</span> </div>
+        <div className=" font-semibold text-sm mt-4 ml-14">{t("descriptionword")} <span className='ml-44'>{donation?.description}</span></div>
         <div className="w-96 h-0.5 bg-[#D9D9D9] mt-6"></div>
 
         <div className="flex justify-between mt-4">
         <div className={`w-20 h-8 ${donation?.isFresh ? 'bg-[#1ECF5A]' : 'bg-[#e82929]'} text-white rounded-lg flex items-center justify-center`}>
-            <span>Fresh</span>
+            <span>{t("freshword")}</span>
           </div>
           <div className={`w-24 h-8 ${donation?.isPerishable ? 'bg-[#1ECF5A]' : 'bg-[#e82929]'} text-white rounded-lg flex items-center justify-center`}>
-            <span>Perishable</span>
+            <span>{t("cookedword")}</span>
           </div>
-          <div className={`w-20 h-8 ${donation?.isCooked ? 'bg-[#1ECF5A]' : 'bg-[#e82929]'} text-white rounded-lg flex items-center justify-center`}>
-            <span>Cooked</span>
+          <div className={`w-28 h-8 ${donation?.isCooked ? 'bg-[#1ECF5A]' : 'bg-[#e82929]'} text-white rounded-lg flex items-center justify-center`}>
+            <span>{t("perishableword")}</span>
           </div>
         </div>
 

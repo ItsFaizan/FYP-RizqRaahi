@@ -6,9 +6,12 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
+import { useTranslation } from "react-i18next";
 
 
 export const AdminSignup = () => {
+
+  const { t } = useTranslation();
   const Navigate = useNavigate();
   const [id, setID] = useState('');
   const [email, setEmail] = useState(''); 
@@ -207,13 +210,13 @@ export const AdminSignup = () => {
           className="text-center font-inter italic text-5xl font-bold leading-[10px] tracking-[0em] text-left  text-[#1ECF5A]"
           style={{ fontSize: "35px" }}
         >
-          SIGN UP
+          {t("adminapptext")}
         </h1>
         <p
           className="text-center mt-[8px] text-base"
           style={{ fontSize: "10px" }}
         >
-          To the world of help
+          {t("adminappsubtext")}
         </p>
 
         <div className="mt-[4px] px-[20px] ">
@@ -221,7 +224,7 @@ export const AdminSignup = () => {
         <div className="">
           <input
             type="text"
-            placeholder="UserID"
+            placeholder={t("useridtext")}
             name="id"
             value={id}
             onChange={(text) => setID(text.target.value)}
@@ -234,7 +237,7 @@ export const AdminSignup = () => {
         <div className="">
           <input
             type="email"
-            placeholder="Email"
+            placeholder={t("emailtext")}
             name="email"
             value={email}
             onChange={(text) => setEmail(text.target.value)}
@@ -245,7 +248,7 @@ export const AdminSignup = () => {
         </div>
 
         <div className="">
-      <p className="text-sm text-[#1ECF5A] font-semibold">Upload proof, e.g. employee Card etc</p>
+      <p className="text-sm text-[#1ECF5A] font-semibold">{t("adminapppictext")}</p>
       <div className="flex mt-1 mx-24">
         {[...Array(2)].map((_, index) => (
           <div key={index} className="mr-2 relative bg-transparent border-2 px-6 py-4 rounded-md">
@@ -337,7 +340,7 @@ export const AdminSignup = () => {
         <div className=" mt-2">
           <input
             type="password"
-            placeholder="Password"
+            placeholder={t("passwordtext")}
             name="password"
             value={password}
             onChange={(text) => setPassword(text.target.value)}
@@ -350,7 +353,7 @@ export const AdminSignup = () => {
         <div className="">
           <input
             type="password"
-            placeholder="Confirm Password"
+            placeholder={t("sconfirmpasstext")}
             name="cpassword"
             value={cpass}
             onChange={(text) => setCpass(text.target.value)}
@@ -367,20 +370,20 @@ export const AdminSignup = () => {
           className="w-full h-[30px] mt-[2px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none"
           style={{ fontSize: "12px" }}
         >
-          SIGN UP
+          {t("adminappsubmittext")}
         </button>
         </div>
         <p
           className="text-center mt-[3px] text-base"
           style={{ fontSize: "10px" }}
         >
-          Already have an account? &nbsp;
+          {t("adminapplasttext")} &nbsp;
           <Link
             className="text-[#1ECF5A] font-bold "
             style={{ fontSize: "10px" }}
              to={`/adminlogin`} 
           >
-            Sign in
+            {t("adminapplink")}
           </Link>
         </p>
       </div>

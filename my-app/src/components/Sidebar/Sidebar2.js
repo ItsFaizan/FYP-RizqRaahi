@@ -5,11 +5,30 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import vector2 from '../../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg';
 import './mainmap.css';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import languageur from "../../assets/language-ur.png"
+import languageen from "../../assets/language-en.png"
+import { useTranslation } from 'react-i18next';
 
 
 library.add(fas);
 
 const Sidebar2 = () => {
+
+  const { t, i18n } = useTranslation();
+  const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
+
+const handleLanguageSwitch = () => {
+  if (currentLanguage === "en") {
+    i18n.changeLanguage("ur");
+    setCurrentLanguage("ur");
+  } 
+  else 
+  {
+    i18n.changeLanguage("en");
+    setCurrentLanguage("en");
+  }
+};
+
   const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
   const locationdata = useLocation();
@@ -111,7 +130,7 @@ const Sidebar2 = () => {
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
               >
-                Home
+                {t('drawerHome')}
               </span>
             </span>
           </li>
@@ -133,7 +152,7 @@ const Sidebar2 = () => {
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
               >
-                Chat
+                {t('chatword')}
               </span>
             </span>
           </li>
@@ -153,7 +172,7 @@ const Sidebar2 = () => {
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
               >
-                Donations
+                {t('donationsword')}
               </span>
             </span>
           </li>
@@ -173,7 +192,7 @@ const Sidebar2 = () => {
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
               >
-                Crisis donation
+                {t('crisisdonotext')}
               </span>
             </span>
           </li>
@@ -193,7 +212,48 @@ const Sidebar2 = () => {
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
               >
-                Sign Out
+                {t('drawerSignout')}
+              </span>
+            </span>
+          </li>
+
+          <li
+            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            onClick={() => 
+            {
+              
+              if (isExpanded)
+              {
+                handleLanguageSwitch();
+              }
+              else
+              {
+                setIsExpanded(true)
+              }
+            }
+
+            }
+          >
+            <span  className="group-hover:bg-indigo-50 flex items-center w-full">
+              {isExpanded ? (
+                <img
+                  src={currentLanguage === 'en' ? languageen : languageur}
+                  alt=""
+                  className="h-8 w-24 mr-2"
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon="language"
+                  size="xl"
+                  className="group-hover:text-indigo-800 mr-2 text-green-500"
+                />
+              )}
+              <span
+                className={`transition-all group-hover:bg-indigo-50 mr-2 ${
+                  isExpanded ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'
+                }`}
+              >
+                {t('switchlanguagetext')}
               </span>
             </span>
           </li>
