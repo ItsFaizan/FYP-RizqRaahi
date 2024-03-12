@@ -6,7 +6,7 @@ import image4 from "../../assets/5526457-removebg-preview.png"
 import image5 from "../../assets/pngtree-cross-platform-accessibility-concept-icon-app-notion-mobile-vector-png-image_12551317-removebg-preview.png"
 export const About = () => {
   return (
-    <div className="text-center font-[Inter]">
+    <div id="about" className="text-center font-[Inter]">
   <h2 className="text-5xl font-bold mb-16 text-[#1ECF5A] mt-16">What We Provide</h2>
 
   <div className="flex  space-x-8">
