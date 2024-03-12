@@ -6,7 +6,7 @@ import orange from "../../assets/orangecircle.svg"
 import purple from "../../assets/purplecircle.svg"
 export const Solution = () => {
   return (
-    <div className="flex items-center font-[Inter] -mt-40 ">
+    <div id="overview" className="flex items-center font-[Inter] -mt-40 ">
    
     <div className="w-1/2 ml-20">
     <div className="w-16 h-1 bg-[#1ECF5A] ml-1 mb-5"></div>
