@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../assets/Logo-removebg-preview.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -62,6 +62,17 @@ export default function NavbarWeb() {
 
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setNav(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <div className="relative w-full h-[80px] flex justify-between items-center px-4 text-black font-[Inter]">
       <div className="flex items-center">
@@ -74,7 +85,7 @@ export default function NavbarWeb() {
         />
       </div>
 
-      <ul className="hidden md:flex font-medium space-x-8">
+      <ul className="hidden lg:flex font-medium space-x-8">
         <li className="hover:text-[#1ECF5A]">
           <button onClick={scrollToHome} duration={500}>
             {t("drawerHome")}
@@ -119,7 +130,7 @@ export default function NavbarWeb() {
         </li>
       </ul>
 
-      <div onClick={handleClick} className="md:hidden z-10">
+      <div onClick={handleClick} className="lg:hidden z-10">
         {!nav ? <FaBars /> : <FaTimes />}
       </div>
 
@@ -127,7 +138,7 @@ export default function NavbarWeb() {
         className={
           !nav
             ? "hidden"
-            : "absolute top-0 left-0 w-full h-screen bg-white flex flex-col justify-center items-center"
+            : "absolute top-20 left-0 w-full h-screen bg-white flex flex-col justify-center items-center z-20 lg:hidden"
         }
       >
         <li className="py-6 text-4xl hover:text-[#1ECF5A]">
