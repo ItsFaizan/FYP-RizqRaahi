@@ -7,12 +7,12 @@ import purple from "../../assets/purplecircle.svg"
 export const Solution = () => {
   return (
     <div id="overview" className="flex flex-col md:flex-row items-center font-[Inter] md:-mt-40 mt-40 2xl:max-w-[1440px] 2xl:mx-auto ">
-    <div className="w-full md:w-1/2 sm:ml-20 ml-8 sm:mr-0 mr-4">
+    <div className="w-full md:w-1/2 lg:ml-20 md:ml-4 ml-12 sm:mr-0 mr-4">
       <div className="w-16 h-1 bg-[#1ECF5A] ml-1 mb-5 "></div>
       <h2 className="text-3xl font-bold mt-4 md:mt-0">The ultimate hunger crisis<br/> solution for you</h2>
       <p className="mt-4 text-gray-600 text-md leading-tight">While we are committed to alleviating hunger in Pakistan,<br /> we believe our application can be a model for other <br/>countries to reduce food problems and enhance crisis <br/>management. Governments can utilize FoodConnect to<br/>  optimize resources and reduce disaster-related costs.</p>
       <p className='text-[#1ECF5A] mt-4 font-medium'>Join the RizqRaahi community </p>
-      <img src={arrow} alt='1' className='ml-0 md:ml-60 -mt-5 hidden lg:inline-block'/>
+      <img src={arrow} alt='1' className='ml-0 md:ml-60 -mt-12 hidden lg:inline-block'/>
     </div>
 
     <div className="w-full md:w-1/2">
