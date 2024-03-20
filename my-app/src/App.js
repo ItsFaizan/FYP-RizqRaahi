@@ -48,8 +48,8 @@ function App() {
     <NotificationListener />
     <Router>
         <Routes>
-          {/* <Route path='/' element={<AdminCreation/>} ></Route> <Overview/><Solution/><About/><Work/><FAQ/>*/}
-          <Route path="/" element={<div><NavbarWeb /><LandingPageHome/></div>} />
+          {/* <Route path='/' element={<AdminCreation/>} ></Route> <Work/><FAQ/>*/}
+          <Route path="/" element={<div><NavbarWeb /><LandingPageHome/><Overview/> <Solution/><About/></div>} />
           <Route path="/donationAnnouncement" element={<div><Navbar/><Home /></div>} />
           <Route path="/signin" element={<div><SignIn/></div>} />
           <Route path="/signup" element={<div><Signup /></div>} />

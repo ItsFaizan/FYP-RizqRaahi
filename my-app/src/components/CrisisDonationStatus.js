@@ -91,8 +91,9 @@ export const CrisisDonationStatus = () => {
       ) : null}
   
       {isInfo ? (
-        <div className="mx-auto">
-          <p>No Uncompleted Crisis Donations</p>
+        
+         <div className="bg-green p-4 mb-4 rounded-md shadow-md mx-auto my-72 ">
+         <p className="text-white font-medium text-4xl">No Uncompleted Crisis Donations</p>
         </div>
       ) : null}
     </div>

@@ -199,7 +199,7 @@ export const AdminSignup = () => {
   };
 
   return (
-    <div>
+    <div className="font-[Inter]">
       <div className="absolute mx-auto my-[16%] sm:my-[6%]  sm:left-[15%] sm:h-[80%] sm:w-[408px]  md:my-[4%]  md:left-[25%] md:h-[90%] md:w-[408px]  lg:my-[6%]  lg:left-[15%] lg:h-[80%] lg:w-[408px] transform translate(-50%, -50%) w-[100%] h-[100%] bg-white rounded-lg border border-white shadow-md">
         <img
           src={vector2}
@@ -207,13 +207,13 @@ export const AdminSignup = () => {
           className=" -mt-[24px] top-[7px] left-[205px] w-[150px] h-[160px] mx-auto"
         />
         <h1
-          className="text-center font-inter italic text-5xl font-bold leading-[10px] tracking-[0em] text-left  text-[#1ECF5A]"
+          className="text-center text-5xl font-bold leading-[10px] tracking-[0em] text-[#1ECF5A]"
           style={{ fontSize: "35px" }}
         >
           {t("adminapptext")}
         </h1>
         <p
-          className="text-center mt-[8px] text-base"
+          className="text-center mt-[14px] text-base"
           style={{ fontSize: "10px" }}
         >
           {t("adminappsubtext")}
@@ -391,7 +391,7 @@ export const AdminSignup = () => {
       <div className="hidden lg:block fixed top-0 w-[100%] h-[100px] mt-[100px] ml-[-180px]   md:top-[]  lg:left-[79%] flex justify-end items-center">
         <div className="text-[#1ECF5A] mr-8">
           <p
-            className="font-inter text-8xl font-extrabold leading-[17px]  ml-[-50px] text-left text-green"
+            className=" text-8xl font-extrabold leading-[17px] -ml-10 text-left text-green"
             style={{
               fontSize: "80px",
               fontWeight: 800,
