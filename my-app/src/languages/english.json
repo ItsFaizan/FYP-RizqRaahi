@@ -111,7 +111,12 @@
     "claimdonationstext" : "Claim Donations",
     "trackdonationword" : "Track Donation",
     "donationdetailsword" : "Donation Details",
-    "typeword" : "Type"
+    "typeword" : "Type",
+
+    "donationannouncementword" : "Donation Announcement",
+    "claimdonationword" : "Claim Donation",
+    "getrecommendationsword" : "Get Recommendations",
+    "confirmlocationword" : "CONFIRM LOCATION"
 
 
 

@@ -2,18 +2,24 @@ import React, { useEffect } from 'react';
 import '../styles/CustomModal.css'; // Import your CSS file
 import { useTranslation } from 'react-i18next';
 
-export default function CustomModal({
+export default function RecommendationModal({
   visible,
   closeModal,
   tableData,
   textColors,
   buttonLabels,
   onButtonPress,
+  onButtonPressLeftArrow,
+  onButtonPressRightArrow,
+  currentIndex,
+  indexLimit,
+  headerdetails,
 }) {
 
   const { t } = useTranslation();
   const textArray = [t("freshword"), t("perishableword"), t("cookedword")]; 
-  const header= [t("donationdetailsword")];
+  const header= [headerdetails];
+
 
   // Add an event listener to handle clicks outside the modal
   useEffect(() => {
@@ -40,6 +46,43 @@ export default function CustomModal({
           alt="Donation Box"
           className="modal-image"
         />
+            <button
+                style={{
+                    position: 'relative',
+                    top: 10,
+                    right: "40%",
+                    backgroundColor: currentIndex === 0 ? '#999999' : '#33FF57',
+                    padding: 10,
+                    borderRadius: 5,
+                }}
+                disabled={currentIndex === 0}
+                onClick={() => {
+                    if (currentIndex > 0) {
+                        onButtonPressLeftArrow();
+                    }
+                }}
+            >
+                <span style={{ color: 'white', fontWeight: 'bold', textAlign: 'center' }}>&lt;</span>
+            </button>
+
+            <button
+                style={{
+                    position: 'relative',
+                    top: -30,
+                    left: "40%",
+                    backgroundColor: currentIndex === indexLimit - 1 ? '#999999' : '#33FF57',
+                    padding: 10,
+                    borderRadius: 5,
+                }}
+                disabled={currentIndex === indexLimit - 1}
+                onClick={() => {
+                    if (currentIndex < indexLimit - 1) {
+                        onButtonPressRightArrow();
+                    }
+                }}
+            >
+                <span style={{ color: 'white', fontWeight: 'bold', textAlign: 'center' }}>&gt;</span>
+            </button>
         <h2 className="heading">{t("donationannouncementword")}</h2>
 
         <div className="table-container">

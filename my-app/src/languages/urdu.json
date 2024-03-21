@@ -113,7 +113,12 @@
   "claimdonationstext" : "عطیات قبول کریں",
   "trackdonationword" : "عطیہ ٹریکنگ",
   "donationdetailsword" : "تفصیلات",
-  "typeword" : "قسم"
+  "typeword" : "قسم",
+
+  "donationannouncementword" : "عطیات کا اعلان",
+  "claimdonationword" : "عطیات قبول کریں",
+  "getrecommendationsword" : "تجاویز حاصل کریں",
+  "confirmlocationword" : "مقام کی تصدیق کریں"
 
 
 
