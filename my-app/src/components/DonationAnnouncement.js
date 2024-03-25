@@ -311,7 +311,7 @@ useEffect(() => {
 
   
   return (
-    <div className='flex'>
+    <div className='flex font-[Inter]'>
      <Sidebar2/>
       
         <div className="fixed bottom-[10px] left-64 background">

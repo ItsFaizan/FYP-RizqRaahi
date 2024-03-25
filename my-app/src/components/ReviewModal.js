@@ -38,7 +38,7 @@ const ReviewModal = ({ isOpen, onClose, onSubmit  }) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-gray-800 bg-opacity-50">
+    <div className=" font-[Inter] fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-gray-800 bg-opacity-50">
       <div className="bg-white p-4 rounded-lg w-96">
         <h2 className="text-xl font-semibold mb-4 text-center text-[#1ECF5A]">Leave a Review</h2>
         <div className="mb-4">

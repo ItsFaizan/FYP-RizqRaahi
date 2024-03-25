@@ -34,7 +34,7 @@ export default function CustomModal({
 
   return (
     <div className={`modal ${visible ? 'visible' : ''}`}>
-      <div className="modal-container">
+      <div className="modal-container font-[Inter]">
         <img
           src={require('../assets/donationbox.png')}
           alt="Donation Box"

@@ -273,7 +273,7 @@ const formatTimestamp = (timestamp) => {
   };
 
   return (
-    <div className="w-2/3 border flex flex-col">
+    <div className="w-2/3 border flex flex-col font-[Inter]">
       {currentConversation && (
         <div className="py-2 px-3 bg-grey-lighter flex flex-row justify-between items-center bg-green-500">
           <div className="flex items-center ">

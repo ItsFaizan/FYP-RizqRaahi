@@ -92,7 +92,7 @@ export const CrisisManagment = () => {
 
 
   return (
-    <div> 
+    <div className='font-[Inter]'> 
       <div className='flex-1'>
     {crisis ? (
       crisis.map((crisis) => (

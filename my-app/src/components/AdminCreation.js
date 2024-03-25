@@ -79,7 +79,7 @@ export default function AdminCreation() {
 
  
   return (
-    <div className='flex'>
+    <div className='flex font-[Inter]'>
       <AdminSidebar/>
       <div className="fixed bottom-[15px] left-64 background">
         <img src={vector} alt={"Img"} className="w-[580px] h-[420px]" />
