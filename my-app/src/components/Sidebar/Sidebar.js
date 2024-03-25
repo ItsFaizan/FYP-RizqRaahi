@@ -202,6 +202,26 @@ const Sidebar = () => {
 
           <li
             className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            onClick={() => handleNavigateTo('/profile')}
+          >
+            <span  className="group-hover:bg-indigo-50 flex items-center w-full">
+              <FontAwesomeIcon
+                icon="user-circle"
+                size="lg"
+                className="group-hover:text-indigo-800 mr-2 text-green-500"
+              />
+              <span
+                className={`transition-all group-hover:bg-indigo-50 mr-2 ${
+                  isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                }`}
+              >
+                Profile
+              </span>
+            </span>
+          </li>
+
+          <li
+            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             onClick={() => handleNavigateTo('/')}
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full">

@@ -105,6 +105,14 @@ const LocationSelection = () => {
           },
         });
         
+      } else if(screenName === 'UpdateProfile'){
+        navigate(`/update-profile` , {
+          state: {
+            option: option,
+            coordinates: { latitude: selectedLocation.lat, longitude: selectedLocation.lng },
+            
+          },
+        })
       }
       else{
         navigate(`/crisis`, {
