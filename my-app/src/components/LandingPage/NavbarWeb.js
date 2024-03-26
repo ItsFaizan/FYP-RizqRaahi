@@ -53,10 +53,11 @@ export default function NavbarWeb() {
   };
 
   const scrollToFooter = () => {
-    // Scroll to the position of the "About" component
     const aboutElement = document.getElementById("footer");
     if (aboutElement) {
-      aboutElement.scrollIntoView({ behavior: "smooth" });
+      const yOffset = 140; // Adjust this value as needed
+      const y = aboutElement.getBoundingClientRect().top + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
