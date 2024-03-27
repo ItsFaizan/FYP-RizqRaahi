@@ -118,7 +118,17 @@
   "donationannouncementword" : "عطیات کا اعلان",
   "claimdonationword" : "عطیات قبول کریں",
   "getrecommendationsword" : "تجاویز حاصل کریں",
-  "confirmlocationword" : "مقام کی تصدیق کریں"
+  "confirmlocationword" : "مقام کی تصدیق کریں",
+
+  "visualizeanalyticsword" : "تصوراتی تجزیہ",
+  "donationtypepreferenceword" : "عطیات کی قسم کی ترجیح",
+  "fooddonatedinactivemonths" : "فعال مہینوں میں دی گئی عطیات",
+  "interactionratingword" : "تعلقاتی درجہ بندی فی فعال مہینہ",
+  "donationratingword" : "عطیات کی درجہ بندی فی فعال مہینہ",
+  "averageratingword" : "اوسط درجہ بندی فی فعال مہینہ",
+  "donationscollectedword" : "حاصل کردہ عطیات فی فعال مہینہ",
+  "restaurantsandassignedratingsword" : "ریسٹورانٹس اور منصوب کردہ درجہ بندیاں",
+  "timesinteractedword" : "ریسٹورانٹس سے عطیات کے حصول کی تعداد"
 
 
 

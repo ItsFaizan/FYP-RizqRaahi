@@ -35,6 +35,7 @@ import ApplicationManagement from './components/ApplicationManagement';
 import { CrisisManagment } from './components/CrisisManagment';
 import AdminSidebar from './components/Sidebar/AdminSidebar';
 import SubAdminSidebar from './components/Sidebar/SubAdminSidebar';
+import Analytics from './components/Analytics';
 
 
 
@@ -60,6 +61,7 @@ function App() {
           <Route path="/MainMap" element={<div><MainMap /></div>} />
           <Route path="/deliverytracker" element={<div><DeliveryTracker/></div>} />
           <Route path="/claimdonation" element={<div><ClaimDonation/></div>} />
+          <Route path="/analytics" element={<div><Analytics/></div>} />
           <Route path="/chats" element={<div><Conversations/></div>} />
           <Route path="/crisis" element={<div><Navbar/><AdminSidebar/><Crisis/></div>} />
           <Route path="/subadmincrisis" element={<div><Navbar/><SubAdminSidebar/><Crisis/></div>} />

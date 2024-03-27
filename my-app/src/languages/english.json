@@ -116,7 +116,17 @@
     "donationannouncementword" : "Donation Announcement",
     "claimdonationword" : "Claim Donation",
     "getrecommendationsword" : "Get Recommendations",
-    "confirmlocationword" : "CONFIRM LOCATION"
+    "confirmlocationword" : "CONFIRM LOCATION",
+
+    "visualizeanalyticsword" : "Visualize Analytics",
+    "donationtypepreferenceword" : "Donation Type Preference",
+    "fooddonatedinactivemonths" : "Food Donated in Active Months",
+    "interactionratingword" : "Interaction Rating Per Active Month",
+    "donationratingword" : "Donation Rating Per Active Month",
+    "averageratingword" : "Average Rating Per Active Month",
+    "donationscollectedword" : "Donations Collected Per Active Month",
+    "restaurantsandassignedratingsword" : "Restaurants and Assigned Ratings",
+    "timesinteractedword" : "Times Interacted with Restaurants"
 
 
 
