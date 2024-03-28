@@ -63,10 +63,10 @@ const Prediction = () => {
         className="h-full min-h-screen w-half bg-white pt-12 p-4 mb-20"
         style={{ marginLeft: "4rem" }}
       >
-          <p className="ml-[450px] font-bold text-5xl mb-8 text-green-500">{t("donationpredictionword")}</p>
+          <p className="ml-[450px] font-bold text-5xl mb-8 text-green">{t("donationpredictionword")}</p>
         <div className="container mx-auto cursor-pointer">
           <div className="card bg-white rounded-lg shadow-md mb-6">
-            <div className="bg-green-500 text-white px-4 py-2 rounded-t-md">
+            <div className="bg-green text-white px-4 py-2 rounded-t-md">
               <h1 className="text-lg font-bold">{t("disclaimerword")}</h1>
             </div>
             <div className="p-4">
@@ -78,9 +78,9 @@ const Prediction = () => {
         {isLoading ? (
   <>
   <div className="flex justify-center items-center h-full z-100000 mx-32">
-    <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-green-600"></div> 
+    <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-green"></div> 
   </div>
-   <p className="text-xl font-medium text-green-500 ml-[480px]">{t("donationpredictiontext")}</p>
+   <p className="text-xl font-medium text-green ml-[480px]">{t("donationpredictiontext")}</p>
    </>
 ) : (
 
@@ -106,11 +106,11 @@ const Prediction = () => {
                 </h1>
                 <p className="px-2 text-gray-500 mb-5 lg:px-14">{emails[i]}</p>
                 <div class="flex justify-center flex-wrap mb-9">
-                  <div class="bg-green-500 text-white px-2 py-2 rounded-md mr-4 mb-4">
+                  <div class="bg-green text-white px-2 py-2 rounded-md mr-4 mb-4">
                     <h3 class="font-bold">{t("givendonationsword")}</h3>
                     <p>{totaldonations[i]}</p>
                   </div>
-                  <div class="bg-green-500 text-white px-4 py-2 rounded-md mb-4">
+                  <div class="bg-green text-white px-4 py-2 rounded-md mb-4">
                     <h3 class="font-bold">{t("nextweekpredictionword")}</h3>
                     <p>{Math.round(predictiondata[i])} KG</p>
                   </div>

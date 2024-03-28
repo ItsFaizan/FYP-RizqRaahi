@@ -75,7 +75,7 @@ export const CrisisManagment = () => {
 
     const calculateProgressBarColor = (percentage) => {
         if (percentage >= 75) {
-          return "bg-green-500"; // Green
+          return "bg-green"; // Green
         } else if (percentage >= 50) {
           return "bg-yellow-500"; // Yellow
         } else {
@@ -121,7 +121,7 @@ export const CrisisManagment = () => {
   
           <button
             onClick={() => handleResolveCrisis(crisis.id)}
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mx-40 mt-4"
+            className="bg-green hover:bg-green text-white font-bold py-2 px-4 rounded mx-40 mt-4"
           >
             Resolve Crisis
           </button>
@@ -130,8 +130,8 @@ export const CrisisManagment = () => {
     ) : null}
   
     {isInfo ? (
-      <div className="bg-green-100 p-4 mb-4 rounded-md shadow-md">
-        <p className="text-green-700">No Unresolved Crisis Situation</p>
+      <div className="bg-green p-4 mb-4 rounded-md shadow-md">
+        <p className="text-white">No Unresolved Crisis Situation</p>
       </div>
     ) : null}
     </div>

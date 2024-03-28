@@ -144,7 +144,7 @@ export const UpdateProfile = () => {
   
 
   const renderStatItem = (item, index) => (
-    <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer transition-transform duration-300 transform hover:scale-105 bg-gray-200 hover:shadow-2xl" key={index}>
+    <div className="bg-green rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer transition-transform duration-300 transform hover:scale-105 hover:shadow-2xl" key={index}>
       <div className="text-center text-white">{item.value}</div>
       <div className="text-center text-white">{item.category}</div>
     </div>
@@ -166,7 +166,7 @@ export const UpdateProfile = () => {
                  </>
               )}
       <div className="container mx-auto flex flex-col items-center mt-2">
-        <div className="profileContainer mt-8 bg-green-500 rounded-lg shadow-lg p-20 mb-10 w-full lg:w-3/4 xl:w-2/3 ">
+        <div className="profileContainer mt-8 bg-green rounded-lg shadow-lg p-20 mb-10 w-full lg:w-3/4 xl:w-2/3 ">
          
           <div className="bg-white rounded-lg shadow-lg p-8 mb-10 ">
             <img className="profilePhoto rounded-full w-24 h-24 mb-4 mx-auto transform hover:rotate-3 hover:perspective-1000 hover:scale-105 transition duration-300" src={userType === 'NGO' ? ngoIcon : donorIcon} alt="Profile" />
@@ -269,7 +269,7 @@ export const UpdateProfile = () => {
           </div>
           <hr className="border-t border-gray-300 my-4" />
           <button 
-            className="buttonres block w-40 bg-green-500 rounded-md text-white py-3 mt-8 mx-auto text-center hover:bg-green-900 hover:shadow-2x1"
+            className="buttonres block w-40 bg-green rounded-md text-white py-3 mt-8 mx-auto text-center hover:bg-green hover:shadow-2x1"
             onClick={handleSaveChanges}
           >
             Save Changes

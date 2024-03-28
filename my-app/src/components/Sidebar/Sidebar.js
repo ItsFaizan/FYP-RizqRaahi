@@ -157,7 +157,7 @@ const Sidebar = () => {
                     <FontAwesomeIcon
                       icon="home"
                       size="lg"
-                      className="group-hover:text-indigo-800 mr-2 text-green-500"
+                      className="group-hover:text-indigo-800 mr-2 text-green"
                     />
                     <span
                       className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -182,7 +182,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon="comment"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -203,7 +203,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon="fa-solid fa-person-circle-exclamation"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -225,7 +225,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon="fa-solid fa-handshake"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -239,6 +239,27 @@ const Sidebar = () => {
           </li>
 
           <li
+            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            onClick={() => handleNavigateTo('/analytics')}
+          >
+            <span  className="group-hover:bg-indigo-50 flex items-center w-full">
+              <FontAwesomeIcon
+                icon="chart-simple"
+                size="lg"
+                className="group-hover:text-indigo-800 mr-2 text-green"
+              />
+              <span
+                className={`transition-all group-hover:bg-indigo-50 mr-2 ${
+                  isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                }`}
+                style={{ whiteSpace: 'nowrap' }}
+              >
+                {t('visualizeanalyticsword')}
+              </span>
+            </span>
+          </li>
+
+          <li
             className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             onClick={() => handleNavigateTo('/profile')}
           >
@@ -246,7 +267,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon="user-circle"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -266,7 +287,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                icon="lightbulb"
                 size="lg"
-                className="group-hover:text-indigo-800 ml-0.5  text-green-500"
+                className="group-hover:text-indigo-800 ml-0.5  text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 ml-3 ${
@@ -287,7 +308,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon="power-off"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -328,7 +349,7 @@ const Sidebar = () => {
                 <FontAwesomeIcon
                   icon="language"
                   size="xl"
-                  className="group-hover:text-indigo-800 mr-2 text-green-500"
+                  className="group-hover:text-indigo-800 mr-2 text-green"
                 />
               )}
               <span
@@ -357,7 +378,7 @@ const Sidebar = () => {
                   <FontAwesomeIcon
                     icon="home"
                     size="lg"
-                    className="group-hover:text-indigo-800 mr-2 text-green-500"
+                    className="group-hover:text-indigo-800 mr-2 text-green"
                   />
                   <span
                     className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -381,7 +402,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon="comment"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -402,7 +423,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon="fa-solid fa-person-circle-exclamation"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -424,7 +445,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon="fa-solid fa-handshake"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -445,7 +466,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon="chart-simple"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -466,7 +487,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon="user-circle"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -487,7 +508,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                icon="lightbulb"
                 size="lg"
-                className="group-hover:text-indigo-800 ml-0.5  text-green-500"
+                className="group-hover:text-indigo-800 ml-0.5  text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 ml-3 ${
@@ -508,7 +529,7 @@ const Sidebar = () => {
               <FontAwesomeIcon
                 icon="power-off"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -549,7 +570,7 @@ const Sidebar = () => {
                 <FontAwesomeIcon
                   icon="language"
                   size="xl"
-                  className="group-hover:text-indigo-800 mr-2 text-green-500"
+                  className="group-hover:text-indigo-800 mr-2 text-green"
                 />
               )}
               <span

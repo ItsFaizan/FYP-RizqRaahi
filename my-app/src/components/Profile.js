@@ -84,7 +84,7 @@ export const Profile = () => {
   };
 
   const renderStatItem = (item, index) => (
-    <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer transition-transform duration-300 transform hover:scale-105 bg-gray-200 hover:shadow-2xl" key={index}>
+    <div className="bg-green rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer transition-transform duration-300 transform hover:scale-105 hover:shadow-2xl" key={index}>
       <div className="text-center text-white">{item.value}</div>
       <div className="text-center text-white">{item.category}</div>
     </div>
@@ -108,7 +108,7 @@ export const Profile = () => {
              
       <div className="container mx-auto flex flex-col items-center mt-8">
         
-        <div className="bg-green-500 rounded-lg shadow-lg p-20 mb-10 w-full lg:w-3/4 xl:w-2/3 ">
+        <div className="bg-green rounded-lg shadow-lg p-20 mb-10 w-full lg:w-3/4 xl:w-2/3 ">
           
        
 
@@ -125,15 +125,15 @@ export const Profile = () => {
              
               {userType === 'NGO' ? (
                 <>
-                  <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105">
+                  <div className="bg-green rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105">
                     <div className="text-center text-white">{proximity}</div>
                     <div className="text-center text-white">{t("proximityword")}</div>
                   </div>
-                  <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 ">
+                  <div className="bg-green rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 ">
                     <div className="text-center text-white">{capacity}</div>
                     <div className="text-center text-white">{t("capacityword")}</div>
                   </div>
-                  <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 ">
+                  <div className="bg-green rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 ">
                     <MdLocationOn size={30} color="#fff" /> {/* Location icon */}
                     <div className="text-center text-white">{t("locationword")}</div>
                   </div>
@@ -141,7 +141,7 @@ export const Profile = () => {
               ) : ( 
                 <>
                  {data.map((item, index) => renderStatItem(item, index))} 
-                 <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 ">
+                 <div className="bg-green rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 ">
                     <MdLocationOn size={30} color="#fff" /> {/* Location icon */}
                     <div className="text-center text-white">Location</div>
                   </div>
@@ -156,7 +156,7 @@ export const Profile = () => {
        
                 <button
               onClick={handleUpdateProfile}
-              className="block w-40 bg-green-500 rounded-md text-white py-3 mt-8 mx-auto text-center hover:bg-green-900 hover:shadow-2xl"
+              className="block w-40 bg-green rounded-md text-white py-3 mt-8 mx-auto text-center hover:bg-green hover:shadow-2xl"
             >
               {t("UpdateProfile")}
             </button>

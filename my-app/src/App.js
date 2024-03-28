@@ -35,6 +35,7 @@ import ApplicationManagement from './components/ApplicationManagement';
 import { CrisisManagment } from './components/CrisisManagment';
 import AdminSidebar from './components/Sidebar/AdminSidebar';
 import SubAdminSidebar from './components/Sidebar/SubAdminSidebar';
+import { Footer } from './components/LandingPage/Footer';
 import Profile from './components/Profile';
 import UpdateProfile from './components/UpdateProfile';
 import Prediction from './components/Prediction';
@@ -54,7 +55,7 @@ function App() {
     <Router>
         <Routes>
           {/* <Route path='/' element={<AdminCreation/>} ></Route> */}
-          <Route path="/" element={<div><NavbarWeb /><LandingPageHome/><Overview/><Solution/><About/><Work/><FAQ/></div>} />
+          <Route path="/" element={<div><NavbarWeb /><LandingPageHome/><Overview/> <Solution/><About/><Work/><FAQ/><Footer/></div>} />
           <Route path="/donationAnnouncement" element={<div><Navbar/><Home /></div>} />
           <Route path="/signin" element={<div><SignIn/></div>} />
           <Route path="/signup" element={<div><Signup /></div>} />

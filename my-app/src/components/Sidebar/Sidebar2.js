@@ -190,7 +190,7 @@ useEffect(() => {
               <FontAwesomeIcon
                 icon="home"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -213,7 +213,7 @@ useEffect(() => {
               <FontAwesomeIcon
                 icon="comment"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -234,7 +234,7 @@ useEffect(() => {
               <FontAwesomeIcon
                 icon="hand-holding-heart"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -255,7 +255,7 @@ useEffect(() => {
               <FontAwesomeIcon
                 icon="fa-solid fa-handshake"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -276,7 +276,7 @@ useEffect(() => {
               <FontAwesomeIcon
                 icon="chart-simple"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -297,7 +297,7 @@ useEffect(() => {
               <FontAwesomeIcon
                 icon="user-circle"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -318,7 +318,7 @@ useEffect(() => {
               <FontAwesomeIcon
                 icon="power-off"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -359,7 +359,7 @@ useEffect(() => {
                 <FontAwesomeIcon
                   icon="language"
                   size="xl"
-                  className="group-hover:text-indigo-800 mr-2 text-green-500"
+                  className="group-hover:text-indigo-800 mr-2 text-green"
                 />
               )}
               <span
@@ -393,7 +393,7 @@ useEffect(() => {
       <FontAwesomeIcon
         icon="home"
         size="lg"
-        className="group-hover:text-indigo-800 mr-2 text-green-500"
+        className="group-hover:text-indigo-800 mr-2 text-green"
       />
       <span
         className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -416,7 +416,7 @@ useEffect(() => {
       <FontAwesomeIcon
         icon="comment"
         size="lg"
-        className="group-hover:text-indigo-800 mr-2 text-green-500"
+        className="group-hover:text-indigo-800 mr-2 text-green"
       />
       <span
         className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -437,7 +437,7 @@ useEffect(() => {
       <FontAwesomeIcon
         icon="hand-holding-heart"
         size="lg"
-        className="group-hover:text-indigo-800 mr-2 text-green-500"
+        className="group-hover:text-indigo-800 mr-2 text-green"
       />
       <span
         className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -458,7 +458,7 @@ useEffect(() => {
       <FontAwesomeIcon
         icon="fa-solid fa-handshake"
         size="lg"
-        className="group-hover:text-indigo-800 mr-2 text-green-500"
+        className="group-hover:text-indigo-800 mr-2 text-green"
       />
       <span
         className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -479,7 +479,7 @@ useEffect(() => {
               <FontAwesomeIcon
                 icon="chart-simple"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -500,7 +500,7 @@ useEffect(() => {
               <FontAwesomeIcon
                 icon="user-circle"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -521,7 +521,7 @@ useEffect(() => {
       <FontAwesomeIcon
         icon="power-off"
         size="lg"
-        className="group-hover:text-indigo-800 mr-2 text-green-500"
+        className="group-hover:text-indigo-800 mr-2 text-green"
       />
       <span
         className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -562,7 +562,7 @@ useEffect(() => {
         <FontAwesomeIcon
           icon="language"
           size="xl"
-          className="group-hover:text-indigo-800 mr-2 text-green-500"
+          className="group-hover:text-indigo-800 mr-2 text-green"
         />
       )}
       <span

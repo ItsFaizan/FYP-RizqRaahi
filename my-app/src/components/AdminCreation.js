@@ -87,8 +87,8 @@ export default function AdminCreation() {
   
       <div className="fixed top-[150px] right-[90px] w-[410px] h-[520px] bg-white rounded-lg border border-white shadow-md">
         <img src={vector2} alt="Img" className=" mt-[-20px] top-[2px] left-[205px] w-[160px] h-[160px] mx-auto" />
-        <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '30px' }}>Admin Creation</h1>
-        <h1 className="text-center mt-[-10px] font-inter font-semibold text-black-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '16px' }}>Create Rizq Rahi Collaborators</h1>
+        <h1 className="text-center mt-[-28px] font-inter font-semibold text-green text-4xl leading-14 tracking-tight" style={{ fontSize: '30px' }}>Admin Creation</h1>
+        <h1 className="text-center mt-[-10px] font-inter font-semibold text-black text-4xl leading-14 tracking-tight" style={{ fontSize: '16px' }}>Create Rizq Rahi Collaborators</h1>
   
         <div className="mt-[40px] px-[20px]">
           <div className="">
@@ -104,7 +104,7 @@ export default function AdminCreation() {
           <div className="flex space-x-1">
             <div
               className={`w-80 h-8 flex items-center justify-center rounded-l-md cursor-pointer text-xs ${
-                isSuperAdminSelected ? 'bg-green-500' : 'bg-gray-300'
+                isSuperAdminSelected ? 'bg-green' : 'bg-gray-300'
               }`}
               onClick={handleSuperAdminClick}
             >
@@ -112,7 +112,7 @@ export default function AdminCreation() {
             </div>
             <div
               className={`w-80 h-8 flex items-center justify-center rounded-r-md cursor-pointer text-xs ${
-                !isSuperAdminSelected ? 'bg-green-500' : 'bg-gray-300'
+                !isSuperAdminSelected ? 'bg-green' : 'bg-gray-300'
               }`}
               onClick={handleSubAdminClick}
             >
@@ -163,7 +163,7 @@ export default function AdminCreation() {
         <div className="relative">
           <button
             onClick={handleFinalizeAdmin}
-            className="fixed w-[180px] h-[30px] mt-[50px] right-[200px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none"
+            className="fixed w-[180px] h-[30px] mt-[50px] right-[200px] bg-green text-white rounded-lg text-lg font-semibold hover:bg-green focus:outline-none"
           >
             Finalize Admin
           </button>

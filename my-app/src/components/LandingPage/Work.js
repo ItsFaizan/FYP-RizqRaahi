@@ -11,26 +11,26 @@ import image9 from "../../assets/belowArrow.svg"
 
 export const Work = () => {
   return (
-    <div className="text-center font-[Inter]">
+    <div className="text-center font-[Inter] hidden lg:block">
     <h2 className="text-5xl font-bold mb-16 text-[#1ECF5A] mt-16">How We Work</h2>
     <div className="flex items-center justify-center">
-  <div className="flex items-center -mt-24 ">
+  <div className="flex items-center -mt-24 mx-4">
     <div>
-      <img src={image1} alt="1" className='w-20 mt-32' />
+      <img src={image1} alt="1" className='w-32 mt-32' />
       <p className='font-bold'>Restaurant</p>
     </div>
     <div>
       <img src={image7} alt="1" className='w-8 mt-32 ml-4 mr-4' />
     </div>
     <div>
-      <img src={image2} alt="2" className='w-20 mt-40 ' />
-      <p className='-ml-4 font-bold'>Create <br/> Announcement</p>
+      <img src={image2} alt="2" className='w-32 mt-40 ' />
+      <p className='ml-0 font-bold'>Create <br/> Announcement</p>
     </div>
     <div>
       <img src={image7} alt="2arrow" className='w-8 mt-32' />
     </div>
     <div>
-      <img src={image3} alt="3" className='w-28 mt-32' />
+      <img src={image3} alt="3" className='w-48 mt-28' />
       <p className='font-bold -mt-4'>RizqRaahi</p>
     </div>
     <div>
@@ -40,11 +40,11 @@ export const Work = () => {
       <img src={image9} alt="1" className='w-8 mt-72 ' />
     </div>
     <div className='ml-12'>
-      <img src={image4} alt="3" className='w-24 -mt-32 ' />
+      <img src={image4} alt="3" className='w-32 -mt-32 ' />
       <p className='font-bold'>Display on maps</p>
     </div>
     <div className='-ml-28'>
-      <img src={image5} alt="3" className='w-24 mt-96  ' />
+      <img src={image5} alt="3" className='w-32 mt-96  ' />
       <p className='font-bold -ml-8'>Prediction of Donations</p>
     </div>
     <div>
@@ -54,7 +54,7 @@ export const Work = () => {
       <img src={image8} alt="1" className='w-8 mt-80 ' />
     </div>
     <div className='ml-12'>
-      <img src={image6} alt="3" className='w-24 mt-32' />
+      <img src={image6} alt="3" className='w-32 mt-32' />
       <p className='font-bold'>NGOs</p>
     </div>
   </div>

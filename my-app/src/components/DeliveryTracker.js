@@ -185,7 +185,7 @@ const DeliveryTracker = () => {
   </div>
 
   <div className="flex flex-col items-center mt-4 w-3/4"> {/* Added disclaimer container */}
-    <div className="bg-[#1ECF5A] p-4 rounded-lg w-full">
+    <div className="bg-green p-4 rounded-lg w-full">
       <h2 className="text-xl font-semibold mb-2 text-white">{t("disclaimerword")}</h2>
       <p className="text-white">{getStepText()[1]}</p>
     </div>
