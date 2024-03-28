@@ -581,38 +581,6 @@ useEffect(() => {
 
 ) }
 
-        {isExpanded && (
-          <div className="border-t flex p-3">
-            <img
-              src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true"
-              alt=""
-              className="w-10 h-10 rounded-md"
-            />
-           
-            <div className="flex justify-between items-center overflow-hidden transition-all w-52 ml-3">
-              <div className="leading-4">
-                <h4 className="font-semibold">Restaurant</h4>
-                <span className="text-xs text-black-600">From Door to Door</span>
-              </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="h-5 w-5 text-gray-600"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                />
-              </svg>
-            </div>
-
-
-          </div>
-        )}
       </nav>
     </aside>
     </div>
