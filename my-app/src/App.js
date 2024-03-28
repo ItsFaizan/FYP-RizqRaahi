@@ -39,6 +39,7 @@ import Profile from './components/Profile';
 import UpdateProfile from './components/UpdateProfile';
 import Prediction from './components/Prediction';
 import { ToastProvider } from 'react-toast-notifications';
+import Analytics from './components/Analytics';
 
 
 
@@ -64,6 +65,7 @@ function App() {
           <Route path="/MainMap" element={<div><MainMap /></div>} />
           <Route path="/deliverytracker" element={<div><DeliveryTracker/></div>} />
           <Route path="/claimdonation" element={<div><ClaimDonation/></div>} />
+          <Route path="/analytics" element={<div><Analytics/></div>} />
           <Route path="/chats" element={<div><Conversations/></div>} />
           <Route path="/crisis" element={<div><Navbar/><AdminSidebar/><Crisis/></div>} />
           <Route path="/subadmincrisis" element={<div><Navbar/><SubAdminSidebar/><Crisis/></div>} />

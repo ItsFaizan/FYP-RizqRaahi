@@ -47,7 +47,7 @@ export const CrisisDonationStatus = () => {
 
  
   return (
-    <div className="flex">
+    <div className="flex font-[Inter]">
       <Sidebar2/>
       {crisisDonation && crisisDonation.length > 0 ? (
         <div className="flex-1 flex-col items-center justify-center mt-10 font-[Inter]">

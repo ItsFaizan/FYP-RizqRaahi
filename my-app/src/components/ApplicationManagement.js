@@ -127,7 +127,7 @@ export default function ApplicationManagement() {
 
   };
     return(
-        <div className="flex">
+        <div className="flex font-[Inter]">
           <AdminSidebar/>
   {applicants && applicants.length > 0 ? (
     <div className="bg-gray-100 p-4 mx-auto">

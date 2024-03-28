@@ -7,6 +7,7 @@ import Sidebar2 from './Sidebar/Sidebar2';
 import Sidebar from './Sidebar/Sidebar';
 import ngoIcon from '../assets/ngodrawericon.png';
 import donorIcon from '../assets/resdrawericon.png';
+import { useTranslation } from "react-i18next";
 
 export const Profile = () => {
   const [baseinfo, setBaseInfo] = useState({ name: '', email: '' });
@@ -16,6 +17,7 @@ export const Profile = () => {
   const [capacity, setCapacity] = useState('');
   const navigate = useNavigate();
   const [token, setToken] = useState(null);
+  const { t } = useTranslation();
 
 
   useEffect(
@@ -125,15 +127,15 @@ export const Profile = () => {
                 <>
                   <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105">
                     <div className="text-center text-white">{proximity}</div>
-                    <div className="text-center text-white">Proximity</div>
+                    <div className="text-center text-white">{t("proximityword")}</div>
                   </div>
                   <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 ">
                     <div className="text-center text-white">{capacity}</div>
-                    <div className="text-center text-white">Capacity</div>
+                    <div className="text-center text-white">{t("capacityword")}</div>
                   </div>
                   <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 ">
                     <MdLocationOn size={30} color="#fff" /> {/* Location icon */}
-                    <div className="text-center text-white">Location</div>
+                    <div className="text-center text-white">{t("locationword")}</div>
                   </div>
                 </>
               ) : ( 
@@ -156,7 +158,7 @@ export const Profile = () => {
               onClick={handleUpdateProfile}
               className="block w-40 bg-green-500 rounded-md text-white py-3 mt-8 mx-auto text-center hover:bg-green-900 hover:shadow-2xl"
             >
-              Update Profile
+              {t("UpdateProfile")}
             </button>
         </div>
         

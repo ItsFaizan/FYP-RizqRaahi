@@ -112,7 +112,7 @@ export default function Crisis() {
   };
   
   return (
-    <div>
+    <div className='font-[Inter]'>
       
       
         <div className="fixed bottom-[10px] left-72 background">

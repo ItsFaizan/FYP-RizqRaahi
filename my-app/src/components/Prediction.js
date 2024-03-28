@@ -15,8 +15,6 @@ const Prediction = () => {
     const [isReady, setIsReady] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    const disclaimerword = "Please note that the predictions provided here are estimates and may not reflect the actual donations from restaurants. These predictions are intended to give a general idea of what to expect from each restaurant. As restaurants donate more frequently, the predictions will become more accurate over time. We apologize for any inconvenience caused and appreciate your understanding.\n";
-
     const fetchPredictions = async() => {
 
       const token = await localStorage.getItem("authToken");
@@ -65,14 +63,14 @@ const Prediction = () => {
         className="h-full min-h-screen w-half bg-white pt-12 p-4 mb-20"
         style={{ marginLeft: "4rem" }}
       >
-          <p className="ml-[450px] font-bold text-5xl mb-8 text-green-500">Prediction of Donations</p>
+          <p className="ml-[450px] font-bold text-5xl mb-8 text-green-500">{t("donationpredictionword")}</p>
         <div className="container mx-auto cursor-pointer">
           <div className="card bg-white rounded-lg shadow-md mb-6">
             <div className="bg-green-500 text-white px-4 py-2 rounded-t-md">
               <h1 className="text-lg font-bold">{t("disclaimerword")}</h1>
             </div>
             <div className="p-4">
-              <p className="text-gray-700">{disclaimerword}</p>
+              <p className="text-gray-700">{t("disclaimersentence")}</p>
             </div>
           </div>
         </div>
@@ -82,7 +80,7 @@ const Prediction = () => {
   <div className="flex justify-center items-center h-full z-100000 mx-32">
     <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-green-600"></div> 
   </div>
-   <p className="text-xl font-medium text-green-500 ml-[540px]">Predicting Donations For next Week!</p>
+   <p className="text-xl font-medium text-green-500 ml-[480px]">{t("donationpredictiontext")}</p>
    </>
 ) : (
 

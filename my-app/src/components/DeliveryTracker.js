@@ -149,7 +149,7 @@ const DeliveryTracker = () => {
     <>
     
     {donation && (
-      <div className="flex">
+      <div className="flex font-[Inter]">
       <Sidebar2/>
     <div className="bg-white w-full h-full flex flex-col gap-10 items-center justify-center mt-10 ">
       <h1 className="text-5xl font-semibold text-[#1ECF5A] mb-4">{t("donationtrackingheading")}</h1>

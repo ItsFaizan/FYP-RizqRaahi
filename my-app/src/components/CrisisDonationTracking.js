@@ -98,7 +98,7 @@ import Sidebar from './Sidebar/Sidebar';
 
     
   return (
-    <div className="flex">
+    <div className="flex font-[Inter]">
       <Sidebar/>
       {crisisDonation && crisisDonation.length > 0 ? (
         <div  >

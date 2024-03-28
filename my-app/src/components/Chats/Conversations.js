@@ -192,7 +192,7 @@ console.log(`Formatted date: ${formattedTime}`);
   };
 
   return (
-    <div className="bg-white-500 flex" >
+    <div className="bg-white-500 flex  font-[Inter]" >
     {option === "Restaurant"
                 ? <Sidebar2/>
                 : option === "NGO"

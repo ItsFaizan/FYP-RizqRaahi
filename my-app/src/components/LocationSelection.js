@@ -129,7 +129,7 @@ const LocationSelection = () => {
 
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div className='font-[Inter]'  style={{ height: '100vh', width: '100%' }}>
 
       {isLoaded ? 
       (

@@ -45,7 +45,7 @@ const SubAdminSidebar = () => {
   };
 
   return (
-    <div>
+    <div className='font-[Inter]'>
     <aside className="fixed h-full ">
       <nav
         className={`${
