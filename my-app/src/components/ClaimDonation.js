@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import Sidebar from './Sidebar/Sidebar';
 import {toast} from 'react-toastify';
+import vector from '../assets/Kid.jpeg';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -240,16 +241,17 @@ export const ClaimDonation = () => {
           </div>
           <div className={`text-xl mt-4 font-semibold ${pickupCompleted ? 'text-[#1ECF5A]' : 'text-[#1ECF5A]'}`}>Heading to Restaurant</div>
         </div>
-        <div className={`w-96 h-1 ${pickupCompleted ? 'bg-[#1ECF5A]' : 'bg-[#D9D9D9]'} -mt-10 `} style={{ marginLeft: "-5.5rem"}}></div>
+        <div className={`w-96 h-1 ${isInfo ? 'bg-[#1ECF5A]' : 'bg-[#D9D9D9]'} -mt-10 `} style={{ marginLeft: "-5.5rem"}}></div>
 
         <div className="flex flex-col items-center -ml-14">
-          <div className={`w-10 h-10 rounded-full ${pickupCompleted ? 'bg-[#1ECF5A]' : 'border-4 border-[#D9D9D9]'} flex items-center justify-center text-2xl relative`}>
-            <span>{pickupCompleted ? <span className="text-white">&#10003;</span> : '3'}</span>
+          <div className={`w-10 h-10 rounded-full ${isInfo ? 'bg-[#1ECF5A]' : 'border-4 border-[#D9D9D9]'} flex items-center justify-center text-2xl relative`}>
+            <span>{isInfo ? <span className="text-white">&#10003;</span> : '3'}</span>
           </div>
-          <div className={`text-xl mt-4 font-semibold ${pickupCompleted ? 'text-[#1ECF5A]' : 'text-[#D9D9D9]'}`}>Donation Rating</div>
+          <div className={`text-xl mt-4 font-semibold ${isInfo ? 'text-[#1ECF5A]' : 'text-[#D9D9D9]'}`}>Donation Rating</div>
         </div>
       </div>
       <div className="bg-white rounded-lg shadow-md p-6 max-w-lg mx-auto my-8">
+      {/* <div className="flex flex-col"> */}
   <div className="text-lg text-[#1ECF5A] font-semibold mb-4">
     <FontAwesomeIcon
       icon="fa-solid fa-truck"
@@ -261,7 +263,9 @@ export const ClaimDonation = () => {
   <div className="text-black font-semibold text-xl mb-4">
     {donation?.announcedByRelation.name}
   </div>
+  
   <div className="border-b-2 border-[#D9D9D9] mb-6"></div>
+  <img src={vector} alt="Image" className="w-64 h-64 rounded-lg mx-auto" />
   <div className="space-y-4">
   <div class="flex flex-col mt-4 ">
     <div class="font-semibold text-sm">Amount:</div>
@@ -306,12 +310,17 @@ export const ClaimDonation = () => {
     >
       Complete Pickup
     </button>
+    <ReviewModal isOpen={isReviewModalOpen} onClose={closeReviewModal} onSubmit={handleReviewSubmission} />
+    
+
     <button className="border-2 border-[#1ECF5A] text-[#1ECF5A] font-semibold px-4 py-2 rounded-lg" onClick={handlenavigate}>Chat with Restaurant</button>
   </div>
+  </div>
+ 
 
         </div>
       </div>
-    </div>
+    // </div>
   )}
   {!isDonation && (
     <div className="flex">
