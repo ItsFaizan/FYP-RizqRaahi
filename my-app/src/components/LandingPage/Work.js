@@ -24,7 +24,7 @@ export const Work = () => {
     </div>
     <div>
       <img src={image2} alt="2" className='w-32 mt-40 ' />
-      <p className='-ml-4 font-bold'>Create <br/> Announcement</p>
+      <p className='ml-0 font-bold'>Create <br/> Announcement</p>
     </div>
     <div>
       <img src={image7} alt="2arrow" className='w-8 mt-32' />

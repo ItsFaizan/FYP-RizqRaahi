@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef} from "react";
 import vector from "../assets/img1-removebg-preview.png";
-import vector2 from "../assets/_57454385-7184-4a81-b3ca-2734fb9f043e.jpeg";
+import vector2 from "../assets/logo.png";
 import location from "../assets/location2.png";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
@@ -367,7 +367,7 @@ export const AdminSignup = () => {
         
         <button
           onClick={handleSignup}
-          className="w-full h-[30px] mt-[2px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none"
+          className="w-full h-[30px] mt-[2px] bg-green text-white rounded-lg text-lg font-semibold hover:bg-green focus:outline-none"
           style={{ fontSize: "12px" }}
         >
           {t("adminappsubmittext")}
@@ -411,8 +411,8 @@ export const AdminSignup = () => {
         </div>
       </div>
 
-      <div className="hidden lg:block sm:right-[] md:top-[] md:right-[2%] lg:right-[9%] fixed bottom-[25px] right-[80px]">
-        <img src={vector} alt='' className="w-[550px] h-[295px]" />
+      <div className="hidden lg:block sm:right-[] md:top-[] md:right-[2%] lg:right-[12%] fixed bottom-[25px] right-[80px]">
+        <img src={vector} alt='' className="w-auto h-[295px]" />
       </div>
       
       {/* {console.log(formData)} */}

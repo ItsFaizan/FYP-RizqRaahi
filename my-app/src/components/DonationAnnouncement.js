@@ -322,11 +322,11 @@ useEffect(() => {
       <div className="fixed top-[160px] right-[90px] w-[410px] h-[550px] bg-white rounded-lg border border-white shadow-md">
               <img src={vector2} alt="Img" className=" mt-[-28px] top-[2px] left-[205px] w-[160px] h-[160px] mx-auto" />
               {crisisData ? (
-              <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>{t("crisisdonationtext")}</h1>
+              <h1 className="text-center mt-[-28px] font-inter font-semibold text-green text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>{t("crisisdonationtext")}</h1>
               ) : (
-              <h1 className="text-center mt-[-28px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>{t("donationannouncementheading1")}</h1>
+              <h1 className="text-center mt-[-28px] font-inter font-semibold text-green text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>{t("donationannouncementheading1")}</h1>
               )}
-              <h1 className="text-center mt-[-16px] font-inter font-semibold text-green-500 text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>{t("donationannouncementheading2")}</h1>
+              <h1 className="text-center mt-[-16px] font-inter font-semibold text-green text-4xl leading-14 tracking-tight" style={{ fontSize: '27px' }}>{t("donationannouncementheading2")}</h1>
 
               <div className="mt-[10px] px-[20px] ">
 
@@ -346,7 +346,7 @@ useEffect(() => {
                 <div className="flex space-x-1">
         <div
           className={`w-80 h-8 flex items-center justify-center rounded-l-md cursor-pointer text-xs ${
-            isKgSelected ? 'bg-green-500' : 'bg-gray-300'
+            isKgSelected ? 'bg-green' : 'bg-gray-300'
           }`}
           onClick={handleKgClick}
         >
@@ -354,7 +354,7 @@ useEffect(() => {
         </div>
         <div
           className={`w-80 h-8 flex items-center justify-center rounded-r-md cursor-pointer text-xs ${
-            !isKgSelected ? 'bg-green-500' : 'bg-gray-300'
+            !isKgSelected ? 'bg-green' : 'bg-gray-300'
           }`}
           onClick={handleUnitsClick}
         >
@@ -411,7 +411,7 @@ useEffect(() => {
           </span>
           <button
             className={`fixed top-[524px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
-              isFresh ? 'bg-green-500' : 'bg-gray-300'
+              isFresh ? 'bg-green' : 'bg-gray-300'
             }`}
             onClick={handleFreshToggle}
             >
@@ -430,7 +430,7 @@ useEffect(() => {
           </span>
           <button
             className={`fixed top-[562px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
-              isCooked ? 'bg-green-500' : 'bg-gray-300'
+              isCooked ? 'bg-green' : 'bg-gray-300'
             }`}
             onClick={handleCookedToggle}
           >
@@ -449,7 +449,7 @@ useEffect(() => {
           </span>
           <button
             className={`fixed top-[600px] right-[200px] w-16 h-8 rounded-full focus:outline-none ${
-              isPerishable ? 'bg-green-500' : 'bg-gray-300'
+              isPerishable ? 'bg-green' : 'bg-gray-300'
             }`}
             onClick={handlePerishableToggle}
           >
@@ -467,7 +467,7 @@ useEffect(() => {
 
 
                 
-        <button onClick={crisisData ? handleSubmitCrisis : handleSubmit}   className="fixed w-[180px] h-[30px] mt-40 right-[200px] bg-green-500 text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}>
+        <button onClick={crisisData ? handleSubmitCrisis : handleSubmit}   className="fixed w-[180px] h-[30px] mt-40 right-[200px] bg-green text-white rounded-lg text-lg font-semibold hover:bg-green focus:outline-none" style={{ fontSize: '12px' }}>
           {t("createannouncementtext")}
                   </button>
               

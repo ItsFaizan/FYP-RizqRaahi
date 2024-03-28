@@ -212,7 +212,7 @@ export default function Crisis() {
                 ></textarea>
               </div>
    
-        <button className="fixed w-[180px] h-[30px] mt-1 right-[200px] bg-[#1ECF5A] text-white rounded-lg text-lg font-semibold hover:bg-green-600 focus:outline-none" style={{ fontSize: '12px' }}
+        <button className="fixed w-[180px] h-[30px] mt-1 right-[200px] bg-[#1ECF5A] text-white rounded-lg text-lg font-semibold hover:bg-green focus:outline-none" style={{ fontSize: '12px' }}
         onClick={handleCrisisCreation}
         >
                   Issue Crisis Alert

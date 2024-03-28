@@ -101,7 +101,7 @@ const AdminSidebar = () => {
               <FontAwesomeIcon
                 icon="fa-solid fa-triangle-exclamation"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -123,7 +123,7 @@ const AdminSidebar = () => {
               <FontAwesomeIcon
                 icon="fa-solid fa-note-sticky"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -143,7 +143,7 @@ const AdminSidebar = () => {
               <FontAwesomeIcon
                 icon="fa-solid fa-person-circle-check"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -164,7 +164,7 @@ const AdminSidebar = () => {
               <FontAwesomeIcon
                 icon="fa-solid fa-user-plus"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
@@ -184,7 +184,7 @@ const AdminSidebar = () => {
               <FontAwesomeIcon
                 icon="power-off"
                 size="lg"
-                className="group-hover:text-indigo-800 mr-2 text-green-500"
+                className="group-hover:text-indigo-800 mr-2 text-green"
               />
               <span
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
