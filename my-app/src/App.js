@@ -35,6 +35,10 @@ import ApplicationManagement from './components/ApplicationManagement';
 import { CrisisManagment } from './components/CrisisManagment';
 import AdminSidebar from './components/Sidebar/AdminSidebar';
 import SubAdminSidebar from './components/Sidebar/SubAdminSidebar';
+import Profile from './components/Profile';
+import UpdateProfile from './components/UpdateProfile';
+import Prediction from './components/Prediction';
+import { ToastProvider } from 'react-toast-notifications';
 import Analytics from './components/Analytics';
 
 
@@ -45,7 +49,7 @@ function App() {
   return (
     <div> 
 
-   
+   <ToastProvider>
     <NotificationListener />
     <Router>
         <Routes>
@@ -70,6 +74,9 @@ function App() {
           <Route path="/applicationmanagment" element={<div><ApplicationManagement/></div>} />
           <Route path="/crisismanagment" element={<div><Navbar/><div className='flex'><AdminSidebar/></div><CrisisManagment/></div>} />
           <Route path="/subadmincrisismanagment" element={<div><Navbar/><div className='flex'><SubAdminSidebar/></div><CrisisManagment/></div>} />
+          <Route path="/profile" element={<div><Profile/></div>} />
+          <Route path="/update-profile" element={<div><UpdateProfile/></div>} />
+          <Route path="/prediction" element={<div><Prediction/></div>} />
         </Routes>
         <ToastContainer
           position="top-center"
@@ -78,6 +85,7 @@ function App() {
           pauseOnHover={false}
          />
     </Router>
+    </ToastProvider>
     </div>
   );
 }

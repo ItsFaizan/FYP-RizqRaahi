@@ -196,6 +196,7 @@ useEffect(() => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('drawerHome')}
               </span>
@@ -218,6 +219,7 @@ useEffect(() => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('chatword')}
               </span>
@@ -238,6 +240,7 @@ useEffect(() => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('donationsword')}
               </span>
@@ -258,6 +261,7 @@ useEffect(() => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('crisisdonotext')}
               </span>
@@ -266,11 +270,11 @@ useEffect(() => {
 
           <li
             className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
-            onClick={() => handleNavigateTo('/analytics')}
+            onClick={() => handleNavigateTo('/profile')}
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full">
               <FontAwesomeIcon
-                icon="chart-simple"
+                icon="user-circle"
                 size="lg"
                 className="group-hover:text-indigo-800 mr-2 text-green-500"
               />
@@ -278,8 +282,9 @@ useEffect(() => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
-                {t('visualizeanalyticsword')}
+                {t('Profileword')}
               </span>
             </span>
           </li>
@@ -298,6 +303,7 @@ useEffect(() => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('drawerSignout')}
               </span>
@@ -339,6 +345,7 @@ useEffect(() => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('switchlanguagetext')}
               </span>
@@ -371,6 +378,7 @@ useEffect(() => {
         className={`transition-all group-hover:bg-indigo-50 mr-2 ${
           isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
         }`}
+        style={{ whiteSpace: 'nowrap' }}
       >
         {t('drawerHome')}
       </span>
@@ -393,6 +401,7 @@ useEffect(() => {
         className={`transition-all group-hover:bg-indigo-50 mr-2 ${
           isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
         }`}
+        style={{ whiteSpace: 'nowrap' }}
       >
         {t('chatword')}
       </span>
@@ -413,6 +422,7 @@ useEffect(() => {
         className={`transition-all group-hover:bg-indigo-50 mr-2 ${
           isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
         }`}
+        style={{ whiteSpace: 'nowrap' }}
       >
         {t('donationsword')}
       </span>
@@ -433,6 +443,7 @@ useEffect(() => {
         className={`transition-all group-hover:bg-indigo-50 mr-2 ${
           isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
         }`}
+        style={{ whiteSpace: 'nowrap' }}
       >
         {t('crisisdonotext')}
       </span>
@@ -453,12 +464,33 @@ useEffect(() => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('visualizeanalyticsword')}
               </span>
             </span>
           </li>
 
+          <li
+            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            onClick={() => handleNavigateTo('/profile')}
+          >
+            <span  className="group-hover:bg-indigo-50 flex items-center w-full">
+              <FontAwesomeIcon
+                icon="user-circle"
+                size="lg"
+                className="group-hover:text-indigo-800 mr-2 text-green-500"
+              />
+              <span
+                className={`transition-all group-hover:bg-indigo-50 mr-2 ${
+                  isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                }`}
+                style={{ whiteSpace: 'nowrap' }}
+              >
+                {t('Profileword')}
+              </span>
+            </span>
+          </li>
 
   <li
     className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
@@ -474,6 +506,7 @@ useEffect(() => {
         className={`transition-all group-hover:bg-indigo-50 mr-2 ${
           isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
         }`}
+        style={{ whiteSpace: 'nowrap' }}
       >
         {t('drawerSignout')}
       </span>
@@ -515,6 +548,7 @@ useEffect(() => {
         className={`transition-all group-hover:bg-indigo-50 mr-2 ${
           isExpanded ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'
         }`}
+        style={{ whiteSpace: 'nowrap' }}
       >
         {t('switchlanguagetext')}
       </span>

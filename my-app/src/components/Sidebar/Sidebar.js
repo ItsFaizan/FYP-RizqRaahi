@@ -163,6 +163,7 @@ const Sidebar = () => {
                       className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                         isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                       }`}
+                      style={{ whiteSpace: 'nowrap' }}
                     >
                       {t('drawerHome')}
                     </span>
@@ -174,7 +175,7 @@ const Sidebar = () => {
                 <li
           
           onClick={() => handleNavigateTo('/chats')}
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full">
@@ -187,6 +188,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('chatword')}
               </span>
@@ -194,7 +196,7 @@ const Sidebar = () => {
           </li>
 
           <li
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             onClick={() => handleNavigateTo('/claimdonation')}
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full ">
@@ -207,6 +209,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                {t('claimdonationstext')}
               </span>
@@ -214,7 +217,7 @@ const Sidebar = () => {
           </li>
 
           <li
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             // onClick={() => handleNavigateTo('/crisisdonationtracking')}
           >
             <Link
@@ -228,6 +231,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('crisisdonotext')}
               </span>
@@ -235,7 +239,48 @@ const Sidebar = () => {
           </li>
 
           <li
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            onClick={() => handleNavigateTo('/profile')}
+          >
+            <span  className="group-hover:bg-indigo-50 flex items-center w-full">
+              <FontAwesomeIcon
+                icon="user-circle"
+                size="lg"
+                className="group-hover:text-indigo-800 mr-2 text-green-500"
+              />
+              <span
+                className={`transition-all group-hover:bg-indigo-50 mr-2 ${
+                  isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                }`}
+              >
+                {t('profileword')}
+              </span>
+            </span>
+          </li>
+
+          <li
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            onClick={() => handleNavigateTo('/prediction')}
+          >
+            <span  className="group-hover:bg-indigo-50 flex items-center w-full">
+              <FontAwesomeIcon
+               icon="lightbulb"
+                size="lg"
+                className="group-hover:text-indigo-800 ml-0.5  text-green-500"
+              />
+              <span
+                className={`transition-all group-hover:bg-indigo-50 ml-3 ${
+                  isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                }`}
+                style={{ whiteSpace: 'nowrap' }}
+              >
+                {t('Predictionsword')}
+              </span>
+            </span>
+          </li>
+
+          <li
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             onClick={() => handleNavigateTo('/')}
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full">
@@ -248,6 +293,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('drawerSignout')}
               </span>
@@ -289,6 +335,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('switchlanguagetext')}
               </span>
@@ -316,6 +363,7 @@ const Sidebar = () => {
                     className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                       isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                     }`}
+                    style={{ whiteSpace: 'nowrap' }}
                   >
                     {t('drawerHome')}
                   </span>
@@ -339,6 +387,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('chatword')}
               </span>
@@ -359,6 +408,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                {t('claimdonationstext')}
               </span>
@@ -380,6 +430,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('crisisdonotext')}
               </span>
@@ -400,8 +451,51 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('visualizeanalyticsword')}
+              </span>
+            </span>
+          </li>
+
+          <li
+            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            onClick={() => handleNavigateTo('/profile')}
+          >
+            <span  className="group-hover:bg-indigo-50 flex items-center w-full">
+              <FontAwesomeIcon
+                icon="user-circle"
+                size="lg"
+                className="group-hover:text-indigo-800 mr-2 text-green-500"
+              />
+              <span
+                className={`transition-all group-hover:bg-indigo-50 mr-2 ${
+                  isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                }`}
+                style={{ whiteSpace: 'nowrap' }}
+              >
+                {t('Profileword')}
+              </span>
+            </span>
+          </li>
+
+          <li
+            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            onClick={() => handleNavigateTo('/prediction')}
+          >
+            <span  className="group-hover:bg-indigo-50 flex items-center w-full">
+              <FontAwesomeIcon
+               icon="lightbulb"
+                size="lg"
+                className="group-hover:text-indigo-800 ml-0.5  text-green-500"
+              />
+              <span
+                className={`transition-all group-hover:bg-indigo-50 ml-3 ${
+                  isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                }`}
+                style={{ whiteSpace: 'nowrap' }}
+              >
+                {t('Predictionsword')}
               </span>
             </span>
           </li>
@@ -420,6 +514,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('drawerSignout')}
               </span>
@@ -461,6 +556,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('switchlanguagetext')}
               </span>
@@ -472,35 +568,7 @@ const Sidebar = () => {
             </ul>
           )}
 
-          {isExpanded && (
-            <div className="border-t flex p-3">
-              <img
-                src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true"
-                alt=""
-                className="w-10 h-10 rounded-md"
-              />
-              <div className="flex justify-between items-center overflow-hidden transition-all w-52 ml-3">
-                <div className="leading-4">
-                  <h4 className="font-semibold">NGO</h4>
-                  <span className="text-xs text-black-600">Human to Human</span>
-                </div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="h-5 w-5 text-gray-600"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                  />
-                </svg>
-              </div>
-            </div>
-          )}
+          
         </nav>
       </aside>
     </div>

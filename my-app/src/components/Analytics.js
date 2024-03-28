@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import Sidebar from './Sidebar/Sidebar';
+import Sidebar2 from './Sidebar/Sidebar2';
 import { useTranslation } from 'react-i18next';
 import { Line, Pie, Bar, Doughnut } from 'react-chartjs-2';
 import { Chart, ArcElement, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement, Filler } from 'chart.js';
+
 
 Chart.register(ArcElement, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement, Filler);
 
@@ -328,7 +330,15 @@ const Analytics = () => {
 
   return (
     <div className='flex font-[Inter]'>
-        <Sidebar />
+          {type === 'NGO' ? (
+                <>
+      <Sidebar />
+      </>
+              ) : ( 
+                <>
+      <Sidebar2 />
+                 </>
+              )}
         {loading ? (
         <div>Loading...</div>
       ) : (
