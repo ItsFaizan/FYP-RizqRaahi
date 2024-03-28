@@ -118,7 +118,7 @@ const Sidebar = () => {
 
         <ul className="flex-1 px-3">
           <li
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             onClick={() => handleNavigateTo('/MainMap')}
           >
             <span className="group-hover:bg-indigo-50 flex items-center w-full">
@@ -140,7 +140,7 @@ const Sidebar = () => {
           <li
           
           onClick={() => handleNavigateTo('/chats')}
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full">
@@ -160,7 +160,7 @@ const Sidebar = () => {
           </li>
 
           <li
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             onClick={() => handleNavigateTo('/claimdonation')}
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full ">
@@ -173,6 +173,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                {t('claimdonationstext')}
               </span>
@@ -180,7 +181,7 @@ const Sidebar = () => {
           </li>
 
           <li
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             // onClick={() => handleNavigateTo('/crisisdonationtracking')}
           >
             <Link
@@ -194,6 +195,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('crisisdonotext')}
               </span>
@@ -201,7 +203,7 @@ const Sidebar = () => {
           </li>
 
           <li
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             onClick={() => handleNavigateTo('/profile')}
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full">
@@ -221,7 +223,27 @@ const Sidebar = () => {
           </li>
 
           <li
-            className="relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
+            onClick={() => handleNavigateTo('/prediction')}
+          >
+            <span  className="group-hover:bg-indigo-50 flex items-center w-full">
+              <FontAwesomeIcon
+               icon="lightbulb"
+                size="lg"
+                className="group-hover:text-indigo-800 ml-0.5  text-green-500"
+              />
+              <span
+                className={`transition-all group-hover:bg-indigo-50 ml-3 ${
+                  isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                }`}
+              >
+                Prediction
+              </span>
+            </span>
+          </li>
+
+          <li
+            className="relative flex items-center py-2 px-3 my-5 font-medium rounded-md cursor-pointer transition-colors group hover:bg-indigo-50 text-gray-600"
             onClick={() => handleNavigateTo('/')}
           >
             <span  className="group-hover:bg-indigo-50 flex items-center w-full">
@@ -234,6 +256,7 @@ const Sidebar = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('drawerSignout')}
               </span>

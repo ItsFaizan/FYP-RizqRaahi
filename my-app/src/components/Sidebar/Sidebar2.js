@@ -191,6 +191,7 @@ const handleLanguageSwitch = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('crisisdonotext')}
               </span>
@@ -231,6 +232,7 @@ const handleLanguageSwitch = () => {
                 className={`transition-all group-hover:bg-indigo-50 mr-2 ${
                   isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}
+                style={{ whiteSpace: 'nowrap' }}
               >
                 {t('drawerSignout')}
               </span>

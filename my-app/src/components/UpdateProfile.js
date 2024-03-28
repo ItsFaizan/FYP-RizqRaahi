@@ -9,6 +9,7 @@ import map2 from '../assets/map2.png';
 import LocationSelection from './LocationSelection';
 import { MdLocationOn } from 'react-icons/md';
 import {  useLocation, useNavigate } from 'react-router-dom';
+import Sidebar  from './Sidebar/Sidebar';
 
 export const UpdateProfile = () => {
   const navigate = useNavigate();
@@ -144,8 +145,8 @@ export const UpdateProfile = () => {
 
   const renderStatItem = (item, index) => (
     <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer transition-transform duration-300 transform hover:scale-105 bg-gray-200 hover:shadow-2xl" key={index}>
-      <div className="text-center">{item.value}</div>
-      <div className="text-center">{item.category}</div>
+      <div className="text-center text-white">{item.value}</div>
+      <div className="text-center text-white">{item.category}</div>
     </div>
   );
   
@@ -155,7 +156,15 @@ export const UpdateProfile = () => {
 
   return (
     <div className="flex">
-      <Sidebar2/>
+       {userType === 'NGO' ? (
+                <>
+      <Sidebar />
+      </>
+              ) : ( 
+                <>
+      <Sidebar2 />
+                 </>
+              )}
       <div className="container mx-auto flex flex-col items-center mt-2">
         <div className="profileContainer mt-8 bg-green-500 rounded-lg shadow-lg p-20 mb-10 w-full lg:w-3/4 xl:w-2/3 ">
          

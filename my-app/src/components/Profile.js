@@ -4,6 +4,7 @@ import { MdLocationOn } from 'react-icons/md'; // Importing Material Icons locat
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Sidebar2 from './Sidebar/Sidebar2';
+import Sidebar from './Sidebar/Sidebar';
 import ngoIcon from '../assets/ngodrawericon.png';
 import donorIcon from '../assets/resdrawericon.png';
 
@@ -54,7 +55,6 @@ export const Profile = () => {
       const userData = await response.json();
 
       if (userData.success) {
-        toast.success(userData.message);
 
         const statData = [
           { category: 'Donations', value: userData.totalDonationsMade },
@@ -74,7 +74,7 @@ export const Profile = () => {
           setCapacity(userData.data.ngoPreferences.capacity.toString());
         }
       } else {
-        toast.error(userData.message);
+        console.error('Failed to fetch user details');
       }
     } catch (error) {
       console.error(error);
@@ -83,8 +83,8 @@ export const Profile = () => {
 
   const renderStatItem = (item, index) => (
     <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer transition-transform duration-300 transform hover:scale-105 bg-gray-200 hover:shadow-2xl" key={index}>
-      <div className="text-center">{item.value}</div>
-      <div className="text-center">{item.category}</div>
+      <div className="text-center text-white">{item.value}</div>
+      <div className="text-center text-white">{item.category}</div>
     </div>
   );
 
@@ -94,7 +94,16 @@ export const Profile = () => {
 
   return (
     <div className="flex">
+       {userType === 'NGO' ? (
+                <>
+      <Sidebar />
+      </>
+              ) : ( 
+                <>
       <Sidebar2 />
+                 </>
+              )}
+             
       <div className="container mx-auto flex flex-col items-center mt-8">
         
         <div className="bg-green-500 rounded-lg shadow-lg p-20 mb-10 w-full lg:w-3/4 xl:w-2/3 ">
@@ -114,25 +123,25 @@ export const Profile = () => {
              
               {userType === 'NGO' ? (
                 <>
-                  <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer  hover:bg-gray-200 hover:shadow-2xl">
-                    <div className="text-center">{proximity}</div>
-                    <div className="text-center">Proximity</div>
+                  <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105">
+                    <div className="text-center text-white">{proximity}</div>
+                    <div className="text-center text-white">Proximity</div>
                   </div>
-                  <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 bg-gray-200 hover:shadow-2xl">
-                    <div className="text-center">{capacity}</div>
-                    <div className="text-center">Capacity</div>
+                  <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 ">
+                    <div className="text-center text-white">{capacity}</div>
+                    <div className="text-center text-white">Capacity</div>
                   </div>
-                  <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 bg-gray-200 hover:shadow-2xl">
+                  <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 ">
                     <MdLocationOn size={30} color="#fff" /> {/* Location icon */}
-                    <div className="text-center">Location</div>
+                    <div className="text-center text-white">Location</div>
                   </div>
                 </>
-              ) : (
+              ) : ( 
                 <>
                  {data.map((item, index) => renderStatItem(item, index))} 
-                 <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 bg-gray-200 hover:shadow-2xl">
+                 <div className="bg-green-500 rounded-md p-4 m-2 flex flex-col justify-center items-center cursor-pointer hover:scale-105 ">
                     <MdLocationOn size={30} color="#fff" /> {/* Location icon */}
-                    <div className="text-center">Location</div>
+                    <div className="text-center text-white">Location</div>
                   </div>
                  </>
               )}
