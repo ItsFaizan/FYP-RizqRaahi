@@ -111,7 +111,30 @@
     "claimdonationstext" : "Claim Donations",
     "trackdonationword" : "Track Donation",
     "donationdetailsword" : "Donation Details",
-    "typeword" : "Type"
+    "typeword" : "Type",
+
+    "donationannouncementword" : "Donation Announcement",
+    "claimdonationword" : "Claim Donation",
+    "getrecommendationsword" : "Get Recommendations",
+    "confirmlocationword" : "CONFIRM LOCATION",
+
+    "visualizeanalyticsword" : "Visualize Analytics",
+    "donationtypepreferenceword" : "Donation Type Preference",
+    "fooddonatedinactivemonths" : "Food Donated in Active Months",
+    "interactionratingword" : "Interaction Rating Per Active Month",
+    "donationratingword" : "Donation Rating Per Active Month",
+    "averageratingword" : "Average Rating Per Active Month",
+    "donationscollectedword" : "Donations Collected Per Active Month",
+    "restaurantsandassignedratingsword" : "Restaurants and Assigned Ratings",
+    "timesinteractedword" : "Times Interacted with Restaurants",
+    "Profileword" : "Profile",
+    "Predictionsword" : "Predictions",
+    "disclaimersentence" : "Please note that the predictions provided here are estimates and may not reflect the actual donations from restaurants. These predictions are intended to give a general idea of what to expect from each restaurant. As restaurants donate more frequently, the predictions will become more accurate over time. We apologize for any inconvenience caused and appreciate your understanding.\n",
+    "donationpredictionword" : "Prediction of Donations",
+    "donationpredictiontext" : "Predicting Donations For next Week! Please Hold",
+    "capacityword": "Capacity",
+    "UpdateProfile" : "Update Profile"
+
 
 
 

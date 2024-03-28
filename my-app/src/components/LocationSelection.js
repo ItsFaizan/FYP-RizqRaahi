@@ -105,6 +105,14 @@ const LocationSelection = () => {
           },
         });
         
+      } else if(screenName === 'UpdateProfile'){
+        navigate(`/update-profile` , {
+          state: {
+            option: option,
+            coordinates: { latitude: selectedLocation.lat, longitude: selectedLocation.lng },
+            
+          },
+        })
       }
       else{
         navigate(`/crisis`, {
@@ -121,7 +129,7 @@ const LocationSelection = () => {
 
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div className='font-[Inter]'  style={{ height: '100vh', width: '100%' }}>
 
       {isLoaded ? 
       (

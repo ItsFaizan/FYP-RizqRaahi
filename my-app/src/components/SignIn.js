@@ -113,7 +113,7 @@ export const SignIn = () => {
 
   return (
     console.log("Sign in got option: "+option),
-    <div>
+    <div className='font-[Inter]'>
       <div className="absolute mx-auto my-[16%] sm:my-[8%]  sm:left-[15%] sm:h-[75%] sm:w-[408px]  md:my-[12%]  md:left-[25%] md:h-[75%] md:w-[408px]  lg:my-[8%]  lg:left-[15%] lg:h-[75%] lg:w-[408px] transform translate(-50%, -50%) w-[100%] h-[100%] bg-white rounded-lg border border-white shadow-md">
         <img src={vector2} alt="Img" className="top-[60px] left-[205px] w-[150px] h-[160px] mx-auto" />
         <h1

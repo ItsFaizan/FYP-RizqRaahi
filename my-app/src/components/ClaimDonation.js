@@ -220,7 +220,7 @@ export const ClaimDonation = () => {
     <>
     
     {isDonation && (
-      <div className='flex'>
+      <div className='flex font-[Inter]'>
       <Sidebar/>
     <div className="flex flex-col items-center justify-center mt-4 mx-auto font-[Inter]">
     
