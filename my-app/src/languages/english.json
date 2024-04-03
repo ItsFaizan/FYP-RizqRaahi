@@ -133,7 +133,9 @@
     "donationpredictionword" : "Prediction of Donations",
     "donationpredictiontext" : "Predicting Donations For next Week! Please Hold",
     "capacityword": "Capacity",
-    "UpdateProfile" : "Update Profile"
+    "UpdateProfile" : "Update Profile",
+    "givendonationsword" : "Given Donations",
+    "nextweekpredictionword" : "Next Week Prediction"
 
 
 

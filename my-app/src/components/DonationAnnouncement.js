@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import vector from "../assets/kid14.jpeg";
+import vector from "../assets/kid9.jpeg";
 import vector2 from "../assets/logo.png";
 import { io } from "socket.io-client";
 import { useLocation, useNavigate, Link } from "react-router-dom";
@@ -286,7 +286,7 @@ export default function Announcement() {
     <div className="flex">
       <Sidebar2 />
 
-      <div className="fixed bottom-[10px] left-80 background">
+      <div className="fixed bottom-[60px] left-80 background">
         <img src={vector} alt={"Img"} className="w-auto h-[405px]" />
       </div>
 
